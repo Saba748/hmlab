@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Hormone Lab</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300, 400, 700" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+  <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+
+  <!-- Theme Style -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="img/hmfavicon.ico">
+  <style type="text/css"><
+  body{
+  margin:0;
+}
+    
+#background{
+  display:block;
+  position:fixed;
+  width:100%;
+  height:100%;
+ /* background-color: #3c005b;
+  background: -webkit-radial-gradient(center, ellipse cover, #3c005b 1%,#0d0011 100%);*/
+  background: -moz-radial-gradient(center, ellipse cover, #3c005b 1%,#0d0011 100%);
+  background: -ie-radial-gradient(center, ellipse cover, #3c005b 1%,#0d0011 100%);
+}
+
+#logocontainer{
+  display:block;
+  /*position:fixed;*/
+  top:50%;
+  left:50%;
+  width:34vh;
+  height:34vh;
+  margin-left:-17vh;
+  margin-top:-17vh;
+  overflow:hidden;
+  transition:background-color 500ms;
+  cursor:pointer;
+}
+
+#pelogo{
+  display: block;
+  position: absolute;
+  left: 2vh;
+  top: 2vh;
+  width: 30vh;
+  height: 30vh;
+  background: #34324b;
+  background: -moz-linear-gradient(-45deg, #34324b 0%, #161222 100%);
+  background: -webkit-linear-gradient(-45deg, #34324b 0%,#161222 100%);
+  background: linear-gradient(135deg, #34324b 0%,#161222 100%);
+  background-size: contain;
+  font-family: Trebuchet MS, sans-serif;
+  font-size: 20vh;
+  font-weight: italic;
+  color: #3ebffa;
+  text-align: center;
+  line-height: 30vh;
+}
+
+.loader{
+  display:block;
+  position:absolute;
+  background-color:#3ebffa;
+}
+
+/*Pretty complex animation, so each side needs its own @keyframes.*/
+
+@keyframes slide1{
+  50%{width:32vh; margin-left:0;}
+  100%{margin-left:32vh;}
+}
+
+@keyframes slide2{
+  50%{height:32vh; margin-top:0;}
+  100%{margin-top:32vh;}
+}
+
+@keyframes slide3{
+  50%{width:32vh; margin-right:0;}
+  100%{margin-right:32vh;}
+}
+
+/*@keyframes slide4{
+  50%{height:32vh; margin-bottom:0}
+  100%{margin-bottom:32vh;}
+}*/
+.img-replace {
+  /* replace text with an image */
+  display: inline-block;
+  overflow: hidden;
+  text-indent: 100%; 
+  color: transparent;
+  white-space: nowrap;
+}
+.bts-popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+  -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+  transition: opacity 0.3s 0s, visibility 0s 0.3s;
+}
+.bts-popup.is-visible {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+  -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+  transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+
+.bts-popup-container {
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  margin: 4em auto;
+  background: #a0cff1;
+  border-radius: none; 
+  text-align: center;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  -webkit-transform: translateY(-40px);
+  -moz-transform: translateY(-40px);
+  -ms-transform: translateY(-40px);
+  -o-transform: translateY(-40px);
+  transform: translateY(-40px);
+  /* Force Hardware Acceleration in WebKit */
+  -webkit-backface-visibility: hidden;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.bts-popup-container img {
+  padding: 20px 0 0 0;
+}
+.bts-popup-container p {
+  color: white;
+  padding: 10px 40px;
+}
+.bts-popup-container .bts-popup-button {
+  padding: 5px 25px;
+  border: 2px solid white;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.bts-popup-container a {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+
+
+
+
+
+.bts-popup-container .bts-popup-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+}
+.bts-popup-container .bts-popup-close::before, .bts-popup-container .bts-popup-close::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  width: 16px;
+  height: 3px;
+  background-color: white;
+}
+.bts-popup-container .bts-popup-close::before {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  left: 8px;
+}
+.bts-popup-container .bts-popup-close::after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  right: 6px;
+  top: 13px;
+}
+.is-visible .bts-popup-container {
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+}
+@media only screen and (min-width: 1170px) {
+  .bts-popup-container {
+    margin: 8em auto;
+  }
+
+  @import url(https://fonts.googleapis.com/css?family=Droid+Sans);
+  .loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('img/HORMONLAB(2).gif') 50% 50% no-repeat rgb(249,249,249);
+  }
+}
+</style>
+</head>
+
+<body> 
+<!-- </p> 
+<div id="background"></div> -->
+
+ <!--  
+<div id="splashLogo" data-animate-effect="fadeIn" class="element-animate"> <img alt="Logo" class="img-fluid" src="img/hm_logo_trans.png" />
+</div>  -->
+  
+<div class="loader"></div> 
+<div id="splashOut"> <header role="banner">
+    <div class="top-bar"> 
+      <div class="row"> 
+        <div class="col-md-6 col-sm-6 col-5"> 
+          <ul class="social list-unstyled">
+            <li><a target="_blank" href="https://web.facebook.com/HormoneLabs/">&nbsp;</a></li> 
+            <li><a href="https://www.linkedin.com/company/28131318/admin/">&nbsp;</a></li> 
+            <li><a href="https://www.instagram.com/p/BwhyQNVHJol/?utm_source=ig_share_sheet&amp;igshid=1bl0sw3gx4szf">&nbsp;</a></li> 
+          </ul>
+        </div> 
+        <div class="col-md-6 col-sm-6 col-7"> <a style="background-color: black; font-style: italic; margin-top: 5px;" class="cta-btn" href="http://202.154.232.106/HormoneLab/CollectionCenter/AdminLogin.aspx">Collection Center</a> <a style="background-color: black; font-style: italic;" class="cta-btn" href="http://202.154.232.106/HormoneLab/Patients/patientlogin.aspx">Patient Report</a> <a data-toggle="modal" data-target="#modalAppointment" style="font-style: italic;" class="cta-btn" href="#">Make an Appointment</a> <span class="labLine">Lab Line: 03-111-411-112</span> 
+        </div> 
+      </div> 
+    </div> <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container"> <a class="navbar-brand" href="index.html"> <img alt="Logo" src="img/HORMONLAB.gif" /></a> <button data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" type="button">&nbsp;</button> 
+        <div id="navbarsExample05" class="collapse navbar-collapse"> 
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"> <a class="nav-link active" href="home.html">Home</a> </li> 
+            <li class="nav-item dropdown"> <a id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle" href="services.html">Patient</a> 
+              <div aria-labelledby="dropdown04" class="dropdown-menu"> <a class="dropdown-item" href="test.html">Laboratary Test</a> <a class="dropdown-item" href="profile.html">Health Profiles</a> <a class="dropdown-item" href="http://202.154.232.106/HormoneLab/Patients/patientlogin.aspx">Patient Report</a> 
+              </div> </li> 
+            <li class="nav-item dropdown"> <a id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle" href="services.html">Services</a> 
+              <div aria-labelledby="dropdown04" class="dropdown-menu"> <a class="dropdown-item" href="laboratory.html">Laboratory</a> <a class="dropdown-item" href="radiology.html">Radiology</a> <a class="dropdown-item" href="services.html">Corporate Clients</a> 
+              </div> </li> 
+            <li class="nav-item dropdown hide"> <a id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle" href="doctors.html">Doctors</a> 
+              <div aria-labelledby="dropdown05" class="dropdown-menu"> <a class="dropdown-item" href="doctors.html">Find Doctors</a> <a class="dropdown-item" href="#">Practitioner</a> 
+              </div> </li> 
+            <li class="nav-item"> <a class="nav-link" href="news.html">Campaigns</a> </li> 
+            <li class="nav-item"> <a class="nav-link" href="about.html">About</a> </li> 
+            <li class="nav-item"> <a class="nav-link" href="contact.html">Contact</a> </li> 
+          </ul>
+        </div> 
+      </div> </nav></header>    <!-- END header -->
+
+    <section class="home-slider owl-carousel">
+    <div img="" style="background-image: url("");" class="slider-item"> 
+      <div class="container"> 
+        <div class="row slider-text align-items-center"> 
+          <div class="col-md-7 col-sm-12 element-animate"> <h1><b>Legacy of Experience &amp; Quality </b></h1> 
+          </div> 
+        </div> 
+      </div> 
+    </div> 
+    <div img="" style="background-image: url("");" class="slider-item"> 
+      <div class="container"> 
+        <div class="row slider-text align-items-center"> 
+          <div class="col-md-7 col-sm-12 element-animate"> 
+            <style align="left">
+            </style>&gt;<h1><b>State of The Art Technology</b></h1> 
+          </div> 
+        </div> 
+      </div> 
+    </div> 
+    <div img="" style="background-image: url("");" class="slider-item"> 
+      <div class="container"> 
+        <div class="row slider-text align-items-center"> 
+          <div class="col-md-7 col-sm-12 element-animate"> <h1><b>We provide Health Care Solutions</b></h1> 
+            <p>Your health is what you make of it.Everything you do and think either adds to the validity,energy and spirit you possess or takes away from it.</p> 
+          </div> 
+        </div> 
+      </div> 
+    </div> 
+    <div img="" style="background-image: url("");" class="slider-item"> 
+      <div class="container"> 
+        <div class="row slider-text align-items-center"> 
+          <div class="col-md-7 col-sm-12 element-animate"> <h1><b>Unmatched Quality Standards</b></h1> 
+          </div> 
+        </div> 
+      </div> 
+    </div> </section>    <!-- END slider -->
+
+
+    <section class="container home-feature mb-5">
+    <div class="row"> 
+      <div class="col-md-3 p-0 one-col element-animate"> 
+        <div class="col-inner p-xl-5 p-lg-5 p-md-4 p-sm-4 p-4"> <h2 align="center">Laboratory</h2> 
+          <p>Hormone Labs is on the cutting edge of test development to diagnose and treat our patients faster.</p> 
+        </div> <a class="btn-more" href="laboratory.html">Read More</a> 
+      </div> 
+      <div class="col-md-3 p-0 one-col element-animate"> 
+        <div class="col-inner p-xl-5 p-lg-5 p-md-4 p-sm-4 p-4"> <h2 align="center">Diagnostic and Research Centre</h2> 
+          <p>Hormone Labs is on the cutting edge of test development to diagnose and treat our patients faster.</p> 
+        </div> <a class="btn-more" href="radiology.html">Read More</a> 
+      </div> 
+      <div class="col-md-3 p-0 two-col element-animate"> 
+        <div class="col-inner p-xl-5 p-lg-5 p-md-4 p-sm-4 p-4"> <h2 align="center">Radiology</h2> 
+          <p>We have the capability to perform all diagnostic imaging procedures with the highest technology
+              modalities
+              available</p> 
+        </div> <a class="btn-more" href="radiology.html">Read More</a> 
+      </div> 
+      <div class="col-md-3 p-0 three-col element-animate"> 
+        <div class="col-inner p-xl-5 p-lg-5 p-md-4 p-sm-4 p-4"> <h2 align="center">Corporate</h2> 
+          <p>We are committed to providing professional, strategic, and timely assistance to ensure smooth business
+              operation for the company.</p> 
+        </div> <a class="btn-more" href="services.html">Read More</a> 
+      </div> 
+    </div> </section> <!--    
+  
+  
+  
+  
+  <div class="row"> -->
+    <!-- END section -->
+    <!-- 
+    
+    
+    
+    
+    <div class="container"> -->
+      <!-- 
+      
+      
+      
+      
+      <div class="col-md-12"> 
+        <div class="col-sm-6"> <h3>Hormone Lab</h3> 
+          <p>Hormone Lab is premeire Pathology Lab.We always focus on quality to serve our community.Hormone Lab’s  state of the art automated instruments, team of veteran pathologists and proficient lab technologists, on time / fast accurate result, 24 hours service and affordable prices makes it the first choice of leading doctors and hospitals of Pakistan </p> 
+        </div> 
+        <div class="row"> 
+          <div class="col-sm-6"></div> <video width="500" height="400" controls=""><source type="video/mp4" src="/spaw/empty/img/HL.mp4"></source> -->
+<!--   <source type="video/mp4" src="/spaw/empty/HL.mp4"></source> -->
+  
+    
+  
+  <!-- 
+            
+            
+            
+            
+            <div class="rows"> 
+              <div class="column"> <video width="500" height="400" controls=""><source type="video/mp4" src="/spaw/empty/img/HL.mp4"></source><source type="video/mp4" src="/spaw/empty/HL.mp4"></source> 
+    
+    
+
+  
+
+  Your browser does not support the video tag.</video>
+              </div> 
+            </div> 
+            <div class="rows"> 
+              <div class="col-6"> <video width="500" height="400" controls=""><source type="video/mp4" src="/spaw/empty/img/HL.mp4"></source><source type="video/mp4" src="/spaw/empty/HL.mp4"></source> 
+    
+    
+
+  
+
+  Your browser does not support the video tag.</video>
+              </div> 
+            </div> </video>
+        </div> 
+      </div> 
+    </div> 
+  </div> -->
+  
+
+  
+  
+  
+  
+  
+  <div class="container"> 
+    <div class="row"> 
+      <div class="col-md-6"> <h3>Hormone Lab</h3> 
+        <p>Hormone Lab is premeire Pathology Lab.We always focus on quality to serve our community.Hormone Lab’s  state of the art automated instruments, team of veteran pathologists and proficient lab technologists, on time / fast accurate result, 24 hours service and affordable prices makes it the first choice of leading doctors and hospitals of Pakistan </p> 
+      </div> 
+      <div class="col-md-6"> <video width="500" height="300" controls=""><source type="video/mp4" src="/spaw/empty/img/HL.mp4"></source><source type="video/mp4" src="/spaw/empty/HL.mp4"></source> 
+    Your browser does not support the video tag.</video>
+      </div> 
+    </div> 
+  </div> <section class="section stretch-section">
+    <div class="container"> 
+      <div class="row justify-content-center mb-5 element-animate"> 
+        <div class="col-md-8 text-center mb-5"> <h2 class="text-uppercase heading border-bottom mb-4">Accreditations</h2> 
+          <p class="mb-0 lead">Accreditations attest to the competency of the services provided and compliance with
+              established national and international standards for third-party certification.</p> 
+        </div> 
+      </div> 
+      <div class="row align-items-center"> 
+        <div data-animate-effect="fadeInLeft" class="col-md-3 offset-md-2 stretch-left-1 element-animate text-center"> <img alt="iso9001" class="accrediationsImages mx-auto" src="img/iso9001.png" />
+        </div> 
+        <div data-animate-effect="fadeInLeft" class="col-md-3 stretch-left-1 element-animate text-center"> <img alt="iso15189" class="accrediationsImages mx-auto" src="img/iso15189.png" />
+        </div> 
+        <div data-animate-effect="fadeInLeft" class="col-md-3 stretch-left-1 element-animate text-center"> <img alt="phc" class="accrediationsImages mx-auto" src="img/phc.png" />
+        </div> 
+      </div> 
+      <div class="row align-items-center"> 
+        <div data-animate-effect="fadeInLeft" class="col-md-3 stretch-left-1 element-animate text-center"> <img alt="iso15189" class="accrediationsImages mx-auto" src="img/log7.png" />
+        </div> 
+        <div data-animate-effect="fadeInLeft" class="col-md-3 stretch-left-1 element-animate text-center"> <img alt="anab" class="accrediationsImages mx-auto" src="img/anab.png" />
+        </div> 
+      </div>    
+    <!-- END section -->
+
+    <section class="section stretch-section">
+        <div class="container"> 
+          <div class="row justify-content-center mb-5 element-animate"> 
+            <div class="col-md-8 text-center mb-5"> <h2 class="text-uppercase heading border-bottom mb-4">Why Choose Us</h2> 
+              <p class="mb-0 lead">Hormone Lab is committed to serve its community providing you high quality and personal Care.</p> 
+            </div> 
+          </div> 
+          <div class="row align-items-center"> 
+            <div data-animate-effect="fadeInLeft" class="col-md-6 stretch-left-1 element-animate"> <a class="video" href="#"><img alt="" class="img-fluid" src="img/homem.png" /></a> 
+            </div> 
+            <div data-animate-effect="fadeInLeft" class="col-md-6 stretch-left-1-offset pl-md-5 pl-0 element-animate"> 
+              <div class="row"> 
+                <div class="col-lg-6 col-md-6 col-sm-6 col-6"> 
+                  <div class="media d-block media-feature text-center">                  <!--  -->
+                  <img class="svgIcons" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNDk2IDQ5NiIgd2lkdGg9IjUxMiI+PGc+PHBhdGggZD0ibTQ5NiAyMzkuNjA5Mzc1YzAtMTQuNTExNzE5LTcuODE2NDA2LTI3LjQ2NDg0NC0yMC4xMjg5MDYtMzQuMzUxNTYzIDMuODMyMDMxLTEzLjU3ODEyNC4yMTg3NS0yOC4yNS0xMC4wMTU2MjUtMzguNDgwNDY4bC0uNTg5ODQ0LS42MDE1NjNjLTEwLjI3MzQzNy0xMC4yNjU2MjUtMjQuOTY4NzUtMTMuODk0NTMxLTM4LjUyMzQzNy0xMC4wNTQ2ODctNS41ODIwMzItOS45NjA5MzgtMTUuMjMwNDY5LTE2Ljg5ODQzOC0yNi43MzQzNzYtMTkuMjEwOTM4di0xMzYuOTEwMTU2aC0zODQuMDA3ODEydjIwOS40NzI2NTZjLTkuMjg5MDYyIDMuMzEyNS0xNiAxMi4xMTMyODItMTYgMjIuNTI3MzQ0djE2YzAgMTAuNDE0MDYyIDYuNzEwOTM4IDE5LjIxNDg0NCAxNiAyMi41MjczNDR2MjI1LjQ3MjY1NmgzODR2LTg0LjY4NzVsMzIgMzJ2LTExOC4zNDM3NWMxMi4wMzkwNjIgMS42Nzk2ODggMjQuNDU3MDMxLTIuMzQzNzUgMzMuODE2NDA2LTExLjcxMDkzOCAxMC4yNjE3MTktMTAuMjU3ODEyIDEzLjg4NjcxOS0yNC45Mzc1IDEwLjA1NDY4OC0zOC41MTU2MjQgMTIuMzA0Njg3LTYuOTEwMTU3IDIwLjEyODkwNi0xOS45NjQ4NDQgMjAuMTI4OTA2LTM1LjEzMjgxM3ptLTQyLjA4OTg0NC02Mi4xNTIzNDQuNTkzNzUuNTk3NjU3YzcuMzI4MTI1IDcuMzIwMzEyIDguOTM3NSAxOC40NTcwMzEgNC4wMTU2MjUgMjcuNzA3MDMxbC0xLjY3OTY4NyAzLjE2MDE1NmMtNy4wOTc2NTYtMTQuNzM4MjgxLTE5LjAzMTI1LTI2LjY3NTc4MS0zMy43Njk1MzItMzMuNzYxNzE5bDMuMTUyMzQ0LTEuNjc5Njg3YzkuMjgxMjUtNC45MjE4NzUgMjAuNDEwMTU2LTMuMzEyNSAyNy42ODc1IDMuOTc2NTYyem0tOTYuMTQwNjI1IDEyOS4wNjI1Yy05LjI2NTYyNSA0LjkyMTg3NS0yMC4zOTQ1MzEgMy4zMDQ2ODgtMjcuNjcxODc1LTMuOTc2NTYybC0uNTkzNzUtLjU5NzY1N2MtNy4zMjgxMjUtNy4zMjAzMTItOC45Mzc1LTE4LjQ1NzAzMS00LjAxNTYyNS0yNy43MDcwMzFsMS42Nzk2ODgtMy4xNjAxNTZjNy4wOTc2NTYgMTQuNzM4MjgxIDE5LjAzMTI1IDI2LjY3NTc4MSAzMy43Njk1MzEgMzMuNzYxNzE5em0tNTMuNzY5NTMxLTY2LjkxMDE1NmMwLTEwLjM2MzI4MSA2LjczNDM3NS0xOS4zNzg5MDYgMTYuNzUzOTA2LTIyLjQ0OTIxOWwzLjM5ODQzOC0xLjAzOTA2MmMtMi42NDA2MjUgNy40ODgyODEtNC4xNTIzNDQgMTUuNTAzOTA2LTQuMTUyMzQ0IDIzLjg3ODkwNnMxLjUxMTcxOSAxNi4zOTA2MjUgNC4xNTIzNDQgMjMuODcxMDk0bC0zLjM5ODQzOC0xLjAzOTA2M2MtMTAuMDE5NTMxLTMuMDYyNS0xNi43NTM5MDYtMTIuMDc4MTI1LTE2Ljc1MzkwNi0yMy4yMjI2NTZ6bTIzLjE1MjM0NC0zMC42ODc1LTEuNjc5Njg4LTMuMTYwMTU2Yy00LjkyMTg3NS05LjI1LTMuMzA0Njg3LTIwLjM4NjcxOSA0LjU3NDIxOS0yOC4yNjU2MjUgNy4zMjgxMjUtNy4zMTI1IDE4LjQ2NDg0NC04LjkyOTY4OCAyNy43MTQ4NDQtNC4wMTU2MjVsMy4xNDg0MzcgMS42Nzk2ODdjLTE0LjcyNjU2MiA3LjA4NTkzOC0yNi42NjQwNjIgMTkuMDIzNDM4LTMzLjc1NzgxMiAzMy43NjE3MTl6bTY0Ljg0NzY1NiA4Ny4wNzgxMjVjLTMwLjg3ODkwNiAwLTU2LTI1LjEyODkwNi01Ni01NnMyNS4xMjEwOTQtNTYgNTYtNTYgNTYgMjUuMTI4OTA2IDU2IDU2LTI1LjEyMTA5NCA1Ni01NiA1NnptMjMuODcxMDk0IDExLjg0NzY1Ni0xLjAzOTA2MyAzLjM5MDYyNWMtMy4wNjI1IDEwLjAyNzM0NC0xMi4wNzgxMjUgMTYuNzYxNzE5LTIzLjIyMjY1NiAxNi43NjE3MTktMTAuMzUxNTYzIDAtMTkuMzcxMDk0LTYuNzM0Mzc1LTIyLjQ0MTQwNi0xNi43NjE3MTlsLTEuMDM5MDYzLTMuMzkwNjI1YzcuNDg4MjgyIDIuNjQwNjI1IDE1LjQ5NjA5NCA0LjE1MjM0NCAyMy44NzEwOTQgNC4xNTIzNDRzMTYuMzgyODEyLTEuNTExNzE5IDIzLjg3MTA5NC00LjE1MjM0NHptLTEuMDM5MDYzLTEzOS4wOTM3NSAxLjAzOTA2MyAzLjM5ODQzOGMtNy40ODgyODItMi42NDA2MjUtMTUuNDk2MDk0LTQuMTUyMzQ0LTIzLjg3MTA5NC00LjE1MjM0NHMtMTYuMzgyODEyIDEuNTExNzE5LTIzLjg3MTA5NCA0LjE1MjM0NGwxLjAzOTA2My0zLjM5ODQzOGMzLjA2MjUtMTAuMDE5NTMxIDEyLjA3ODEyNS0xNi43NTM5MDYgMjMuMjIyNjU2LTE2Ljc1MzkwNiAxMC4zNjMyODEgMCAxOS4zNzg5MDYgNi43MzQzNzUgMjIuNDQxNDA2IDE2Ljc1MzkwNnptLTMwLjgzMjAzMS0xNTIuNzUzOTA2djEyMC44MTY0MDZjLTExLjMzNTkzOCAyLjIxNDg0NC0yMS4wODk4NDQgOS4yMDcwMzItMjYuNzQyMTg4IDE5LjMxMjUtMTMuNTc4MTI0LTMuODM5ODQ0LTI4LjM0NzY1Ni0uMTI4OTA2LTM5LjA3NDIxOCAxMC42MDU0NjktMTAuMjYxNzE5IDEwLjI1NzgxMy0xMy44ODY3MTkgMjQuOTM3NS0xMC4wNTQ2ODggMzguNTExNzE5LTEuNDcyNjU2LjgyNDIxOC0yLjg2MzI4MSAxLjc1MzkwNi00LjE5OTIxOCAyLjc0NjA5NGgtMjcxLjkyOTY4OHYtMTkxLjk5MjE4OHptLTM2OCAyMTZjMC00LjQxNDA2MiAzLjU5Mzc1LTggOC04aDI2Ny4zMzU5MzhjLTIuMTQ0NTMyIDUtMy4zMzU5MzggMTAuNTI3MzQ0LTMuMzM1OTM4IDE2LjM5MDYyNSAwIDUuNTExNzE5IDEuMTM2NzE5IDEwLjc5Mjk2OSAzLjIwNzAzMSAxNS42MDkzNzVoLTI2Ny4yMDcwMzFjLTQuNDA2MjUgMC04LTMuNTg1OTM4LTgtOHptMTYgMjQ4di0yMDhoMjcxLjkwMjM0NGMxLjM0Mzc1Ljk5MjE4OCAyLjc0NjA5NCAxLjkyMTg3NSA0LjIxODc1IDIuNzQyMTg4LTMuODMyMDMyIDEzLjU3ODEyNC0uMjE4NzUgMjguMjUgMTAuMDE1NjI1IDM4LjQ4MDQ2OGwuNTg5ODQzLjYwMTU2M2M4Ljk1MzEyNiA4Ljk0NTMxMiAyMS4yNjU2MjYgMTIuODMyMDMxIDMzLjI2NTYyNiAxMS4xNTIzNDN2MTE4LjMzNTkzOGwzMi0zMnY2OC42ODc1em0zNjAtOTkuMzEyNS0yNCAyNHYtNjguNjQwNjI1YzYuNzUzOTA2IDUuMDMxMjUgMTUuMTY3OTY5IDcuOTUzMTI1IDI0LjM5MDYyNSA3Ljk1MzEyNSA4Ljc4NTE1NiAwIDE2Ljk2ODc1LTIuOTAyMzQ0IDIzLjYwOTM3NS03Ljg4NjcxOXY2OC41NzQyMTl6bTYxLjk1MzEyNS03OC4xODM1OTRjLTcuMzEyNSA3LjMyMDMxMy0xOC40NjQ4NDQgOC45Mzc1LTI3LjcxNDg0NCA0LjAxNTYyNWwtMy4xNDg0MzctMS42Nzk2ODdjMTQuNzM0Mzc1LTcuMDk3NjU2IDI2LjY3MTg3NS0xOS4wMjM0MzggMzMuNzY1NjI1LTMzLjc2MTcxOWwxLjY3OTY4NyAzLjE2MDE1NmM0LjkwNjI1IDkuMjU3ODEzIDMuMjk2ODc1IDIwLjM4NjcxOS00LjU4MjAzMSAyOC4yNjU2MjV6bTkuMjkyOTY5LTM5LjY3MTg3NS0zLjM5ODQzOCAxLjAzOTA2M2MyLjY0MDYyNS03LjQ4MDQ2OSA0LjE1MjM0NC0xNS40OTYwOTQgNC4xNTIzNDQtMjMuODcxMDk0cy0xLjUxMTcxOS0xNi4zOTA2MjUtNC4xNTIzNDQtMjMuODcxMDk0bDMuMzk4NDM4IDEuMDM5MDYzYzEwLjAxOTUzMSAzLjA2MjUgMTYuNzUzOTA2IDEyLjA3ODEyNSAxNi43NTM5MDYgMjMuMjIyNjU2IDAgMTAuMzYzMjgxLTYuNzM0Mzc1IDE5LjM3ODkwNi0xNi43NTM5MDYgMjIuNDQxNDA2em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6Izg2OEU5NiIgZGF0YS1vbGRfY29sb3I9IiM4NjhlOTYiPjwvcGF0aD48cGF0aCBkPSJtMzkyIDIwMGMtMjIuMDU0Njg4IDAtNDAgMTcuOTQ1MzEyLTQwIDQwczE3Ljk0NTMxMiA0MCA0MCA0MCA0MC0xNy45NDUzMTIgNDAtNDAtMTcuOTQ1MzEyLTQwLTQwLTQwem0wIDY0Yy0xMy4yMzA0NjkgMC0yNC0xMC43Njk1MzEtMjQtMjRzMTAuNzY5NTMxLTI0IDI0LTI0IDI0IDEwLjc2OTUzMSAyNCAyNC0xMC43Njk1MzEgMjQtMjQgMjR6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9wYXRoPjxwYXRoIGQ9Im0xNzYgMzJoLTEyOHY0OGgxMjh6bS0xNiAzMmgtOTZ2LTE2aDk2em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6Izg2OEU5NiIgZGF0YS1vbGRfY29sb3I9IiM4NjhlOTYiPjwvcGF0aD48cGF0aCBkPSJtMTkyIDMyaDE3NnYxNmgtMTc2em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6Izg2OEU5NiIgZGF0YS1vbGRfY29sb3I9IiM4NjhlOTYiPjwvcGF0aD48cGF0aCBkPSJtMTkyIDY0aDE3NnYxNmgtMTc2em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6Izg2OEU5NiIgZGF0YS1vbGRfY29sb3I9IiM4NjhlOTYiPjwvcGF0aD48cGF0aCBkPSJtNDggOTZoMjAwdjE2aC0yMDB6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9wYXRoPjxwYXRoIGQ9Im00OCAxMjhoMjAwdjE2aC0yMDB6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9wYXRoPjxwYXRoIGQ9Im00OCAxNjBoMjAwdjE2aC0yMDB6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9wYXRoPjxwYXRoIGQ9Im0yNjQgMzIwYy0zOS42OTUzMTIgMC03MiAzMi4yOTY4NzUtNzIgNzJzMzIuMzA0Njg4IDcyIDcyIDcyIDcyLTMyLjI5Njg3NSA3Mi03Mi0zMi4zMDQ2ODgtNzItNzItNzJ6bTAgMTI4Yy0zMC44Nzg5MDYgMC01Ni0yNS4xMjg5MDYtNTYtNTZzMjUuMTIxMDk0LTU2IDU2LTU2IDU2IDI1LjEyODkwNiA1NiA1Ni0yNS4xMjEwOTQgNTYtNTYgNTZ6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9wYXRoPjxwYXRoIGQ9Im00OCA0NDhoOTZ2MTZoLTk2em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6Izg2OEU5NiIgZGF0YS1vbGRfY29sb3I9IiM4NjhlOTYiPjwvcGF0aD48cGF0aCBkPSJtNDggNDE2aDEyOHYxNmgtMTI4em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6Izg2OEU5NiIgZGF0YS1vbGRfY29sb3I9IiM4NjhlOTYiPjwvcGF0aD48cGF0aCBkPSJtNDggMzg0aDEyOHYxNmgtMTI4em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6Izg2OEU5NiIgZGF0YS1vbGRfY29sb3I9IiM4NjhlOTYiPjwvcGF0aD48cGF0aCBkPSJtNDggMzUyaDEyOHYxNmgtMTI4em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6Izg2OEU5NiIgZGF0YS1vbGRfY29sb3I9IiM4NjhlOTYiPjwvcGF0aD48cGF0aCBkPSJtNDggMzIwaDEyOHYxNmgtMTI4em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6Izg2OEU5NiIgZGF0YS1vbGRfY29sb3I9IiM4NjhlOTYiPjwvcGF0aD48cGF0aCBkPSJtNDggMjg4aDE2djE2aC0xNnptMCAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiM4NjhFOTYiIGRhdGEtb2xkX2NvbG9yPSIjODY4ZTk2Ij48L3BhdGg+PHBhdGggZD0ibTgwIDI4OGg5NnYxNmgtOTZ6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9wYXRoPjwvZz4gPC9zdmc+" />
+                    <div class="media-body"> <h3 class="mt-0 text-red">Quality</h3> 
+                      <p>Latest Technology, Qualified Staff, ISO 15189, ISO 9001</p> 
+                    </div> 
+                  </div> 
+                </div> 
+                <div class="col-lg-6 col-md-6 col-sm-6 col-6"> 
+                  <div class="media d-block media-feature text-center">                  <!--  -->
+                  <img class="svgIcons" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNTEyIiB2aWV3Qm94PSItMSAwIDUxMiA1MTIuMDAwOTkiIHdpZHRoPSI1MTIiIGNsYXNzPSIiPjxnPjxwYXRoIGQ9Im01MDIuNjk1MzEyIDMzNy45MjE4NzVjNC4xOTkyMTkgMCA3LjYwNTQ2OS0zLjQwNjI1IDcuNjA1NDY5LTcuNjA1NDY5di0xODMuNDk2MDk0YzAtMTAuNDAyMzQzLTQuMDQ2ODc1LTIwLjE5MTQwNi0xMS40MTAxNTYtMjcuNTg1OTM3LTcuMzc1LTcuMzQzNzUtMTcuMTY0MDYzLTExLjM5MDYyNS0yNy41NjY0MDYtMTEuMzkwNjI1aC04Ni41MTk1MzF2LTEwMC4yNDIxODhjMC00LjE5OTIxOC0zLjQwMjM0NC03LjYwMTU2Mi03LjYwMTU2My03LjYwMTU2MmgtMTg1LjY5NTMxM2MtNC4xOTkyMTggMC03LjYwMTU2MiAzLjQwMjM0NC03LjYwMTU2MiA3LjYwMTU2MnYxMDcuODE2NDA3YzAgNC4xOTkyMTkgMy40MDIzNDQgNy42MDE1NjIgNy42MDE1NjIgNy42MDE1NjIgNC4xOTkyMTkgMCA3LjYwMTU2My0zLjQwMjM0MyA3LjYwMTU2My03LjYwMTU2MnYtMTAwLjIxMDkzOGgxNzAuNDkyMTg3djkyLjYzNjcxOWgtODMuOTY0ODQzYy0uMDAzOTA3IDAtLjAxMTcxOS4wMDM5MDYtLjAxOTUzMS4wMDM5MDYtMTAuMzk0NTMyLjAwMzkwNi0yMC4xNzk2ODggNC4wNDY4NzUtMjcuNTY2NDA3IDExLjQxMDE1Ni0zLjkzNzUgMy45NTMxMjYtNi45NzI2NTYgOC43MzA0NjktOC45MTc5NjkgMTMuOTE0MDYzLTEuNzE4NzUtLjI1LTMuNDc2NTYyLS4zODI4MTMtNS4yNjE3MTgtLjM4MjgxM2gtMTY2LjMyMDMxM2MtNC4xOTkyMTkgMC03LjYwMTU2MiAzLjQwMjM0NC03LjYwMTU2MiA3LjYwMTU2M3MzLjQwMjM0MyA3LjYwMTU2MyA3LjYwMTU2MiA3LjYwMTU2M2gxNjYuMzIwMzEzYzExLjc2MTcxOCAwIDIxLjMyODEyNSA5LjU2NjQwNiAyMS4zMjgxMjUgMjEuMzI4MTI0djMwNi4xNDg0MzhjMCAxMS43NTc4MTItOS41NjY0MDcgMjEuMzI4MTI1LTIxLjMyODEyNSAyMS4zMjgxMjVoLTIwNy4zMzU5MzhjLTExLjc2MTcxOCAwLTIxLjMyODEyNS05LjU2NjQwNi0yMS4zMjgxMjUtMjEuMzI4MTI1di0zMDYuMTQ4NDM4YzAtMTEuNzU3ODEyIDkuNTY2NDA3LTIxLjMyODEyNCAyMS4zMjgxMjUtMjEuMzI4MTI0aDE1LjY3MTg3NWM0LjE5OTIxOSAwIDcuNjAxNTYzLTMuNDAyMzQ0IDcuNjAxNTYzLTcuNjAxNTYzcy0zLjQwMjM0NC03LjYwMTU2My03LjYwMTU2My03LjYwMTU2M2gtMTUuNjcxODc1Yy0yMC4xNDg0MzcgMC0zNi41MzUxNTYgMTYuMzg2NzE5LTM2LjUzNTE1NiAzNi41MzEyNXYzMDYuMTQ4NDM4YzAgMjAuMTQ0NTMxIDE2LjM4NjcxOSAzNi41MzEyNSAzNi41MzUxNTYgMzYuNTMxMjVoMjA3LjMzNTkzOGMyMC4xNDQ1MzEgMCAzNi41MzUxNTYtMTYuMzg2NzE5IDM2LjUzNTE1Ni0zNi41MzEyNXYtMjg5LjY3MTg3NWgyOS4wMDM5MDZ2Mjg3LjQ0OTIxOWMwIDQuMTk5MjE4IDMuNDAyMzQ0IDcuNjAxNTYyIDcuNjAxNTYzIDcuNjAxNTYyaDE4NS42ODc1YzQuMTk5MjE5IDAgNy42MDE1NjItMy40MDIzNDQgNy42MDE1NjItNy42MDE1NjJ2LTExNy41ODU5MzhjMC00LjE5OTIxOC0zLjQwMjM0My03LjYwMTU2Mi03LjYwMTU2Mi03LjYwMTU2MnMtNy42MDU0NjkgMy40MDIzNDQtNy42MDU0NjkgNy42MDE1NjJ2MTA5Ljk4MDQ2OWgtMTcwLjQ4MDQ2OXYtMzE4LjgyMDMxM2MwLTguNzAzMTI0LTIuODMyMDMxLTE2Ljk3NjU2Mi04LjA2NjQwNi0yMy43Njk1MzFoMTU0Ljc3NzM0NGM2LjM1MTU2MiAwIDEyLjMzMjAzMSAyLjQ3MjY1NyAxNi44MTI1IDYuOTM3NSA0LjQ4ODI4MSA0LjUgNi45NTcwMzEgMTAuNDgwNDY5IDYuOTU3MDMxIDE2LjgzMjAzMXYxODMuNDk2MDk0YzAgNC4xOTkyMTkgMy40MDYyNSA3LjYwNTQ2OSA3LjYwMTU2MiA3LjYwNTQ2OXptLTIwMC4yNS0yMDcuOTI5Njg3YzQuNDkyMTg4IDQuNSA2Ljk2NDg0NCAxMC40NzI2NTYgNi45NjQ4NDQgMTYuODI4MTI0djIzLjc3MzQzOGgtMjkuMDA3ODEydi0xLjI3MzQzOGMwLTEyLjk3MjY1Ni02LjgwNDY4OC0yNC4zODI4MTItMTcuMDIzNDM4LTMwLjg2MzI4MSAxLjE3MTg3NS0zLjE0NDUzMSAzLTYuMDE1NjI1IDUuNDI1NzgyLTguNDQ5MjE5IDQuNS00LjQ4ODI4MSAxMC40ODA0NjgtNi45NTcwMzEgMTYuODMyMDMxLTYuOTU3MDMxaC4wMTk1MzFjNi4zMzk4NDQuMDAzOTA3IDEyLjMwODU5NCAyLjQ3NjU2MyAxNi43ODkwNjIgNi45NDE0MDd6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9wYXRoPjxwYXRoIGQ9Im0yNDkuOTkyMTg4IDE3MC44MDA3ODFjMC00LjE5OTIxOS0zLjQwMjM0NC03LjYwMTU2Mi03LjYwMTU2My03LjYwMTU2MmgtMjA0LjM3ODkwNmMtNC4xOTUzMTMgMC03LjYwMTU2MyAzLjQwMjM0My03LjYwMTU2MyA3LjYwMTU2MnY3NS4xOTkyMTljMCA0LjE5OTIxOSAzLjQwNjI1IDcuNjA1NDY5IDcuNjAxNTYzIDcuNjA1NDY5aDIwNC4zNzg5MDZjNC4xOTkyMTkgMCA3LjYwMTU2My0zLjQwNjI1IDcuNjAxNTYzLTcuNjA1NDY5em0tMTUuMjAzMTI2IDY3LjU5NzY1N2gtMTg5LjE3MTg3NHYtNTkuOTk2MDk0aDE4OS4xNzE4NzR6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9wYXRoPjxwYXRoIGQ9Im0yNDIuMzkwNjI1IDI3MC40NDkyMTloLTIwNC4zNzg5MDZjLTQuMTk1MzEzIDAtNy42MDE1NjMgMy40MDIzNDMtNy42MDE1NjMgNy42MDE1NjJ2MTk2Ljc1NzgxM2MwIDQuMTk5MjE4IDMuNDA2MjUgNy42MDU0NjggNy42MDE1NjMgNy42MDU0NjhoMjA0LjM3ODkwNmM0LjE5OTIxOSAwIDcuNjAxNTYzLTMuNDA2MjUgNy42MDE1NjMtNy42MDU0Njh2LTE5Ni43NTc4MTNjMC00LjE5OTIxOS0zLjQwMjM0NC03LjYwMTU2Mi03LjYwMTU2My03LjYwMTU2MnptLTcuNjAxNTYzIDY3LjI0MjE4N2gtNTEuNXYtNTIuMDM5MDYyaDUxLjV6bTAgNjIuMjczNDM4aC01MS41di00Ny4wNzAzMTNoNTEuNXptLTE4OS4xNzE4NzQtNDcuMDcwMzEzaDUxLjQ5NjA5M3Y0Ny4wNzAzMTNoLTUxLjQ5NjA5M3ptNjYuNjk5MjE4IDBoNTUuNzY5NTMydjQ3LjA3MDMxM2gtNTUuNzY5NTMyem01NS43Njk1MzItNjcuMjQyMTg3djUyLjAzOTA2MmgtNTUuNzY5NTMydi01Mi4wMzkwNjJ6bS03MC45NzI2NTcgMHY1Mi4wMzkwNjJoLTUxLjQ5NjA5M3YtNTIuMDM5MDYyem0tNTEuNDk2MDkzIDEyOS41MTk1MzFoNTEuNDk2MDkzdjUyLjAzNTE1NmgtNTEuNDk2MDkzem02Ni42OTkyMTggNTIuMDM1MTU2di01Mi4wMzUxNTZoNTUuNzY5NTMydjUyLjAzNTE1NnptNzAuOTc2NTYzIDB2LTUyLjAzNTE1Nmg1MS40OTYwOTN2NTIuMDM1MTU2em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6Izg2OEU5NiIgZGF0YS1vbGRfY29sb3I9IiM4NjhlOTYiPjwvcGF0aD48cGF0aCBkPSJtMzY2Ljk1NzAzMSAxNDYuMzM1OTM4aC0yMC4yNzM0MzdjLTQuMTk5MjE5IDAtNy42MDU0NjkgMy40MDIzNDMtNy42MDU0NjkgNy42MDE1NjJzMy40MDYyNSA3LjYwMTU2MiA3LjYwNTQ2OSA3LjYwMTU2MmgyMC4yNzM0MzdjNC4xOTUzMTMgMCA3LjYwMTU2My0zLjQwMjM0MyA3LjYwMTU2My03LjYwMTU2MnMtMy40MDYyNS03LjYwMTU2Mi03LjYwMTU2My03LjYwMTU2MnptMCAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiM4NjhFOTYiIGRhdGEtb2xkX2NvbG9yPSIjODY4ZTk2Ij48L3BhdGg+PHBhdGggZD0ibTQ3My4zOTA2MjUgMTQ2LjMzNTkzOGgtODAuMDc4MTI1Yy00LjE5OTIxOSAwLTcuNjA1NDY5IDMuNDAyMzQzLTcuNjA1NDY5IDcuNjAxNTYyczMuNDA2MjUgNy42MDE1NjIgNy42MDU0NjkgNy42MDE1NjJoODAuMDc4MTI1YzQuMTk5MjE5IDAgNy42MDE1NjMtMy40MDIzNDMgNy42MDE1NjMtNy42MDE1NjJzLTMuNDAyMzQ0LTcuNjAxNTYyLTcuNjAxNTYzLTcuNjAxNTYyem0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6Izg2OEU5NiIgZGF0YS1vbGRfY29sb3I9IiM4NjhlOTYiPjwvcGF0aD48cGF0aCBkPSJtMzY2Ljk1NzAzMSAzMTcuNjQ0NTMxaC0yMC4yNzM0MzdjLTQuMTk5MjE5IDAtNy42MDU0NjkgMy40MDYyNS03LjYwNTQ2OSA3LjYwNTQ2OXMzLjQwNjI1IDcuNjAxNTYyIDcuNjA1NDY5IDcuNjAxNTYyaDIwLjI3MzQzN2M0LjE5NTMxMyAwIDcuNjAxNTYzLTMuNDAyMzQzIDcuNjAxNTYzLTcuNjAxNTYycy0zLjQwNjI1LTcuNjA1NDY5LTcuNjAxNTYzLTcuNjA1NDY5em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6Izg2OEU5NiIgZGF0YS1vbGRfY29sb3I9IiM4NjhlOTYiPjwvcGF0aD48cGF0aCBkPSJtNDgwLjk5MjE4OCAzMjUuMjVjMC00LjE5OTIxOS0zLjQwMjM0NC03LjYwNTQ2OS03LjYwMTU2My03LjYwNTQ2OWgtODAuMDc4MTI1Yy00LjE5OTIxOSAwLTcuNjA1NDY5IDMuNDA2MjUtNy42MDU0NjkgNy42MDU0NjlzMy40MDYyNSA3LjYwMTU2MiA3LjYwNTQ2OSA3LjYwMTU2Mmg4MC4wNzgxMjVjNC4xOTkyMTkgMCA3LjYwMTU2My0zLjQwMjM0MyA3LjYwMTU2My03LjYwMTU2MnptMCAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiM4NjhFOTYiIGRhdGEtb2xkX2NvbG9yPSIjODY4ZTk2Ij48L3BhdGg+PHBhdGggZD0ibTM2Ni45NTcwMzEgMjc0LjgyMDMxMmgtMjAuMjczNDM3Yy00LjE5OTIxOSAwLTcuNjA1NDY5IDMuNDAyMzQ0LTcuNjA1NDY5IDcuNjAxNTYzczMuNDA2MjUgNy42MDE1NjMgNy42MDU0NjkgNy42MDE1NjNoMjAuMjczNDM3YzQuMTk1MzEzIDAgNy42MDE1NjMtMy40MDIzNDQgNy42MDE1NjMtNy42MDE1NjNzLTMuNDA2MjUtNy42MDE1NjMtNy42MDE1NjMtNy42MDE1NjN6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9wYXRoPjxwYXRoIGQ9Im00NzMuMzkwNjI1IDI3NC44MjAzMTJoLTgwLjA3ODEyNWMtNC4xOTkyMTkgMC03LjYwNTQ2OSAzLjQwMjM0NC03LjYwNTQ2OSA3LjYwMTU2M3MzLjQwNjI1IDcuNjAxNTYzIDcuNjA1NDY5IDcuNjAxNTYzaDgwLjA3ODEyNWM0LjE5OTIxOSAwIDcuNjAxNTYzLTMuNDAyMzQ0IDcuNjAxNTYzLTcuNjAxNTYzcy0zLjQwMjM0NC03LjYwMTU2My03LjYwMTU2My03LjYwMTU2M3ptMCAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiM4NjhFOTYiIGRhdGEtb2xkX2NvbG9yPSIjODY4ZTk2Ij48L3BhdGg+PHBhdGggZD0ibTM2Ni45NTcwMzEgMjMxLjk5MjE4OGgtMjAuMjczNDM3Yy00LjE5OTIxOSAwLTcuNjA1NDY5IDMuNDAyMzQzLTcuNjA1NDY5IDcuNjAxNTYyczMuNDA2MjUgNy42MDE1NjIgNy42MDU0NjkgNy42MDE1NjJoMjAuMjczNDM3YzQuMTk1MzEzIDAgNy42MDE1NjMtMy40MDIzNDMgNy42MDE1NjMtNy42MDE1NjJzLTMuNDA2MjUtNy42MDE1NjItNy42MDE1NjMtNy42MDE1NjJ6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9wYXRoPjxwYXRoIGQ9Im00NzMuMzkwNjI1IDIzMS45OTIxODhoLTgwLjA3ODEyNWMtNC4xOTkyMTkgMC03LjYwNTQ2OSAzLjQwMjM0My03LjYwNTQ2OSA3LjYwMTU2MnMzLjQwNjI1IDcuNjAxNTYyIDcuNjA1NDY5IDcuNjAxNTYyaDgwLjA3ODEyNWM0LjE5OTIxOSAwIDcuNjAxNTYzLTMuNDAyMzQzIDcuNjAxNTYzLTcuNjAxNTYycy0zLjQwMjM0NC03LjYwMTU2Mi03LjYwMTU2My03LjYwMTU2MnptMCAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiM4NjhFOTYiIGRhdGEtb2xkX2NvbG9yPSIjODY4ZTk2Ij48L3BhdGg+PHBhdGggZD0ibTM2Ni45NTcwMzEgMTg5LjE2NDA2MmgtMjAuMjczNDM3Yy00LjE5OTIxOSAwLTcuNjA1NDY5IDMuNDAyMzQ0LTcuNjA1NDY5IDcuNjAxNTYzczMuNDA2MjUgNy42MDE1NjMgNy42MDU0NjkgNy42MDE1NjNoMjAuMjczNDM3YzQuMTk1MzEzIDAgNy42MDE1NjMtMy40MDIzNDQgNy42MDE1NjMtNy42MDE1NjNzLTMuNDA2MjUtNy42MDE1NjMtNy42MDE1NjMtNy42MDE1NjN6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9wYXRoPjxwYXRoIGQ9Im00NzMuMzkwNjI1IDE4OS4xNjQwNjJoLTgwLjA3ODEyNWMtNC4xOTkyMTkgMC03LjYwNTQ2OSAzLjQwMjM0NC03LjYwNTQ2OSA3LjYwMTU2M3MzLjQwNjI1IDcuNjAxNTYzIDcuNjA1NDY5IDcuNjAxNTYzaDgwLjA3ODEyNWM0LjE5OTIxOSAwIDcuNjAxNTYzLTMuNDAyMzQ0IDcuNjAxNTYzLTcuNjAxNTYzcy0zLjQwMjM0NC03LjYwMTU2My03LjYwMTU2My03LjYwMTU2M3ptMCAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiM4NjhFOTYiIGRhdGEtb2xkX2NvbG9yPSIjODY4ZTk2Ij48L3BhdGg+PHBhdGggZD0ibTIyMC45ODQzNzUgNTAuNjU2MjVoMjAuMjczNDM3YzQuMTk5MjE5IDAgNy42MDU0NjktMy40MDYyNSA3LjYwNTQ2OS03LjYwNTQ2OXMtMy40MDYyNS03LjYwMTU2Mi03LjYwNTQ2OS03LjYwMTU2MmgtMjAuMjczNDM3Yy00LjE5OTIxOSAwLTcuNjAxNTYzIDMuNDAyMzQzLTcuNjAxNTYzIDcuNjAxNTYyczMuNDAyMzQ0IDcuNjA1NDY5IDcuNjAxNTYzIDcuNjA1NDY5em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6Izg2OEU5NiIgZGF0YS1vbGRfY29sb3I9IiM4NjhlOTYiPjwvcGF0aD48cGF0aCBkPSJtMjY3LjYxMzI4MSA1MC42NTYyNWg4MC4wODIwMzFjNC4xOTkyMTkgMCA3LjYwMTU2My0zLjQwNjI1IDcuNjAxNTYzLTcuNjA1NDY5cy0zLjQwMjM0NC03LjYwMTU2Mi03LjYwMTU2My03LjYwMTU2MmgtODAuMDgyMDMxYy00LjE5NTMxMiAwLTcuNjAxNTYyIDMuNDAyMzQzLTcuNjAxNTYyIDcuNjAxNTYyczMuNDA2MjUgNy42MDU0NjkgNy42MDE1NjIgNy42MDU0Njl6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9wYXRoPjxwYXRoIGQ9Im0yMjAuOTg0Mzc1IDkzLjQ4NDM3NWgyMC4yNzM0MzdjNC4xOTkyMTkgMCA3LjYwNTQ2OS0zLjQwNjI1IDcuNjA1NDY5LTcuNjA1NDY5IDAtNC4xOTkyMTgtMy40MDYyNS03LjYwMTU2Mi03LjYwNTQ2OS03LjYwMTU2MmgtMjAuMjczNDM3Yy00LjE5OTIxOSAwLTcuNjAxNTYzIDMuNDAyMzQ0LTcuNjAxNTYzIDcuNjAxNTYyIDAgNC4xOTkyMTkgMy40MDIzNDQgNy42MDU0NjkgNy42MDE1NjMgNy42MDU0Njl6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9wYXRoPjxwYXRoIGQ9Im0yNjcuNjEzMjgxIDkzLjQ4NDM3NWg4MC4wODIwMzFjNC4xOTkyMTkgMCA3LjYwMTU2My0zLjQwNjI1IDcuNjAxNTYzLTcuNjA1NDY5IDAtNC4xOTkyMTgtMy40MDIzNDQtNy42MDE1NjItNy42MDE1NjMtNy42MDE1NjJoLTgwLjA4MjAzMWMtNC4xOTUzMTIgMC03LjYwMTU2MiAzLjQwMjM0NC03LjYwMTU2MiA3LjYwMTU2MiAwIDQuMTk5MjE5IDMuNDA2MjUgNy42MDU0NjkgNy42MDE1NjIgNy42MDU0Njl6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9wYXRoPjxwYXRoIGQ9Im00MTAuMDgyMDMxIDQ0NS4yNWMuNzU3ODEzLjcxNDg0NCAxLjg1NTQ2OSAxLjEyNSAzLjAxNTYyNSAxLjEyNWguMTgzNTk0YzIuODc1IDAgNS4yMTg3NS0yLjM0Mzc1IDUuMjE4NzUtNS4yMTg3NXYtMS4xMDU0NjljMTEuODYzMjgxLTIuNTM1MTU2IDE4LjY2MDE1Ni0xMC43NDIxODcgMTguNjYwMTU2LTIyLjU0Mjk2OSAwLTEzLjM1OTM3NC04Ljk0OTIxOC0xOC42OTkyMTgtMTguNjYwMTU2LTIyLjQ0OTIxOHYtMTguNzI2NTYzYzMuMTI1LjQ5MjE4OCA1LjIyMjY1NiAxLjU1NDY4OCA2LjkxNzk2OSAyLjQxNDA2MyAxLjQ2MDkzNy43MzgyODEgMi42MTcxODcgMS4zMjQyMTggMy45MDYyNSAxLjMyNDIxOCA0LjEyODkwNiAwIDUuOTE0MDYyLTUuMDQ2ODc0IDUuOTE0MDYyLTcuNjIxMDkzIDAtNS40OTIxODgtOC42MDE1NjItOC4wMzkwNjMtMTYuNzM4MjgxLTguNTk3NjU3di0xLjEzMjgxMmMwLTIuODc4OTA2LTIuMzQzNzUtNS4yMTg3NS01LjIxODc1LTUuMjE4NzVzLTUuMjE4NzUgMi4zMzk4NDQtNS4yMTg3NSA1LjIxODc1djEuNDY0ODQ0Yy0xMi40MzM1OTQgMi4wNzgxMjUtMTkuNTYyNSA5LjY3NTc4MS0xOS41NjI1IDIwLjg2MzI4MSAwIDEzLjc1MzkwNiAxMS4yNTM5MDYgMTguMDc4MTI1IDE5LjU2MjUgMjEuMjA3MDMxdjIxLjAxNTYyNWMtNC41ODIwMzEtLjg3MTA5My03LjU2MjUtMy4xODM1OTMtOS45Njg3NS01LjA1MDc4MS0xLjk2MDkzOC0xLjUyMzQzOC0zLjUwNzgxMi0yLjcyNjU2Mi01LjI4NTE1Ni0yLjcyNjU2Mi0zLjU1NDY4OCAwLTYuMjMwNDY5IDQuNjg3NS02LjIzMDQ2OSA3LjczMDQ2OCAwIDUuNzM4MjgyIDguODEyNSAxMi42MjEwOTQgMjEuNDg0Mzc1IDEzLjQxMDE1NnYuNTE5NTMyYzAgMS42MTMyODEuNzQyMTg4IDMuMTEzMjgxIDIuMDE5NTMxIDQuMDk3NjU2em0tMi4wMTk1MzEtNjguMjk2ODc1djE0LjEzMjgxM2MtMy4xNzU3ODEtMS40NjA5MzgtNi4wMzEyNS0zLjQxMDE1Ny02LjAzMTI1LTcuNDIxODc2IDAtMy4yMjI2NTYgMi4wODU5MzgtNS41MzkwNjIgNi4wMzEyNS02LjcxMDkzN3ptMTAuNDM3NSA0OS42MjV2LTE1Ljg5MDYyNWMzLjUzOTA2MiAyLjA4OTg0NCA1LjEyNSA0LjY0MDYyNSA1LjEyNSA4LjIwNzAzMSAwIDMuNTkzNzUtMS43Njk1MzEgNi4yNDIxODgtNS4xMjUgNy42ODM1OTR6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9wYXRoPjxwYXRoIGQ9Im0yMDIuMjM0Mzc1IDIyOS40NTcwMzFoMTYuMjE4NzVjNC4xOTkyMTkgMCA3LjYwMTU2My0zLjQwNjI1IDcuNjAxNTYzLTcuNjAxNTYyIDAtNC4xOTkyMTktMy40MDIzNDQtNy42MDU0NjktNy42MDE1NjMtNy42MDU0NjloLTE2LjIxODc1Yy00LjE5OTIxOSAwLTcuNjAxNTYzIDMuNDA2MjUtNy42MDE1NjMgNy42MDU0NjkgMCA0LjE5NTMxMiAzLjQwMjM0NCA3LjYwMTU2MiA3LjYwMTU2MyA3LjYwMTU2MnptMCAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiM4NjhFOTYiIGRhdGEtb2xkX2NvbG9yPSIjODY4ZTk2Ij48L3BhdGg+PC9nPiA8L3N2Zz4=" />
+                    <div class="media-body"> <h3 class="mt-0 text-black">Economical</h3> 
+                      <p>Affordable, Discounts, Health Packages</p> 
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+              <div class="row"> 
+                <div class="col-lg-6 col-md-6 col-sm-6 col-6"> 
+                  <div class="media d-block media-feature text-center">                  <!--  -->
+                  <img class="svgIcons" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNDgwIDQ4MCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDgwIDQ4MDsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiBjbGFzcz0iIj48Zz48Zz4KCTxnPgoJCTxwYXRoIGQ9Ik0xNjAsMEM5My43MjYsMCw0MCw1My43MjYsNDAsMTIwdjg4YzAuMDM1LDMwLjkxMywyNS4wODcsNTUuOTY1LDU2LDU2aDh2LTE2aC04Yy0yMi4wOC0wLjAyNi0zOS45NzQtMTcuOTItNDAtNDB2LTg4ICAgIGMwLTU3LjQzOCw0Ni41NjItMTA0LDEwNC0xMDRzMTA0LDQ2LjU2MiwxMDQsMTA0djg4Yy0wLjAyNiwyMi4wOC0xNy45MiwzOS45NzQtNDAsNDBoLTh2MTZoOGMzMC45MTMtMC4wMzUsNTUuOTY1LTI1LjA4Nyw1Ni01NiAgICB2LTg4QzI4MCw1My43MjYsMjI2LjI3NCwwLDE2MCwweiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9wYXRoPgoJPC9nPgo8L2c+PGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNjUuOTI4LDM3Ny4wMzJsNS44NDgtOS4yMDhsLTEzLjUxMi04LjU3NmwtNS44NDgsOS4yMTZjLTE3LjY4NywyNy44NzItMTYuMzc0LDYzLjc2LDMuMzA0LDkwLjI2NFY0ODBoMTZ2LTI0ICAgIGMwLjAwMS0xLjgxNy0wLjYxNy0zLjU4MS0xLjc1Mi01QzUyLjk2LDQyOS43MzgsNTEuMzM3LDQwMC4wMiw2NS45MjgsMzc3LjAzMnoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6Izg2OEU5NiIgZGF0YS1vbGRfY29sb3I9IiM4NjhlOTYiPjwvcGF0aD4KCTwvZz4KPC9nPjxnPgoJPGc+CgkJPHBhdGggZD0iTTQ0MCwwSDMzNmMtMjIuMDgsMC4wMjYtMzkuOTc0LDE3LjkyLTQwLDQwdjgwYzAuMDI2LDIyLjA4LDE3LjkyLDM5Ljk3NCw0MCw0MGgxNnYzMiAgICBjLTAuMDAxLDMuMjM1LDEuOTQ3LDYuMTUzLDQuOTM2LDcuMzkyYzAuOTcxLDAuNDA1LDIuMDEyLDAuNjExLDMuMDY0LDAuNjA4YzIuMTIyLDAsNC4xNTYtMC44NDQsNS42NTYtMi4zNDRMNDAzLjMxMiwxNjBINDQwICAgIGMyMi4wOC0wLjAyNiwzOS45NzQtMTcuOTIsNDAtNDBWNDBDNDc5Ljk3NCwxNy45Miw0NjIuMDgsMC4wMjYsNDQwLDB6IE00NjQsMTIwYzAsMTMuMjU1LTEwLjc0NSwyNC0yNCwyNGgtNDAgICAgYy0yLjEyMiwwLTQuMTU2LDAuODQ0LTUuNjU2LDIuMzQ0TDM2OCwxNzIuNjg4VjE1MmMwLTQuNDE4LTMuNTgyLTgtOC04aC0yNGMtMTMuMjU1LDAtMjQtMTAuNzQ1LTI0LTI0VjQwICAgIGMwLTEzLjI1NSwxMC43NDUtMjQsMjQtMjRoMTA0YzEzLjI1NSwwLDI0LDEwLjc0NSwyNCwyNFYxMjB6IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiM4NjhFOTYiIGRhdGEtb2xkX2NvbG9yPSIjODY4ZTk2Ij48L3BhdGg+Cgk8L2c+CjwvZz48Zz4KCTxnPgoJCTxyZWN0IHg9IjMzNiIgeT0iNDAiIHdpZHRoPSI1NiIgaGVpZ2h0PSIxNiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9yZWN0PgoJPC9nPgo8L2c+PGc+Cgk8Zz4KCQk8cmVjdCB4PSI0MDgiIHk9IjQwIiB3aWR0aD0iMzIiIGhlaWdodD0iMTYiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6Izg2OEU5NiIgZGF0YS1vbGRfY29sb3I9IiM4NjhlOTYiPjwvcmVjdD4KCTwvZz4KPC9nPjxnPgoJPGc+CgkJPHJlY3QgeD0iMzM2IiB5PSI3MiIgd2lkdGg9IjEwNCIgaGVpZ2h0PSIxNiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9yZWN0PgoJPC9nPgo8L2c+PGc+Cgk8Zz4KCQk8cmVjdCB4PSIzMzYiIHk9IjEwNCIgd2lkdGg9IjU2IiBoZWlnaHQ9IjE2IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiM4NjhFOTYiIGRhdGEtb2xkX2NvbG9yPSIjODY4ZTk2Ij48L3JlY3Q+Cgk8L2c+CjwvZz48Zz4KCTxnPgoJCTxwYXRoIGQ9Ik0yNjcuNTg0LDM2OC40NjRsLTUuODQ4LTkuMjE2bC0xMy41MTIsOC41NzZsNS44NDgsOS4yMTZjMTQuNTkyLDIyLjk4NSwxMi45NjksNTIuNzAxLTQuMDQsNzMuOTYgICAgYy0xLjEzNSwxLjQxOS0xLjc1MywzLjE4My0xLjc1Miw1djI0aDE2di0yMS4yNzJDMjgzLjk1OCw0MzIuMjI0LDI4NS4yNzEsMzk2LjMzNiwyNjcuNTg0LDM2OC40NjR6IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiM4NjhFOTYiIGRhdGEtb2xkX2NvbG9yPSIjODY4ZTk2Ij48L3BhdGg+Cgk8L2c+CjwvZz48Zz4KCTxnPgoJCTxwYXRoIGQ9Ik00NzIsMjcyaC03MmMtMzAuMDE2LDAuMDM1LTU0LjY2NiwyMy43MjktNTUuODg4LDUzLjcyTDMyMCwzNjkuMTI4VjMzNmMtMC4wMzUtMzAuOTEzLTI1LjA4Ny01NS45NjUtNTYtNTZoLTI5LjI0ICAgIGwtMC4yMTYtMC4xNjhMMjM0LjQsMjgwSDIxNmMtOC44MzcsMC0xNi03LjE2My0xNi0xNnYtMTguODI0YzI0LjcxOS0xNC4yNzIsMzkuOTYyLTQwLjYzMyw0MC02OS4xNzZ2LTY0ICAgIGMtMC4wMTItMTMuMjU1LTMuMzEtMjYuMy05LjYtMzcuOTY4Yy0yLjAxNS0zLjcxMi02LjU2OS01LjIxOS0xMC40LTMuNDRMODQuNTkyLDEzNC4zMDRjLTIuODA0LDEuMzItNC41OTMsNC4xNDEtNC41OTIsNy4yNFYxNzYgICAgYzAuMDM4LDI4LjU0MywxNS4yODEsNTQuOTA0LDQwLDY5LjE3NlYyNjRjMCw4LjgzNy03LjE2MywxNi0xNiwxNkg1NmMtMzAuOTEzLDAuMDM1LTU1Ljk2NSwyNS4wODctNTYsNTZ2MTQ0aDE2VjMzNiAgICBjMC4wMjYtMjIuMDgsMTcuOTItMzkuOTc0LDQwLTQwaDI1LjQ1Nmw3Mi4wNCwxMDAuNjU2YzEuNDgsMi4wNjksMy44NTYsMy4zMSw2LjQsMy4zNDRIMTYwYzIuNTE4LDAsNC44ODktMS4xODYsNi40LTMuMmw3Ni0xMDAuOCAgICBIMjY0YzIyLjA4LDAuMDI2LDM5Ljk3NCwxNy45Miw0MCw0MHY2NGMwLjAwNCw0LjQxOCwzLjU4OSw3Ljk5Nyw4LjAwNyw3Ljk5M2MyLjkwMi0wLjAwMyw1LjU3NS0xLjU3Niw2Ljk4NS00LjExM0wzNTYuNzA0LDMzNiAgICBoNDUuODY0bC03OCwxNDRoMTguMkw0MjAuOCwzMzZoMy4yYzMwLjkxMy0wLjAzNSw1NS45NjUtMjUuMDg3LDU2LTU2QzQ4MCwyNzUuNTgyLDQ3Ni40MTgsMjcyLDQ3MiwyNzJ6IE05NiwxNzZ2LTI5LjM3NiAgICBsMTIzLjUyOC01OC4xMjhDMjIyLjQ4Myw5NS45OCwyMjQsMTAzLjk1NCwyMjQsMTEydjY0YzAsMzUuMzQ2LTI4LjY1NCw2NC02NCw2NEMxMjQuNjU0LDI0MCw5NiwyMTEuMzQ2LDk2LDE3NnogTTE2MC4xNjgsMzc4LjQ5NiAgICBMMTM1LjQ4LDM0NGg1MC42ODhMMTYwLjE2OCwzNzguNDk2eiBNMTk4LjI3MiwzMjhIMTI0bC0yMi45MDQtMzJIMTA0YzE3LjY3MywwLDMyLTE0LjMyNywzMi0zMnYtMTEuNjg4ICAgIGMxNS42MjIsNC45MTcsMzIuMzc4LDQuOTE3LDQ4LDBWMjY0YzAsMTcuNjczLDE0LjMyNywzMiwzMiwzMmg2LjRMMTk4LjI3MiwzMjh6IE00MjQsMzIwaC02My4yICAgIGMzLjgyNS0xOC42MTMsMjAuMTk4LTMxLjk3OSwzOS4yLTMyaDYzLjJDNDU5LjM3NSwzMDYuNjEzLDQ0My4wMDIsMzE5Ljk3OSw0MjQsMzIweiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9wYXRoPgoJPC9nPgo8L2c+PC9nPiA8L3N2Zz4=" />
+                    <div class="media-body"> <h3 class="mt-0 text-black">Support</h3> 
+                      <p>Free Sample Collection, Test Messages Alerts, Fast Reporting Time, Online Reports, Smartphone
+                      App,
+                      24/7 Customer Support, Corporate User Portal</p> 
+                    </div> 
+                  </div> 
+                </div> 
+                <div class="col-lg-6 col-md-6 col-sm-6 col-6"> 
+                  <div class="media d-block media-feature text-center">                  <!--  -->
+                  <img class="svgIcons" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNDg4IDQ4OCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDg4IDQ4ODsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiBjbGFzcz0iIj48Zz48Zz4KCTxnPgoJCTxwYXRoIGQ9Ik00NTAuNDA4LDE2OC42NDhDNDYxLjIwOCwxNTguNDMyLDQ2OCwxNDQuMDA4LDQ2OCwxMjhjMC0zMC44OC0yNS4xMi01Ni01Ni01NnMtNTYsMjUuMTItNTYsNTYgICAgYzAsMTkuNjQ4LDEwLjE5MiwzNi45MzYsMjUuNTQ0LDQ2LjkyOEMzNzAuOTY4LDE4Mi4xMzYsMzY0LDE5NC4yNjQsMzY0LDIwOHY1NmgtMzJ2LTQwYzAtMjguNjI0LTIxLjYtNTIuMjcyLTQ5LjM2LTU1LjU2OCAgICBDMjkzLjMxMiwxNTguMjMyLDMwMCwxNDMuODk2LDMwMCwxMjhjMC0zMC44OC0yNS4xMi01Ni01Ni01NnMtNTYsMjUuMTItNTYsNTZjMCwxNS44OTYsNi42ODgsMzAuMjMyLDE3LjM2LDQwLjQzMiAgICBDMTc3LjYsMTcxLjcyOCwxNTYsMTk1LjM3NiwxNTYsMjI0djQwaC0zMnYtNTZjMC0xMy43MzYtNi45NjgtMjUuODY0LTE3LjU0NC0zMy4wNzJDMTIxLjgwOCwxNjQuOTM2LDEzMiwxNDcuNjQ4LDEzMiwxMjggICAgYzAtMzAuODgtMjUuMTItNTYtNTYtNTZzLTU2LDI1LjEyLTU2LDU2YzAsMTYuMDA4LDYuNzkyLDMwLjQzMiwxNy41OTIsNDAuNjQ4QzE4LjU5MiwxNzEuNzM2LDQsMTg4LjEzNiw0LDIwOHYxMjAgICAgYzAsMTkuMzEyLDEzLjc2OCwzNS40NzIsMzIsMzkuMTkyVjQ4OGgxNlYzNjhoNzJ2MTEyYzAsNC40MTYsMy41ODQsOCw4LDhoNDhjNC40MTYsMCw4LTMuNTg0LDgtOFYzNTJoNDh2MTIwaC0zMnYxNmg4MHYtMTZoLTMyICAgIFYzNTJoNDh2MTI4YzAsNC40MTYsMy41ODQsOCw4LDhoNDhjNC40MTYsMCw4LTMuNTg0LDgtOFYzNjhoNzJ2MTIwaDE2VjM2Ny4xOTJjMTguMjMyLTMuNzIsMzItMTkuODcyLDMyLTM5LjE5MlYyMDggICAgQzQ4NCwxODguMTM2LDQ2OS40MDgsMTcxLjczNiw0NTAuNDA4LDE2OC42NDh6IE0zNzIsMTI4YzAtMjIuMDU2LDE3Ljk0NC00MCw0MC00MGMyMi4wNTYsMCw0MCwxNy45NDQsNDAsNDAgICAgYzAsMjIuMDU2LTE3Ljk0NCw0MC00MCw0MEMzODkuOTQ0LDE2OCwzNzIsMTUwLjA1NiwzNzIsMTI4eiBNMjA0LDEyOGMwLTIyLjA1NiwxNy45NDQtNDAsNDAtNDBjMjIuMDU2LDAsNDAsMTcuOTQ0LDQwLDQwICAgIGMwLDIyLjA1Ni0xNy45NDQsNDAtNDAsNDBDMjIxLjk0NCwxNjgsMjA0LDE1MC4wNTYsMjA0LDEyOHogTTI1Ni40NTYsMTg0TDI0NCwyMTcuMjE2TDIzMS41NDQsMTg0SDI1Ni40NTZ6IE0xNzIsMjI0ICAgIGMwLTIyLjA1NiwxNy45NDQtNDAsNDAtNDBoMi40NTZsMjIuMDU2LDU4LjgwOGMxLjE2OCwzLjEyLDQuMTUyLDUuMTkyLDcuNDg4LDUuMTkyczYuMzItMi4wNzIsNy40OTYtNS4xOTJMMjczLjU0NCwxODRIMjc2ICAgIGMyMi4wNTYsMCw0MCwxNy45NDQsNDAsNDB2NDBoLTMyYy00LjQxNiwwLTgsMy41ODQtOCw4djMyaC02NHYtMzJjMC00LjQxNi0zLjU4NC04LTgtOGgtMzJWMjI0eiBNMzYsMTI4ICAgIGMwLTIyLjA1NiwxNy45NDQtNDAsNDAtNDBjMjIuMDU2LDAsNDAsMTcuOTQ0LDQwLDQwYzAsMjIuMDU2LTE3Ljk0NCw0MC00MCw0MEM1My45NDQsMTY4LDM2LDE1MC4wNTYsMzYsMTI4eiBNMTcyLDQ3MmgtMzJWMzYwICAgIGMwLTQuNDE2LTMuNTg0LTgtOC04SDQ0Yy0xMy4yMzIsMC0yNC0xMC43NjgtMjQtMjRWMjA4YzAtMTMuMjMyLDEwLjc2OC0yNCwyNC0yNGg0MGMxMy4yMzIsMCwyNCwxMC43NjgsMjQsMjR2NjQgICAgYzAsNC40MTYsMy41ODQsOCw4LDhoODB2MjRIODR2LTcySDY4djgwYzAsNC40MTYsMy41ODQsOCw4LDhoNzJjMTMuMjMyLDAsMjQsMTAuNzY4LDI0LDI0VjQ3MnogTTMwMC44OTYsMzM2SDE4Ny4xMDQgICAgYy0xLjIwOC01Ljg5Ni0zLjYzMi0xMS4zNTItNy4xMi0xNkgyMDRoODBoMjQuMDE2QzMwNC41MjgsMzI0LjY0OCwzMDIuMTA0LDMzMC4xMDQsMzAwLjg5NiwzMzZ6IE00NjgsMzI4ICAgIGMwLDEzLjIzMi0xMC43NjgsMjQtMjQsMjRoLTg4Yy00LjQxNiwwLTgsMy41ODQtOCw4djExMmgtMzJWMzQ0YzAtMTMuMjMyLDEwLjc2OC0yNCwyNC0yNGg3MmM0LjQxNiwwLDgtMy41ODQsOC04di04MGgtMTZ2NzJIMjkyICAgIHYtMjRoODBjNC40MTYsMCw4LTMuNTg0LDgtOHYtNjRjMC0xMy4yMzIsMTAuNzY4LTI0LDI0LTI0aDQwYzEzLjIzMiwwLDI0LDEwLjc2OCwyNCwyNFYzMjh6IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiM4NjhFOTYiIGRhdGEtb2xkX2NvbG9yPSIjODY4ZTk2Ij48L3BhdGg+Cgk8L2c+CjwvZz48Zz4KCTxnPgoJCTxyZWN0IHg9IjIzNiIgeT0iMjY0IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6Izg2OEU5NiIgZGF0YS1vbGRfY29sb3I9IiM4NjhlOTYiPjwvcmVjdD4KCTwvZz4KPC9nPjxnPgoJPGc+CgkJPHBhdGggZD0iTTIwNCwwSDkyYy00LjQxNiwwLTgsMy41ODQtOCw4djQwYzAsNC40MTYsMy41ODQsOCw4LDhoMzJ2MTZjMCwzLjAzMiwxLjcxMiw1LjgsNC40MjQsNy4xNiAgICBjMS4xMjgsMC41NiwyLjM2LDAuODQsMy41NzYsMC44NGMxLjY5NiwwLDMuMzg0LTAuNTQ0LDQuOC0xLjZMMTY2LjY2NCw1NkgyMDRjNC40MTYsMCw4LTMuNTg0LDgtOFY4QzIxMiwzLjU4NCwyMDguNDE2LDAsMjA0LDB6ICAgICBNMTk2LDQwaC0zMmMtMS43MjgsMC0zLjQxNiwwLjU2LTQuOCwxLjZMMTQwLDU2di04YzAtNC40MTYtMy41ODQtOC04LThoLTMyVjE2aDk2VjQweiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9wYXRoPgoJPC9nPgo8L2c+PGc+Cgk8Zz4KCQk8cmVjdCB4PSIyODQiIHk9IjI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6Izg2OEU5NiIgZGF0YS1vbGRfY29sb3I9IiM4NjhlOTYiPjwvcmVjdD4KCTwvZz4KPC9nPjxnPgoJPGc+CgkJPHJlY3QgeD0iMzE2IiB5PSIyNCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiM4NjhFOTYiIGRhdGEtb2xkX2NvbG9yPSIjODY4ZTk2Ij48L3JlY3Q+Cgk8L2c+CjwvZz48Zz4KCTxnPgoJCTxyZWN0IHg9IjM0OCIgeT0iMjQiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODY4RTk2IiBkYXRhLW9sZF9jb2xvcj0iIzg2OGU5NiI+PC9yZWN0PgoJPC9nPgo8L2c+PC9nPiA8L3N2Zz4=" />
+                    <div class="media-body"> <h3 class="mt-0 text-black">Community</h3> 
+                      <p>Free Medical Camps, Wellness Programs, Workshops, Seminars</p> 
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </div> 
+        </div> </section>    <!-- END section -->
+
+    <!-- <section class="section custom-tabs">
+        <div class="container"> 
+          <div class="row"> 
+            <div class="col-md-4 border-right element-animate"> 
+              <div id="v-pills-tab" role="tablist" aria-orientation="vertical" class="nav flex-column nav-pills"> <a id="v-pills-home-tab" data-toggle="pill" role="tab" aria-controls="v-pills-home" aria-selected="true" class="nav-link active" href="#v-pills-home"><span>01</span> Amenities</a> <a id="v-pills-profile-tab" data-toggle="pill" role="tab" aria-controls="v-pills-profile" aria-selected="false" class="nav-link" href="#v-pills-profile"><span>02</span> Medical Services</a> <a id="v-pills-messages-tab" data-toggle="pill" role="tab" aria-controls="v-pills-messages" aria-selected="false" class="nav-link" href="#v-pills-messages"><span>03</span> Patient Services</a> <a id="v-pills-settings-tab" data-toggle="pill" role="tab" aria-controls="v-pills-settings" aria-selected="false" class="nav-link" href="#v-pills-settings"><span>04</span> Expert Doctors</a> 
+              </div> 
+            </div> 
+            <div class="col-md-1"></div> 
+            <div class="col-md-7 element-animate"> 
+              <div id="v-pills-tabContent" class="tab-content"> 
+                <div id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-
+
+
+                  home-tab" class="tab-pane fade show active"> <h2 class="text-primary">Amenities</h2> 
+                  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam
+                      sunt iste dolores consequatur</p> 
+                  <p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis
+                      nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil
+                      ea, tempore et quam natus quaerat doloremque.</p> 
+                  <p><a class="btn btn-primary" href="#">Learn More</a></p> 
+                </div> 
+                <div id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" class="tab-pane fade"> <h2 class="text-primary">Medical Services</h2> 
+                  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam
+                      sunt iste dolores consequatur</p> 
+                  <p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis
+                      nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil
+                      ea, tempore et quam natus quaerat doloremque.</p> 
+                  <p><a class="btn btn-primary" href="#">Learn More</a></p> 
+                </div> 
+                <div id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" class="tab-pane fade"> <h2 class="text-primary">Patient Services</h2> 
+                  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam
+                      sunt iste dolores consequatur</p> 
+                  <p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis
+                      nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil
+                      ea, tempore et quam natus quaerat doloremque.</p> 
+                  <p><a class="btn btn-primary" href="#">Learn More</a></p> 
+                </div> 
+                <div id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab" class="tab-pane fade"> <h2 class="text-primary">Expert Doctors</h2> 
+                  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam
+                      sunt iste dolores consequatur</p> 
+                  <p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis
+                      nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil
+                      ea, tempore et quam natus quaerat doloremque.</p> 
+                  <p><a class="btn btn-primary" href="#">Learn More</a></p> 
+                </div> 
+              </div> 
+            </div> 
+          </div> 
+        </div> </section> -->
+    <!-- END section -->
+
+    <section class="section bg-light">
+        <div class="container"> 
+          <div class="row justify-content-center mb-5 element-animate"> 
+            <div class="col-md-8 text-center mb-5"> <h2 class="text-uppercase heading border-bottom mb-4">Our Team</h2> 
+              <p class="mb-0 lead">Our Professional Team consists of top doctors,pathologist backed by strong management team.</p> 
+            </div> 
+          </div> <nav>
+            <div id="nav-tab" role="tablist" class="row nav nav-tabs element-animate">            <!--  --><!-- <a id="nav-medical-tab" data-toggle="tab" role="tab" aria-controls="nav-medical" aria-selected="true" class="col-lg-3 col-md-4 col-6 offset-lg-3 offset-md-2 offset-0 nav-item nav-link teamTabs active" href="#nav-medical"> 
+                <div class="col-md-8 text-center mb-5"> <h4 class="text-uppercase heading border-bottom mb-4">Medical Team</h4> 
+                </div> </a> -->
+            
+            <!-- <a id="nav-executive-tab" data-toggle="tab" role="tab" aria-controls="nav-executive" aria-selected="false" class="col-lg-3 col-md-4 col-6 nav-item nav-link teamTabs" href="#nav-executive"> <h4 class="text-uppercase">Executive Team</h4> -->
+            </a> 
+            </div> </nav>
+          <div id="nav-tabContent" class="tab-content"> 
+            <div id="nav-medical" role="tabpanel" aria-labelledby="nav-medical-tab" class="tab-pane fade show active">            <!-- ================ Medical Team ================= -->
+            
+              
+              
+              
+              
+              <div class="row element-animate"> 
+                <div class="major-caousel js-carousel-1 owl-carousel"> 
+                  <div> 
+                    <div class="media d-block media-custom text-center"> <img alt="Image Placeholder" class="img-fluid" src="img/Dr%20Khalid.jpg" />
+                      <div class="media-body"> <h3 class="mt-0 text-black">Dr. Muhammad Khalid</h3> 
+                        <p>M.B.B.S | M.D. | D. Path | Consultant Pathologist</p> 
+                        <p> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="">&nbsp;</a> </p> 
+                      </div> 
+                    </div> 
+                  </div> 
+                  <div> 
+                    <div class="media d-block media-custom text-center"> <img alt="Image Placeholder" class="img-fluid" src="img/Dr%20Naseem.jpg" />
+                      <div class="media-body"> <h3 class="mt-0 text-black">Dr. Muhammad Naseem</h3> 
+                        <p>M.B.B.S | D.C. Path | Consultant Pathologist</p> 
+                        <p> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> </p> 
+                      </div> 
+                    </div> 
+                  </div> 
+                  <div> 
+                    <div class="media d-block media-custom text-center"> <img alt="Image Placeholder" class="img-fluid" src="img/team.jpg" />
+                      <div class="media-body"> <h3 class="mt-0 text-black">Prof. Dr. Sabiha Riaz</h3> 
+                        <p>M.B.B.S. | FRC Path - London | Consultant Histopathology</p> 
+                        <p> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> </p> 
+                      </div> 
+                    </div> 
+                  </div> 
+                  <div> 
+                    <div class="media d-block media-custom text-center"> <img alt="Image Placeholder" class="img-fluid" src="img/team.jpg" />
+                      <div class="media-body"> <h3 class="mt-0 text-black">Prof. Dr. M. Zamir Ahmad Ch.</h3> 
+                        <p>M.B.B.S | M.Phil. | Ph.D. | FACP | FNAMS | Consultant Biochemist</p> 
+                        <p> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> </p> 
+                      </div> 
+                    </div> 
+                  </div> 
+                  <div> 
+                    <div class="media d-block media-custom text-center"> <img alt="Image Placeholder" class="img-fluid" src="img/Zulifqar.jpg" />
+                      <div class="media-body"> <h3 class="mt-0 text-black">Dr. Zulafiqar Ali Memon</h3> 
+                        <p>M.B.B.S. | MPhil | Consultant Hematologist</p> 
+                        <p> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> </p> 
+                      </div> 
+                    </div> 
+                  </div> 
+                  <div> 
+                    <div class="media d-block media-custom text-center"> <img alt="Image Placeholder" class="img-fluid" src="img/Dr%20Umer.jpg" />
+                      <div class="media-body"> <h3 class="mt-0 text-black">Dr. Muhammad Omer Naseem</h3> 
+                        <p>M.B.B.S. | M.Phil | Consultant Hematologist</p> 
+                        <p> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> </p> 
+                      </div> 
+                    </div> 
+                  </div> 
+                  <div> 
+                    <div class="media d-block media-custom text-center"> <img alt="Image Placeholder" class="img-fluid" src="img/" />
+                      <div class="media-body"> <h3 class="mt-0 text-black">Ms. Rimsha Munir</h3> 
+                        <p>M.Sc. | M.Sc. , M.Phil(MMG), Ph.D.(Cont.) | Consultant Molecular Geneticist</p> 
+                        <p> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> </p> 
+                      </div> 
+                    </div> 
+                  </div> 
+                  <div> 
+                    <div class="media d-block media-custom text-center"> <img alt="Image Placeholder" class="img-fluid" src="img/Jahan%20E%20Khalid.jpg" />
+                      <div class="media-body"> <h3 class="mt-0 text-black">Jahan-e-Khalid Fareedi</h3> 
+                        <p>Chief Marketing | Business Development Officer</p> 
+                        <p> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> </p> 
+                      </div> 
+                    </div> 
+                  </div> 
+                  <div> 
+                    <div class="media d-block media-custom text-center"> <img alt="Image Placeholder" class="img-fluid" src="img/Jibran%20Khalid.jpg" />
+                      <div class="media-body"> <h3 class="mt-0 text-black">Jabran Khalid</h3> 
+                        <p>Chief Financial Officer</p> 
+                        <p> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> </p> 
+                      </div> 
+                    </div> 
+                  </div> 
+                </div>              <!-- END slider -->
+            
+              
+              
+              
+              
+              </div> 
+            </div> 
+            <div id="nav-executive" role="tabpanel" aria-labelledby="nav-executive-tab" class="tab-pane fade">            <!-- ================ Executive Team ================= -->
+            
+              
+              
+              
+              
+              <div class="row element-animate"> 
+                <div class="major-caousel js-carousel-1 owl-carousel"> 
+                  <div> 
+                    <div class="media d-block media-custom text-center"> <img alt="Image Placeholder" class="img-fluid" src="img/team.jpg" />
+                      <div class="media-body"> <h3 class="mt-0 text-black">Dr. Muhammad Khalid</h3> 
+                        <p>Chief Executive Officer</p> 
+                        <p> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> </p> 
+                      </div> 
+                    </div> 
+                  </div> 
+                  <div> 
+                    <div class="media d-block media-custom text-center"> <img alt="Image Placeholder" class="img-fluid" src="img/Dr%20Naseem.jpg" />
+                      <div class="media-body"> <h3 class="mt-0 text-black">Dr. Muhammad Naseem</h3> 
+                        <p>Chief Operating Officer</p> 
+                        <p> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> </p> 
+                      </div> 
+                    </div> 
+                  </div> 
+                  <div> 
+                    <div class="media d-block media-custom text-center"> <img alt="Image Placeholder" class="img-fluid" src="img/team.jpg" />
+                      <div class="media-body"> <h3 class="mt-0 text-black">Dr. Muhammad Omer Naseem</h3> 
+                        <p>Chief Lab Operations Officer</p> 
+                        <p> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> </p> 
+                      </div> 
+                    </div> 
+                  </div> 
+                  <div> 
+                    <div class="media d-block media-custom text-center"> <img alt="Image Placeholder" class="img-fluid" src="img/team.jpg" />
+                      <div class="media-body"> <h3 class="mt-0 text-black">Jahan-e-Khalid Fareedi</h3> 
+                        <p>Chief Marketing &amp; Business Development Officer</p> 
+                        <p> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> </p> 
+                      </div> 
+                    </div> 
+                  </div> 
+                  <div> 
+                    <div class="media d-block media-custom text-center"> <img alt="Image Placeholder" class="img-fluid" src="img/team.jpg" />
+                      <div class="media-body"> <h3 class="mt-0 text-black">Jabran Khalid</h3> 
+                        <p>Chief Financial Officer</p> 
+                        <p> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> <a class="p-2" href="#">&nbsp;</a> </p> 
+                      </div> 
+                    </div> 
+                  </div> 
+                </div>              <!-- END slider -->
+            
+              
+              
+              
+              
+              </div> 
+            </div> 
+          </div> 
+        </div> </section>    <!-- END section -->
+
+    <section img="" style="background-image: url("");" class="cover_1">
+        <div class="container"> 
+          <div class="row text-center justify-content-center"> 
+            <div class="col-xl-8 col-md-6"> <h2 class="heading element-animate">Our Network</h2> 
+              <p class="sub-heading element-animate mb-5">              Lahore, Muridke, Kamoke, Gujranwala, Gujrat, Jehlum, Mirpur, Hafizabad, Mandi Bahauddin, Sialkot,
+              Sheikhupura,
+              Nankana Sahib, Farooqabad, Faisalabad, Chiniot, Jhang, Sargodha, Kasur, Pakpattan, Okara, Sahiwal,
+              Chishtian,
+              Bahawalnagar, Multan, Bahawalpur, Rahimyar Khan, Sukkhar, Nawabshah, Quetta, Buner, Mardan, Sawat.
+            </p> 
+              <p class="element-animate"><a class="btn btn-lg getInTouch" href="about.html">Get In Touch</a></p> 
+            </div> 
+            <div class="col-xl-4 col-md-6 d-none d-sm-none d-md-block d-lg-block d-xl-block element-animate"><img alt="" class="mapPak" src="img/map2.png" />
+            </div> 
+          </div> 
+        </div> </section>    <!-- END section -->
+
+    <section class="section bg-light">
+        <div class="container"> 
+          <div class="row justify-content-center mb-5 element-animate"> 
+            <div class="col-md-8 text-center mb-5"> <h2 class="text-uppercase heading border-bottom mb-4">LATEST NEWS &amp; CAMPAIGNS</h2> 
+              <p class="mb-0 lead">We celebrate our success. If it matters to you, it matters to us.</p> 
+            </div> 
+          </div> 
+          <div class="row element-animate"> 
+            <div class="major-caousel js-carousel-2 owl-carousel"> 
+              <div> 
+                <div class="media d-block media-custom text-left"> <img alt="Image Placeholder" class="img-fluid" src="img/10.JPG" />
+                  <div class="media-body">                 <!--  <span class="meta-post">December 2, 2017</span> -->
+                  <h3 class="mt-0 text-black"><a class="text-black" href="#"></a></h3> 
+                    <p> At Hormone Lab Free Camp
+Scene of venipuncture of patient</p> 
+                    <p class="clearfix"> <a class="float-left" href="#">Read more</a> <a class="float-right meta-chat" href="#"> 8</a> </p> 
+                  </div> 
+                </div> 
+              </div> 
+              <div> 
+                <div class="media d-block media-custom text-left"> <img alt="Image Placeholder" class="img-fluid" src="img/2.JPG" />
+                  <div class="media-body">                  <!-- <span class="meta-post">December 2, 2017</span> -->
+                  <h3 class="mt-0 text-black"><a class="text-black" href="#"></a></h3> 
+                    <p> Dr. Huma Majeed Khan giving lecture on “Breast Cancer Management and impact of cancer biology on its treatment and outcome.</p> 
+                    <p class="clearfix"> <a class="float-left" href="#">Read more</a> <a class="float-right meta-chat" href="#"> 2</a> </p> 
+                  </div> 
+                </div> 
+              </div> 
+              <div> 
+                <div class="media d-block media-custom text-left"> <img alt="Image Placeholder" class="img-fluid" src="img/112.jpg" />
+                  <div class="media-body">                 <!--  <span class="meta-post">December 2, 2017</span> -->
+                  <h3 class="mt-0 text-black"><a class="text-black" href="#"></a></h3> 
+                    <p>Team Hormone lab at the free camp arranged in village.</p> 
+                    <p class="clearfix"> <a class="float-left" href="#">Read more</a> <a class="float-right meta-chat" href="#"> 5</a> </p> 
+                  </div> 
+                </div> 
+              </div> 
+              <div> 
+                <div class="media d-block media-custom text-left"> <img alt="Image Placeholder" class="img-fluid" src="img/8.JPG" />
+                  <div class="media-body">                  <!-- <span class="meta-post">December 2, 2017</span> -->
+                  <h3 class="mt-0 text-black"><a class="text-black" href="#"></a></h3> 
+                    <p>Audience listening to lecture at CancerbioC “A short course on cancer biology.</p> 
+                    <p class="clearfix"> <a class="float-left" href="#">Read more</a> <a class="float-right meta-chat" href="#"> 7</a> </p> 
+                  </div> 
+                </div> 
+              </div> 
+              <div> 
+                <div class="media d-block media-custom text-left"> <img alt="Image Placeholder" class="img-fluid" src="img/1.JPG" />
+                  <div class="media-body">                 <!--  <span class="meta-post">December 2, 2017</span> -->
+                  <h3 class="mt-0 text-black"><a class="text-black" href="#"></a></h3> 
+                    <p> CancerbioC entrance at Punjab University Lahore.</p> 
+                    <p class="clearfix"> <a class="float-left" href="#">Read more</a> <a class="float-right meta-chat" href="#"> 1</a> </p> 
+                  </div> 
+                </div> 
+              </div> 
+              <div> 
+                <div class="media d-block media-custom text-left"> <img alt="Image Placeholder" class="img-fluid" src="img/12.jpg" />
+                  <div class="media-body">                 <!--  <span class="meta-post">December 2, 2017</span> -->
+                  <h3 class="mt-0 text-black"><a class="text-black" href="#"></a></h3> 
+                    <p> Team Hormone Lab at the laboratory event held in Head Office Lahore</p> 
+                    <p class="clearfix"> <a class="float-left" href="#">Read more</a> <a class="float-right meta-chat" href="#"> 4</a> </p> 
+                  </div> 
+                </div> 
+              </div> 
+              <div> 
+                <div class="media d-block media-custom text-left"> <img alt="Image Placeholder" class="img-fluid" src="img/9.JPG" />
+                  <div class="media-body">                 <!--  <span class="meta-post">December 2, 2017</span> -->
+                  <h3 class="mt-0 text-black"><a class="text-black" href="#"></a></h3> 
+                    <p> Dr. Amir Faisal is giving lecture on “Modern Methods of Cancer Drug Discovery.</p> 
+                    <p class="clearfix"> <a class="float-left" href="#">Read more</a> <a class="float-right meta-chat" href="#"> 12</a> </p> 
+                  </div> 
+                </div> 
+              </div> 
+              <div> 
+                <div class="media d-block media-custom text-left"> <img alt="Image Placeholder" class="img-fluid" src="img/110%20.JPG" />
+                  <div class="media-body">                  <!-- <span class="meta-post">December 2, 2017</span> -->
+                  <h3 class="mt-0 text-black"><a class="text-black" href="#"></a></h3> 
+                    <p>Jahan-e-Khalid Director Marketing Hormone lab – Having checks on preparations of CancerBioC.</p> 
+                    <p class="clearfix"> <a class="float-left" href="#">Read more</a> <a class="float-right meta-chat" href="#"> 14</a> </p> 
+                  </div> 
+                </div> 
+              </div> 
+            </div>          <!-- END slider -->
+        
+          
+          
+          
+          
+          </div> 
+        </div> </section>    <!-- END section -->
+
+    <a data-animate-effect="fadeIn" data-toggle="modal" data-target="#modalAppointment" class="cta-link element-animate" href="#"> <span class="sub-heading">Ready to Visit?</span> <span class="heading">Make an Appointment</span> </a>    <!-- END cta-link -->
+
+    <footer role="contentinfo" class="site-footer">
+        <div class="container"> 
+          <div class="row mb-5 element-animate"> 
+            <div class="col-md-3 mb-5"> <h3>Services</h3> 
+              <ul class="footer-link list-unstyled">
+                <li><a href="laboratory.html">Laboratory</a></li> 
+                <li><a href="radiology.html">Radiology</a></li> 
+                <li><a href="services.html">Corporate</a></li> 
+              </ul>
+            </div> 
+            <div class="col-md-3 mb-5"> <h3>Latest News</h3> 
+              <ul class="footer-link list-unstyled">
+                <li><a href="news.html">Compaigns</a></li> 
+                <li><a href="news.html">Events</a></li> 
+                <li><a href="news.html">Promotions</a></li> 
+              </ul>
+            </div> 
+            <div class="col-md-3 mb-5"> <h3>About</h3> 
+              <ul class="footer-link list-unstyled">
+                <li><a href="about.html">History</a></li> 
+                <li><a href="about.html">Vision</a></li> 
+                <li><a href="about.html">Mission</a></li> 
+                <li><a href="about.html">Values</a></li> 
+              </ul>
+            </div> 
+            <div class="col-md-3 mb-5"> <h3>Location &amp; Contact</h3> 
+              <p class="mb-5">561-A Edhi Street Faisal Town Opp. Jinnah Hospital, Lahore, Pakistan</p> <h4 class="text-uppercase mb-3 h6 text-white">Email
+              </h4> 
+              <p class="mb-5"><a href="mailto:info@yourdomain.com">info@hormonelab.com.pk</a></p> <h4 class="text-uppercase mb-3 h6 text-white">Phone
+                </h4> 
+              <p>&nbsp;042-35161308-503</p> 
+              <p>&nbsp;+92-335-4023900</p> 
+            </div> 
+          </div> 
+          <div class="row pt-md-3 element-animate"> 
+            <div class="col-md-12"> <hr class="border-t" />
+            </div> 
+            <div class="col-md-6 col-sm-12 copyright"> 
+              <p>Designed &amp; Developed by Hormone Lab</p> 
+            </div> 
+            <div class="col-md-6 col-sm-12 text-md-right text-sm-left"> <a target="_blank" class="p-2" href="https://web.facebook.com/HormoneLabs/">&nbsp;</a> <a class="p-2" href="https://www.linkedin.com/company/28131318/admin/">&nbsp;</a> <a class="p-2" href="https://www.instagram.com/p/BwhyQNVHJol/?utm_source=ig_share_sheet&amp;igshid=1bl0sw3gx4szf">&nbsp;</a> 
+            </div> 
+          </div> 
+        </div> </footer>    <!-- END footer -->
+
+
+    <!-- Modal -->
+    
+      
+      
+      
+      
+      <div id="modalAppointment" tabindex="-1" role="dialog" aria-labelledby="modalAppointmentLabel" aria-hidden="true" class="modal fade"> 
+        <div role="document" class="modal-dialog"> 
+          <div style="background: rgb(178, 34, 34);" class="modal-content"> 
+            <div class="modal-header"> <h5 id="modalAppointmentLabel" class="modal-title">Appointment</h5> <button data-dismiss="modal" aria-label="Close" class="close" type="button"> <span aria-hidden="true">×</span> </button> 
+            </div> 
+            <div class="modal-body"> <form action="#"> 
+                <div class="form-group"> 
+                  <label for="appointment_name" class="text-black"> Name</label> <input id="appointment_name" name="Name" class="form-control" type="text" />
+                </div> 
+                <div class="form-group"> 
+                  <label for="appointment_name" class="text-black"> Phone#</label> <input id="appointment_name" class="form-control" type="text" />
+                </div> 
+                <div class="form-group"> 
+                  <label for="appointment_email" class="text-black">Email Address</label> <input id="appointment_email" class="form-control" type="text" />
+                </div> 
+                <div class="row"> 
+                  <div class="col-md-6"> 
+                    <div class="form-group"> 
+                      <label for="appointment_date" class="text-black">Visit Date</label> <input id="appointment_date" class="form-control" type="text" />
+                    </div> 
+                  </div>            <!--     
+                  
+                  
+                  
+                  
+                  <div class="col-md-6"> 
+                    <div class="form-group"> 
+                      <label for="appointment_time" class="text-black">Time</label> <input id="appointment_time" class="form-control" type="text" />
+                    </div> 
+                  </div> -->
+              
+                
+                
+                
+                
+                </div>            <!--   
+                
+                
+                
+                
+                <div class="form-group"> 
+                  <label for="appointment_message" class="text-black">Message</label> <textarea name="" id="appointment_message" cols="30" rows="10" class="form-control" type="textarea"></textarea>
+                </div> -->
+              
+                
+                
+                
+                
+                <div class="form-group"> <input class="btn getInTouch" type="submit" value="Send Message" />
+                </div> </form> 
+            </div> 
+          </div> 
+        </div> 
+      </div> 
+    </div>  
+  <!--  -->
+  <!--  -->
+
+  
+
+  <!-- </section>
+</div> </body>
+
+</html>

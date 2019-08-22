@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Hormone Lab</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300, 400, 700" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+  <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<!-- 
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script> -->
+
+
+  <!-- Theme Style -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="img/hmfavicon.ico">
+  <style type="text/css"><
+  body{
+  margin:0;
+}
+    
+#background{
+  display:block;
+  position:fixed;
+  width:100%;
+  height:100%;
+ /* background-color: #3c005b;
+  background: -webkit-radial-gradient(center, ellipse cover, #3c005b 1%,#0d0011 100%);*/
+  background: -moz-radial-gradient(center, ellipse cover, #3c005b 1%,#0d0011 100%);
+  background: -ie-radial-gradient(center, ellipse cover, #3c005b 1%,#0d0011 100%);
+}
+
+#logocontainer{
+  display:block;
+  /*position:fixed;*/
+  top:50%;
+  left:50%;
+  width:34vh;
+  height:34vh;
+  margin-left:-17vh;
+  margin-top:-17vh;
+  overflow:hidden;
+  transition:background-color 500ms;
+  cursor:pointer;
+}
+
+#pelogo{
+  display: block;
+  position: absolute;
+  left: 2vh;
+  top: 2vh;
+  width: 30vh;
+  height: 30vh;
+  background: #34324b;
+  background: -moz-linear-gradient(-45deg, #34324b 0%, #161222 100%);
+  background: -webkit-linear-gradient(-45deg, #34324b 0%,#161222 100%);
+  background: linear-gradient(135deg, #34324b 0%,#161222 100%);
+  background-size: contain;
+  font-family: Trebuchet MS, sans-serif;
+  font-size: 20vh;
+  font-weight: italic;
+  color: #3ebffa;
+  text-align: center;
+  line-height: 30vh;
+}
+
+/*.loader{
+  display:block;
+  position:absolute;
+  background-color:#3ebffa;
+}*/
+
+/*Pretty complex animation, so each side needs its own @keyframes.*/
+
+@keyframes slide1{
+  50%{width:32vh; margin-left:0;}
+  100%{margin-left:32vh;}
+}
+
+@keyframes slide2{
+  50%{height:32vh; margin-top:0;}
+  100%{margin-top:32vh;}
+}
+
+@keyframes slide3{
+  50%{width:32vh; margin-right:0;}
+  100%{margin-right:32vh;}
+}
+
+/*@keyframes slide4{
+  50%{height:32vh; margin-bottom:0}
+  100%{margin-bottom:32vh;}
+}*/
+.img-replace {
+  /* replace text with an image */
+  display: inline-block;
+  overflow: hidden;
+  text-indent: 100%; 
+  color: transparent;
+  white-space: nowrap;
+}
+.bts-popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+  -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+  transition: opacity 0.3s 0s, visibility 0s 0.3s;
+}
+.bts-popup.is-visible {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+  -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+  transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+
+.bts-popup-container {
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  margin: 4em auto;
+  background: #a0cff1;
+  border-radius: none; 
+  text-align: center;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  -webkit-transform: translateY(-40px);
+  -moz-transform: translateY(-40px);
+  -ms-transform: translateY(-40px);
+  -o-transform: translateY(-40px);
+  transform: translateY(-40px);
+  /* Force Hardware Acceleration in WebKit */
+  -webkit-backface-visibility: hidden;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.bts-popup-container img {
+  padding: 20px 0 0 0;
+}
+.bts-popup-container p {
+  color: white;
+  padding: 10px 40px;
+}
+.bts-popup-container .bts-popup-button {
+  padding: 5px 25px;
+  border: 2px solid white;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.bts-popup-container a {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+
+
+
+
+
+.bts-popup-container .bts-popup-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+}
+.bts-popup-container .bts-popup-close::before, .bts-popup-container .bts-popup-close::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  width: 16px;
+  height: 3px;
+  background-color: white;
+}
+.bts-popup-container .bts-popup-close::before {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  left: 8px;
+}
+.bts-popup-container .bts-popup-close::after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  right: 6px;
+  top: 13px;
+}
+.is-visible .bts-popup-container {
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+}
+@media only screen and (min-width: 1170px) {
+  .bts-popup-container {
+    margin: 8em auto;
+  }
+/*
+  @import url(https://fonts.googleapis.com/css?family=Droid+Sans);
+  .loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('img/HORMONLAB.gif') 50% 50% no-repeat rgb(249,249,249);
+  }*/
+}
+</style>
+</head>
+
+<body>
+
+
+
+
+  <!-- <div id="background"></div> -->
+
+ <!--  <div id="splashLogo" class="element-animate" data-animate-effect="fadeIn">
+    <img class="img-fluid" src="img/hm_logo_trans.png" alt="Logo">
+  </div>  -->
+  <div class="loader"></div>
+  <div id="splashOut">
+    <header role="banner">
+      <div class="top-bar">
+        
+          <div class="row">
+            <div class="col-md-6 col-sm-6 col-5">
+              <ul class="social list-unstyled">
+                <li><a href="https://web.facebook.com/HormoneLabs/" target="_blank"><span class="fa fa-facebook"></span></a></li>
+                <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+                <li><a href="https://www.instagram.com/p/BwhyQNVHJol/?utm_source=ig_share_sheet&igshid=1bl0sw3gx4szf"><span class="fa fa-instagram"></span></a></li>
+              </ul>
+            </div>
+            <div class="col-md-6 col-sm-6 col-7">
+              <a href="http://202.154.232.106/HormoneLab/CollectionCenter/AdminLogin.aspx" class="cta-btn" style="background-color: black;font-style:italic; margin-top: 5px">Collection Center</a>
+                <a href="http://202.154.232.106/HormoneLab/Patients/patientlogin.aspx" class="cta-btn" style="background-color: black;font-style:italic;">Patient Report</a>
+                <a href="#" class="cta-btn" data-toggle="modal" data-target="#modalAppointment" style="font-style: italic;">Make an Appointment</a>
+                <span class="labLine">Lab Line: 03-111-411-112</span>
+            </div>
+          
+        </div>
+      </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img src="img/HORMONLAB.gif" alt="Logo" >
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05"
+            aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarsExample05">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="home.html">Home</a>
+                 <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Patient</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                  <a class="dropdown-item" href="test.html">Test</a>
+                  <a class="dropdown-item" href="profile.html">Health Profiles</a>
+                  <a class="dropdown-item" href="http://202.154.232.106/HormoneLab/Patients/patientlogin.aspx">Patient Report</a>
+              </div>
+
+              </li>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Services</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                  <a class="dropdown-item" href="laboratory.html">Laboratory</a>
+                  <a class="dropdown-item" href="radiology.html">Radiology</a>
+                  <a class="dropdown-item" href="services.html">Corporate Clients</a>
+
+
+                </div>
+
+              </li>
+              <li class="nav-item dropdown hide">
+                <a class="nav-link dropdown-toggle" href="doctors.html" id="dropdown05" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Doctors</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown05">
+                  <a class="dropdown-item" href="doctors.html">Find Doctors</a>
+                  <a class="dropdown-item" href="#">Practitioner</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="news.html">Campaigns</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- END header -->
+      <!--  <img src="img/HORMONLAB.gif" alt="Logo" style="text-align: center;" > -->
+<table class="table" id="mydatatable">
+   <thead>
+                   
+                   <th><input type="checkbox" id="checkall" /></th>
+                   <th>Test Name </th>
+                    <th>Rate</th>
+                     <th>Reported</th>
+                    <!--  <th>Email</th>
+                     <th>Contact</th>
+                      <th>Edit</th>
+                      
+                       <th>Delete</th> -->
+                   </thead>
+
+
+                   <tbody>
+    
+    <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Abdomina</td>
+    <td> 1500.00</td>
+    <td>Same Day </td>
+   <!--  <td>isometric.mohsin@gmail.com</td>
+    <td>+923335586757</td> -->
+   <!--  <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td> -->
+    </tr>
+    
+ <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Aspiration/ drainage </td>
+    <td>2500.00</td>
+    <td>Same Day</td>
+    <!-- <td>isometric.mohsin@gmail.com</td>
+    <td>+923335586757</td> -->
+   <!--  <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td> -->
+    </tr>
+    
+    
+ <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Pelvis</td>
+    <td> 1500.00 </td>
+    <td>Same Day </td>
+   <!--  <td>isometric.mohsin@gmail.com</td>
+    <td>+923335586757</td> -->
+    <!-- <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td> -->
+    </tr>
+    
+    
+    
+ <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasonomamograph</td>
+    <td> 2500.00</td>
+    <td>Same Day</td>
+   <!--  <td>isometric.mohsin@gmail.com</td>
+    <td>+923335586757</td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td> -->
+    </tr>
+    
+    
+ <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Breast</td>
+    <td>2000.00</td>
+    <td>same day</td>
+   <!--  <td>isometric.mohsin@gmail.com</td>
+    <td>+923335586757</td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td> -->
+    </tr>
+    
+   
+     <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Chest</td>
+    <td>2000.00</td>
+    <td>Same Day </td>
+    </tr>
+    <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Doppler (One Leg)  One side</td>
+    <td>2500.00</td>
+    <td>Same Day </td>
+    </tr>
+
+    <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Doppler (Two Leg) Both side</td>
+    <td>3500.00</td>
+    <td>Same Day </td>
+    </tr>
+
+      <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Fetal</td>
+    <td>1500.00</td>
+    <td>Same Day </td>
+    </tr>
+    
+      <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Obstetrical</td>
+    <td>2000.00</td>
+    <td>Same Day </td>
+    </tr>
+
+         <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Fetal</td>
+    <td>1500.00</td>
+    <td>Same Day </td>
+    </tr>
+
+         <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Fetal</td>
+    <td>1500.00</td>
+    <td>Same Day </td>
+    </tr>
+
+         <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Obstetrical </td>
+    <td>2000.00</td>
+    <td>Same Day </td>
+    </tr>
+
+         <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Soft Tissues</td>
+    <td>2000.00</td>
+    <td>Same Day </td>
+    </tr>
+           <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Utrasound Scrotal</td>
+    <td>1500.00</td>
+    <td>Same Day </td>
+    </tr>
+           <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Thyroid</td>
+    <td>1500.00</td>
+    <td>Same Day </td>
+    </tr>
+           <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound TRUS (Transractral)</td>
+    <td>1500.00</td>
+    <td>Same Day </td>
+    </tr>
+           <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound TVS (Transviginal)</td>
+    <td>1500.00</td>
+    <td>Same Day </td>
+    </tr>
+           <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Doppler Carotid Single Side</td>
+    <td>3000.00</td>
+    <td>Same Day </td>
+    </tr>
+
+           <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Doppler Carotid Both Side</td>
+    <td>3500.00</td>
+    <td>Same Day </td>
+    </tr>
+           <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Abdominal & Pelvis</td>
+    <td>1500.00</td>
+    <td>Same Day </td>
+    </tr>
+           <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound DDH Hips (Both)</td>
+    <td>2300.00</td>
+    <td>Same Day </td>
+    </tr>
+           <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Skull / Cranial</td>
+    <td>1500.00</td>
+    <td>Same Day </td>
+    </tr>
+           <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Guided FNA</td>
+    <td>2500.00</td>
+    <td>Same Day </td>
+    </tr>
+
+            <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Abdomen & KUB</td>
+    <td>1500.00</td>
+    <td>Same Day </td>
+    </tr>
+            <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Abdomen Prostate</td>
+    <td>1500.00</td>
+    <td>Same Day </td>
+    </tr>
+            <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound KUB</td>
+    <td>1500.00</td>
+    <td>Same Day </td>
+    </tr>
+            <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Neck</td>
+    <td>1500.00</td>
+    <td>Same Day </td>
+    </tr>
+      <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Utrasound Scrotum Doppler</td>
+    <td>2500.00</td>
+    <td>Same Day </td>
+    </tr>
+      <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Doppler Obs.</td>
+    <td>3000.00</td>
+    <td>Same Day </td>
+    </tr>
+      <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound CDI Jets</td>
+    <td>1500.00</td>
+    <td>Same Day </td>
+    </tr>
+      <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Fetal Anomalies</td>
+    <td>2000.00</td>
+    <td>Same Day </td>
+    </tr>
+      <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Bio physical Parameter (B.P.P)</td>
+    <td>2000.00</td>
+    <td>Same Day </td>
+    </tr>
+      <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound OB Scan</td>
+    <td>1500.00</td>
+    <td>Same Day </td>
+    </tr>
+      <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Doppler of Liver</td>
+    <td>2500.00</td>
+    <td>Same Day </td>
+    </tr>
+      <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Doppler of abdominal & Liver</td>
+    <td>2500.00</td>
+    <td>Same Day </td>
+    </tr>
+      <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Doppler (Neck)</td>
+    <td>1500.00</td>
+    <td>Same Day </td>
+    </tr>
+      <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Ultrasound Doppler Abdominal & Penile</td>
+    <td>1500.00</td>
+    <td>Same Day </td>
+    </tr>
+    </tbody>
+   
+</table>
+
+
+
+
+
+
+
+
+
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready( function () {
+    $('#mydatatable').DataTable();
+} );
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!--  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/js.cookie.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/main.js"></script> -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+  <!-- <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script> -->
+
+
+<!-- 
+  <script type="text/javascript">
+    $(document).ready(function() 
+      {
+            // PAGE IS FULLY LOADED  
+            // FADE OUT YOUR OVERLAYING DIV
+            $('.loader').fadeOut();
+      }); 
+  </script> -->
+
+
+  <!-- <script 
+var full=false;
+
+function fill(){
+  full=!full;
+  document.getElementById("logocontainer").style.backgroundColor=full?"#3ebffa":"transparent";
+}
+</script> -->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,6973 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Hormone Lab</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300, 400, 700" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+  <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<!-- 
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script> -->
+  
+
+  <!-- Theme Style -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="img/hmfavicon.ico">
+  <style type="text/css"><
+  body{
+  margin:0;
+}
+    
+#background{
+  display:block;
+  position:fixed;
+  width:100%;
+  height:100%;
+ /* background-color: #3c005b;
+  background: -webkit-radial-gradient(center, ellipse cover, #3c005b 1%,#0d0011 100%);*/
+  background: -moz-radial-gradient(center, ellipse cover, #3c005b 1%,#0d0011 100%);
+  background: -ie-radial-gradient(center, ellipse cover, #3c005b 1%,#0d0011 100%);
+}
+
+#logocontainer{
+  display:block;
+  /*position:fixed;*/
+  top:50%;
+  left:50%;
+  width:34vh;
+  height:34vh;
+  margin-left:-17vh;
+  margin-top:-17vh;
+  overflow:hidden;
+  transition:background-color 500ms;
+  cursor:pointer;
+}
+
+#pelogo{
+  display: block;
+  position: absolute;
+  left: 2vh;
+  top: 2vh;
+  width: 30vh;
+  height: 30vh;
+  background: #34324b;
+  background: -moz-linear-gradient(-45deg, #34324b 0%, #161222 100%);
+  background: -webkit-linear-gradient(-45deg, #34324b 0%,#161222 100%);
+  background: linear-gradient(135deg, #34324b 0%,#161222 100%);
+  background-size: contain;
+  font-family: Trebuchet MS, sans-serif;
+  font-size: 20vh;
+  font-weight: italic;
+  color: #3ebffa;
+  text-align: center;
+  line-height: 30vh;
+}
+
+/*.loader{
+  display:block;
+  position:absolute;
+  background-color:#3ebffa;
+}*/
+
+/*Pretty complex animation, so each side needs its own @keyframes.*/
+
+@keyframes slide1{
+  50%{width:32vh; margin-left:0;}
+  100%{margin-left:32vh;}
+}
+
+@keyframes slide2{
+  50%{height:32vh; margin-top:0;}
+  100%{margin-top:32vh;}
+}
+
+@keyframes slide3{
+  50%{width:32vh; margin-right:0;}
+  100%{margin-right:32vh;}
+}
+
+/*@keyframes slide4{
+  50%{height:32vh; margin-bottom:0}
+  100%{margin-bottom:32vh;}
+}*/
+.img-replace {
+  /* replace text with an image */
+  display: inline-block;
+  overflow: hidden;
+  text-indent: 100%; 
+  color: transparent;
+  white-space: nowrap;
+}
+.bts-popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+  -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+  transition: opacity 0.3s 0s, visibility 0s 0.3s;
+}
+.bts-popup.is-visible {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+  -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+  transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+ 
+.td{
+  text-align : center;
+}
+
+.bts-popup-container {
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  margin: 4em auto;
+  background: #a0cff1;
+  border-radius: none; 
+  text-align: center;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  -webkit-transform: translateY(-40px);
+  -moz-transform: translateY(-40px);
+  -ms-transform: translateY(-40px);
+  -o-transform: translateY(-40px);
+  transform: translateY(-40px);
+  /* Force Hardware Acceleration in WebKit */
+  -webkit-backface-visibility: hidden;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.bts-popup-container img {
+  padding: 20px 0 0 0;
+}
+.bts-popup-container p {
+  color: white;
+  padding: 10px 40px;
+}
+.bts-popup-container .bts-popup-button {
+  padding: 5px 25px;
+  border: 2px solid white;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.bts-popup-container a {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.bts-popup-container .bts-popup-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+}
+.bts-popup-container .bts-popup-close::before, .bts-popup-container .bts-popup-close::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  width: 16px;
+  height: 3px;
+  background-color: white;
+}
+.bts-popup-container .bts-popup-close::before {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  left: 8px;
+}
+.bts-popup-container .bts-popup-close::after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  right: 6px;
+  top: 13px;
+}
+.is-visible .bts-popup-container {
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+}
+@media only screen and (min-width: 1170px) {
+  .bts-popup-container {
+    margin: 8em auto;
+  }
+/*
+  @import url(https://fonts.googleapis.com/css?family=Droid+Sans);
+  .loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('img/HORMONLAB.gif') 50% 50% no-repeat rgb(249,249,249);
+  }*/
+}
+</style>
+</head>
+
+<body>
+
+
+
+
+  <!-- <div id="background"></div> -->
+
+ <!--  <div id="splashLogo" class="element-animate" data-animate-effect="fadeIn">
+    <img class="img-fluid" src="img/hm_logo_trans.png" alt="Logo">
+  </div>  -->
+  <div class="loader"></div>
+  <div id="splashOut">
+    <header role="banner">
+      <div class="top-bar">
+        
+          <div class="row">
+            <div class="col-md-6 col-sm-6 col-5">
+              <ul class="social list-unstyled">
+                <li><a href="https://web.facebook.com/HormoneLabs/" target="_blank"><span class="fa fa-facebook"></span></a></li>
+                <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+                <li><a href="#"><span class="fa fa-instagram"></span></a></li>
+              </ul>
+            </div>
+            <div class="col-md-6 col-sm-6 col-7">
+              <a href="http://202.154.232.106/HormoneLab/CollectionCenter/AdminLogin.aspx" class="cta-btn" style="background-color: black;font-style:italic; margin-top: 5px">Collection Center</a>
+                <a href="http://202.154.232.106/HormoneLab/Patients/patientlogin.aspx" class="cta-btn" style="background-color: black;font-style:italic;">Patient Report</a>
+                <a href="#" class="cta-btn" data-toggle="modal" data-target="#modalAppointment" style="font-style: italic;">Make an Appointment</a>
+                <span class="labLine">Lab Line: 03-111-411-112</span>
+            </div>
+          
+        </div>
+      </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img src="img/HORMONLAB.gif" alt="Logo" >
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05"
+            aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarsExample05">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="home.html">Home</a>
+                 <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Patient</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                  <a class="dropdown-item" href="test.html">Test</a>
+                  <a class="dropdown-item" href="profile.html">Health Profiles</a>
+                  <a class="dropdown-item" href="http://202.154.232.106/HormoneLab/Patients/patientlogin.aspx">Patient Report</a>
+              </div>
+
+              </li>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Services</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                  <a class="dropdown-item" href="laboratory.html">Laboratory</a>
+                  <a class="dropdown-item" href="radiology.html">Radiology</a>
+                  <a class="dropdown-item" href="services.html">Corporate Clients</a>
+
+
+                </div>
+
+              </li>
+              <li class="nav-item dropdown hide">
+                <a class="nav-link dropdown-toggle" href="doctors.html" id="dropdown05" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Doctors</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown05">
+                  <a class="dropdown-item" href="doctors.html">Find Doctors</a>
+                  <a class="dropdown-item" href="#">Practitioner</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="news.html">News</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- END header -->
+      <!--  <img src="img/HORMONLAB.gif" alt="Logo" style="text-align: center;" > -->
+  <table class="table" id="mydatatable">
+   <thead>
+                   
+                  <th><input type="checkbox" id="checkall" /></th>
+                  <th>S#</th>
+                  <th>Code</th>
+                  <th>Test Name </th>
+                  <th>Rate</th>
+                  <th>Type</th>
+                  <th>Sample</th>
+                  <th>Reported</th>
+                    <!--  <th>Email</th>
+                     <th>Contact</th>
+                      <th>Edit</th>
+                      
+                       <th>Delete</th> -->
+                   </thead>
+   <tbody>
+    
+   <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>1</td>
+    <td>2592 </td>
+    <td>A.G. Ratio</td>
+    <td>600 </td>
+    <td>R</td>
+    <td>3-5 ml clotted blood/ 2 ml serum / Gel Vial</td>
+    <td>Same Day</td>
+   
+    </tr>
+
+   <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>2</td>
+    <td>3495  </td>
+    <td>A.S.O. Titer</td>
+    <td>700 </td>
+    <td>R</td>
+    <td>3-5 ml clotted blood/ 2 ml serum / Gel Vial</td>
+    <td>Same Day</td>
+   
+    </tr>
+
+    <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>3</td>
+    <td>3495  </td>
+    <td>A.S.O. Titer</td>
+    <td>700 </td>
+    <td>R</td>
+    <td>3-5 ml clotted blood/ 2 ml serum / Gel Vial</td>
+    <td>Same Day</td>
+   
+    </tr>
+
+
+      <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>4</td>
+    <td>2450   </td>
+    <td>ACE Level</td>
+    <td>2,300 </td>
+    <td>S</td>
+    <td>3-5 ml clotted blood/ 2 ml serum / Gel Vial</td>
+    <td>3-4 Days</td>
+    
+    </tr>
+
+        <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>5</td>
+    <td>4332 </td>
+    <td>ACE Level (After Injection)</td>
+    <td>5,000 </td>
+    <td>S</td>
+    <td>3-5 ml clotted blood/ 2 ml serum / Gel Vial</td>
+    <td>3-4 Days</td>
+    
+    </tr>
+
+    <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>6</td>
+    <td>3782  </td>
+    <td>Acid Phosphatase Prostatic (ACP)</td>
+    <td>1,300 </td>
+    <td>S</td>
+    <td>3-5 ml clotted blood/ 2 ml serum / Gel Vial</td>
+    <td>3-4 Days</td>
+    
+    </tr>
+
+
+      <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>7</td>
+    <td>2598   </td>
+    <td>Acid Phosphatase Total (ACP)</td>
+    <td>1,300 </td>
+    <td>S</td>
+    <td>3-5 ml clotted blood/ 2 ml serum / Gel Vial</td>
+    <td>3-4 Days</td>
+  
+    </tr>
+
+
+    <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>8</td>
+    <td>2444    </td>
+    <td>ACTH (Adrenocorticotropic Hormone)</td>
+    <td>2,500 </td>
+    <td>S</td>
+    <td>1:9 Citrated Plasma / PT Vial</td>
+    <td>3-4 Days</td>
+  
+    </tr>
+
+     <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>9</td>
+    <td>4206     </td>
+    <td>Adenosine Deaminase (ADA)</td>
+    <td>4,500 </td>
+    <td>S</td>
+    <td>Fluid/CSF/Blood</td>
+    <td>4-5 Days</td>
+  </tr>
+
+
+     <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>10</td>
+    <td>5483      </td>
+    <td>Aerobic Culture & Sensitivity (C/S)</td>
+    <td>14,00 </td>
+    <td>R</td>
+    <td>Urine</td>
+    <td>2-3 Days</td>
+    
+    </tr>
+
+     <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>11</td>
+    <td>4378       </td>
+    <td>Aerobic Culture & Sensitivity (C/S)-Blood</td>
+    <td>16,00 </td>
+    <td>R</td>
+    <td>Blood </td>
+    <td>3-4 Days</td>
+ 
+    
+   
+    </tr>
+    
+     <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>12</td>
+    <td>3882        </td>
+    <td>Albumin  Urine (24-Hrs.)</td>
+    <td>4,00 </td>
+    <td>R</td>
+    <td>24-Hrs. Urine </td>
+    <td>Same-Days</td>
+   
+    
+  
+    </tr>
+
+ <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>13</td>
+    <td>2590         </td>
+    <td>Albumin Serum</td>
+    <td>4,00 </td>
+    <td>R</td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td>Same-Days</td>
+  
+    
+  <!--   <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>  -->
+    </tr>
+
+
+
+    <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>14</td>
+    <td>3118          </td>
+    <td>Albumin Urine Spot</td>
+    <td>4,00 </td>
+    <td>R</td>
+    <td> Urine </td>
+    <td>Same-Days</td>
+    
+    
+   
+    </tr>
+
+    <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>15</td>
+    <td>2597           </td>
+    <td>Aldolase </td>
+    <td>13,00 </td>
+    <td>R</td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td>Same-Days</td>
+  
+    
+  
+    </tr>
+
+    <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 16 </td>
+    <td> 2578 </td>
+    <td> Alk. Phosphatase (ALP) </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 17 </td>
+    <td> 4333 </td>
+    <td> Allergy specific IgE against food Allergens kU/l (35-Tests) </td>
+    <td> S </td>
+    <td> 6000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 18 </td>
+    <td> 4334 </td>
+    <td> Allergy specific IgE against Inhalation Allergens kU/l (30-Tests) </td>
+    <td> S </td>
+    <td> 5000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 20 </td>
+    <td> 3907 </td>
+    <td> Alpha 1- Anti Trypsin Level </td>
+   <td> S </td>
+    <td> 1700 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 21 </td>
+    <td> 2423 </td>
+    <td> Alpha Feto Protein (AFP) </td>
+    <td> R </td>
+    <td> 1800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+</tr>
+
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 22 </td>
+    <td> 4335 </td>
+    <td> Amenorrhoea Profile  (LH,FSH,Prolactin,Estradiol-17 B) </td>
+    <td> R </td>
+    <td> 4500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+
+    <td> 23 </td>
+    <td> 2582 </td>
+    <td> Ammonia </td>
+    <td> R </td>
+    <td> 1100 </td>
+    <td> Fresh 3-5 ml EDTA blood / CBC Vial </td>
+    <td> Daily </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 24 </td>
+    <td> 2594 </td>
+    <td> Amylase </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 25 </td>
+    <td> 3883 </td>
+    <td> Amylase  Urine (24-Hrs.) </td>
+    <td> R </td>
+    <td> 500 </td>
+    <td> 24-Hrs. Urine </td>
+    <td> Same Day </td>
+</tr>
+
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 26 </td>
+    <td> 4698 </td>
+    <td> Amylase (Fluid) </td>
+    <td> S </td>
+    <td> 800 </td>
+      <td> 800 </td>
+        <td> 800 </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 27 </td>
+    <td> 2595 </td>
+    <td> Amylase Urine Spot </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+</tr>
+
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 28 </td>
+    <td> 2513 </td>
+    <td> ANA (LE Cell) </td>
+    <td> R </td>
+    <td> 2000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+</tr>
+
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 29 </td>
+    <td> 4281 </td>
+    <td> ANA Profile </td>
+    <td> S </td>
+    <td> 5000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 30 </td>
+    <td> 2974 </td>
+    <td> Anaerobic Culture & Sensitivity (C/S) </td>
+    <td> R </td>
+    <td> 2000 </td>
+    <td> Contact Lab </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+
+    <td> 31 </td>
+    <td> 4070 </td>
+    <td> Androgen ( DHEA SO4, Testosterone ) </td>
+    <td> R </td>
+    <td> 3000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 32 </td>
+    <td> 3395 </td>
+    <td> Androstenedione Level </td>
+    <td> S </td>
+    <td> 2100 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+
+    <td> 33 </td>
+    <td> 4336 </td>
+    <td> Anemia Profile  (CBC,ESR,Transferrin saturation, Ferritin,Vitamin B12,olate (RBC) </td>
+    <td> S </td>
+    <td> 5000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 34 </td>
+    <td> 4338 </td>
+    <td> Antenatal Profile </td>
+    <td> S </td>
+    <td> 14000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 35 </td>
+    <td> 3603 </td>
+    <td> Anti ALM </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 36 </td>
+    <td> 4298 </td>
+    <td> Anti AMA-M2 </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 37 </td>
+    <td> 2517 </td>
+    <td> Anti Amebic Antibody </td>
+    <td> S </td>
+    <td> 1800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 38 </td>
+    <td> 4339 </td>
+    <td> Anti Amphiphysin </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 39 </td>
+    <td> 3816 </td>
+    <td> Anti ANCA - C (Anti-neutrophil cytoplasmic) </td>
+    <td> S </td>
+    <td> 2900 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 40 </td>
+    <td> 3817 </td>
+    <td> Anti ANCA - P (Anti-neutrophil cytoplasmic) </td>
+    <td> S </td>
+    <td> 2900 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+   </tr>
+   <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 41 </td>
+    <td> 3481 </td>
+    <td> Anti Cardiolipin (ACL) -IgG </td>
+    <td> S </td>
+    <td> 3000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 42 </td>
+    <td> 3691 </td>
+    <td> Anti Cardiolipin (ACL)-IgA </td>
+    <td> S </td>
+    <td> 3000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 43 </td>
+    <td> 3004 </td>
+    <td> Anti Cardiolipin (ACL)-IgM </td>
+    <td> S </td>
+    <td> 3000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 44 </td>
+    <td> 4292 </td>
+    <td> Anti CENP B </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 43 </td>
+    <td> 3004 </td>
+    <td> Anti Cardiolipin (ACL)-IgM </td>
+    <td> S </td>
+    <td> 3000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 44 </td>
+    <td> 4292 </td>
+    <td> Anti CENP B </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 45 </td>
+    <td> 4340 </td>
+    <td> Anti CENP/A-B (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 46 </td>
+    <td> 3822 </td>
+    <td> Anti Centromer Antibodies Test </td>
+    <td> S </td>
+    <td> 1800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 47 </td>
+    <td> 4324 </td>
+    <td> Anti CV2 </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 48 </td>
+    <td> 3827 </td>
+    <td> Anti Cyclic Citrullinated Peptide (CCP) </td>
+    <td> R </td>
+    <td> 2700 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 49 </td>
+    <td> 4171 </td>
+    <td> Anti dengue NS1 </td>
+    <td> R </td>
+    <td> 2000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> After 1 Day </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 50 </td>
+    <td> 4294 </td>
+    <td> Anti ds DNA </td>
+    <td> R </td>
+    <td> 4000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 51 </td>
+    <td> 4268 </td>
+    <td> Anti Endomysial Antibodies (EMA) IgA </td>
+    <td> S </td>
+    <td> 3000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 52 </td>
+    <td> 4267 </td>
+    <td> Anti Endomysial Antibodies (EMA) IgG </td>
+    <td> S </td>
+    <td> 3000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 53 </td>
+    <td> 3893 </td>
+    <td> Anti Endomysial Antibodies (EMA) IgM </td>
+    <td> S </td>
+    <td> 3000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 54 </td>
+    <td> 3922 </td>
+    <td> Anti Epstein Barr Virus IgG (EBV) </td>
+    <td> S </td>
+    <td> 1300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 55 </td>
+    <td> 3923 </td>
+    <td> Anti Epstein Barr Virus IgM (EBV) </td>
+    <td> S </td>
+    <td> 2700 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 56 </td>
+    <td> 4341 </td>
+    <td> Anti Gangliosides Profile 2 (IgG) (Anti-GM1,GM2,GM#,GD1a,GD1b,GT1b,GQ1b-I gG) </td>
+    <td> S </td>
+    <td> 5000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 57 </td>
+    <td> 4321 </td>
+    <td> Anti GBM (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 58 </td>
+    <td> 4342 </td>
+    <td> Anti GD1a (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 59 </td>
+    <td> 4343 </td>
+    <td> Anti GD1b (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 60 </td>
+    <td> 2504 </td>
+    <td> Anti Gliadin Ab. (IgA) </td>
+    <td> S </td>
+    <td> 2000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 61 </td>
+    <td> 2505 </td>
+    <td> Anti Gliadin Ab. (IgG) </td>
+    <td> S </td>
+    <td> 2000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 62 </td>
+    <td> 2506 </td>
+    <td> Anti Gliadin Ab. (IgM) </td>
+    <td> S </td>
+    <td> 2000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 63 </td>
+    <td> 2507 </td>
+    <td> Anti Gliadin Antibodies (IgA,IgG) </td>
+    <td> S </td>
+    <td> 3500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 64 </td>
+    <td> 3602 </td>
+    <td> Anti Glomerular Basement Membrane (GBM) </td>
+    <td> S </td>
+    <td> 3000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 65 </td>
+    <td> 4344 </td>
+    <td> Anti GM2 (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 66 </td>
+    <td> 4345 </td>
+    <td> Anti GM3 (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 67 </td>
+    <td> 4337 </td>
+    <td> Anti GMI (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Daily </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 68 </td>
+    <td> 4312 </td>
+    <td> Anti gp210 </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 69 </td>
+    <td> 4346 </td>
+    <td> anti GQ1b (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 70 </td>
+    <td> 4347 </td>
+    <td> Anti GT1b (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 71 </td>
+    <td> 4348 </td>
+    <td> Anti Histones (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 72 </td>
+    <td> 4349 </td>
+    <td> Anti Hu (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+
+
+
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 73 </td>
+    <td> 2500 </td>
+    <td> Anti Jo-1 (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 74 </td>
+    <td> 4350 </td>
+    <td> Anti Ku (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 75 </td>
+    <td> 4314 </td>
+    <td> Anti LC-1 </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 76 </td>
+    <td> 5478 </td>
+    <td> Anti LKM </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> Blood </td>
+    <td> Blood </td>
+   </tr>
+
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 77 </td>
+    <td> 4313 </td>
+    <td> Anti LKM-1 </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 78 </td>
+    <td> 3005 </td>
+    <td> Anti Lupus Anticoagulant </td>
+    <td> S </td>
+    <td> 4000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 79 </td>
+    <td> 4353 </td>
+    <td> Anti M1-2 (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 80 </td>
+    <td> 4352 </td>
+    <td> Anti M2 Native (IgG) </td>
+   <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 81 </td>
+    <td> 4310 </td>
+    <td> Anti M2-3E </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 82 </td>
+    <td> 4092 </td>
+    <td> Anti Measles Antibodies (IgM) </td>
+    <td> S </td>
+    <td> 1800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 83 </td>
+    <td> 3672 </td>
+    <td> Anti Measles Virus (IgG) </td>
+    <td> S </td>
+    <td> 1800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 84 </td>
+    <td> 4282 </td>
+    <td> Anti Mi-2 </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 85 </td>
+    <td> 4124 </td>
+    <td> Anti Microsomal Antibodies </td>
+    <td> S </td>
+    <td> 1500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+    
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 86 </td>
+    <td> 2990 </td>
+    <td> Anti Mitochondrial Ab.(AMA) </td>
+    <td> S </td>
+    <td> 1600 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 87 </td>
+    <td> 4354 </td>
+    <td> Anti MPO (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 88 </td>
+    <td> 4318 </td>
+    <td> Anti MPO,PR3,GBM (IgG) Profile </td>
+    <td> S </td>
+    <td> 5000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 89 </td>
+    <td> 4183 </td>
+    <td> Anti Mullerian Hormone AMH </td>
+    <td> S </td>
+    <td> 6000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 90 </td>
+    <td> 3673 </td>
+    <td> Anti Mumps Virus (IgG) </td>
+    <td> S </td>
+    <td> 2000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 91 </td>
+    <td> 4109 </td>
+    <td> Anti Mumps Virus (IgM) </td>
+    <td> S </td>
+    <td> 2000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 92 </td>
+    <td> 3183 </td>
+    <td> Anti Neutrophilic Cytoplasimic Ab. (ANC-A) </td>
+    <td> S </td>
+    <td> 6500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 93 </td>
+    <td> 4356 </td>
+    <td> Anti nRNP (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 94 </td>
+    <td> 4357 </td>
+    <td> Anti Nucleosomes (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 95 </td>
+    <td> 4358 </td>
+    <td> Anti PCNA (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 96 </td>
+    <td> 3795 </td>
+    <td> Anti Phospholipid Ab Total </td>
+    <td> S </td>
+    <td> 4200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 97 </td>
+    <td> 3879 </td>
+    <td> Anti Phospholipid Antibodies (IgG) </td>
+    <td> S </td>
+    <td> 2200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 98 </td>
+    <td> 3880 </td>
+    <td> Anti Phospholipid Antibodies (IgM) </td>
+    <td> S </td>
+    <td> 2200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 99 </td>
+    <td> 4325 </td>
+    <td> Anti PNMA2 (Ma2/Ta) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 100 </td>
+    <td> 4320 </td>
+    <td> Anti PR3 (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 101 </td>
+    <td> 4329 </td>
+    <td> Anti Recoverin (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 102 </td>
+    <td> 3618 </td>
+    <td> Anti Reticulin Antibodies </td>
+    <td> S </td>
+    <td> 2000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 103 </td>
+    <td> 4359 </td>
+    <td> Anti Ri (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 104 </td>
+    <td> 4360 </td>
+    <td> Anti Ribosome PO (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 105 </td>
+    <td> 3747 </td>
+    <td> Anti RO </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 106 </td>
+    <td> 4316 </td>
+    <td> Anti Ro-52 </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 107 </td>
+    <td> 4361 </td>
+    <td> Anti RO-52 (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 108 </td>
+    <td> 4289 </td>
+    <td> Anti Scl-70 </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 109 </td>
+    <td> 4315 </td>
+    <td> Anti SLA/LP </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 110 </td>
+    <td> 4285 </td>
+    <td> Anti Sm </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 111 </td>
+    <td> 3914 </td>
+    <td> Anti Sm (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+</tr>
+<tr>
+  <td><input type="checkbox" class="checkthis" /></td>
+  <td> 112 </td>
+    <td> 2496 </td>
+    <td> Anti Smooth Mscle Antibody </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 113 </td>
+    <td> 4362 </td>
+    <td> Anti SOX1 (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+  </tr>
+ <tr>
+   <td><input type="checkbox" class="checkthis" /></td>
+       <td> 114 </td>
+    <td> 4317 </td>
+    <td> Anti Sp100 </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+ </tr>
+<tr>
+  <td><input type="checkbox" class="checkthis" /></td>
+      <td> 115 </td>
+    <td> 4286 </td>
+    <td> Anti SS-A (RO) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood Sodium Fluoride  Vail </td>
+    <td> 3-4 Days </td>
+
+</tr>
+<tr>
+  <td><input type="checkbox" class="checkthis" /></td>
+      <td> 116 </td>
+    <td> 4288 </td>
+    <td> Anti SS-B (La) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+</tr>  
+<tr>
+   <td><input type="checkbox" class="checkthis" /></td>
+       <td> 117 </td>
+    <td> 3406 </td>
+    <td> Anti TB - IgG (Elisa) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+
+</tr>  
+<tr>
+  <td><input type="checkbox" class="checkthis" /></td>
+      <td> 118 </td>
+    <td> 2494 </td>
+    <td> Anti TB - IgM (Elisa) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+
+</tr>
+<tr>
+      <td><input type="checkbox" class="checkthis" /></td>
+      <td> 119 </td>
+    <td> 4256 </td>
+    <td> Anti Thrombin III Plasma </td>
+    <td> S </td>
+    <td> 1200 </td>
+    <td> 1:9 Citrated Plasma / PT Vial </td>
+    <td> 3-4 Days </td>
+
+</tr> 
+<tr>
+  <td><input type="checkbox" class="checkthis" /></td>
+      <td> 120 </td>
+    <td> 4077 </td>
+    <td> Anti Thyroglobulin (TG ) </td>
+    <td> S </td>
+    <td> 1300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 121 </td>
+    <td> 3204 </td>
+    <td> Anti Thyroid Antibody (ATA) </td>
+    <td> S </td>
+    <td> 1100 </td> 
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 122 </td>
+    <td> 2938 </td>
+    <td> Anti Thyroid Microsomal Ab. </td>
+    <td> S </td>
+    <td> 1500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+     <td> 123 </td>
+    <td> 3921 </td>
+    <td> Anti Thyroid Peroxidase Antibodies (TPO) </td>
+    <td> S </td>
+    <td> 1100 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+  </tr>
+  <td><input type="checkbox" class="checkthis" /></td>
+      <td> 124 </td>
+    <td> 4363 </td>
+    <td> Anti Thyrombin III Plasma </td>
+    <td> S </td>
+    <td> 4200 </td>
+    <td> 1:9 Citrated Plasma / PT Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+      <td><input type="checkbox" class="checkthis" /></td>
+          <td> 125 </td>
+    <td> 3881 </td>
+    <td> Anti Tissue Transglutaminase Ab. (IgA) </td>
+    <td> S </td>
+    <td> 1600 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+
+  </tr>
+  <tr>
+  <td><input type="checkbox" class="checkthis" /></td>
+      <td> 126 </td>
+    <td> 3915 </td>
+    <td> Anti Tissue Transglutaminase Ab. (IgG) </td>
+    <td> S </td>
+    <td> 1600 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+  
+  </tr>
+
+  <tr>
+
+<td><input type="checkbox" class="checkthis" /></td>
+     <td> 127 </td>
+    <td> 3916 </td>
+    <td> Anti Tissue Transglutaminase Ab. (IgM) </td>
+    <td> S </td>
+    <td> 1600 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+ 
+  </tr>
+  <tr>
+   <td><input type="checkbox" class="checkthis" /></td>
+    <td> 128 </td>
+    <td> 4331 </td>
+
+         <td> Anti Titin (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+  </tr>
+  <tr>
+  <td><input type="checkbox" class="checkthis" /></td>
+        <td> 129 </td>
+    <td> 3674 </td>
+    <td> Anti Varicella-Zoster Virus (IgG) </td>
+    <td> S </td>
+    <td> 3000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 130 </td>
+    <td> 4108 </td>
+    <td> Anti Varicella-Zoster Virus (IgM) </td>
+    <td> S </td>
+    <td> 3000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 131 </td>
+    <td> 4327 </td>
+    <td> Anti Yo (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 132 </td>
+    <td> 4008 </td>
+    <td> Anti-Phospholipid Ab. Profile (Anti Phospholipid Ab. (IgG,IgM) </td>
+    <td> S </td>
+    <td> 4200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 133 </td>
+    <td> 3695 </td>
+    <td> Anti-Smooth musle Ab </td>
+    <td> S </td>
+    <td> 1500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 134 </td>
+    <td> 3494 </td>
+    <td> Antisperm Antibodies Blood </td>
+    <td> S </td>
+    <td> 2000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 135 </td>
+    <td> 2432 </td>
+    <td> Antisperm Antibody Semen </td>
+    <td> S </td>
+    <td> 2000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 136 </td>
+    <td> 2498 </td>
+    <td> Anti-SS-A (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 137 </td>
+    <td> 2499 </td>
+    <td> Anti-SS-B (IgG) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 138 </td>
+    <td> 3808 </td>
+    <td> Anti-Thyriod Peroxidase Antibodies(TPO) </td>
+    <td> S </td>
+    <td> 1100 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 139 </td>
+    <td> 4364 </td>
+    <td> Arthritis Profile (ASO Titre,RA Factor,ANA by Immunofluorescence,ESR,Anti CCP) </td>
+    <td> S </td>
+    <td> 6000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 140 </td>
+    <td> 4366 </td>
+    <td> Ascitic/Peritoneal Fluid R/E, C/E </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Fluid </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 141 </td>
+    <td> 5438 </td>
+    <td> Aspergillus (Galactomannan) Antigen </td>
+    <td> S </td>
+    <td> 2000 </td>
+    <td> Blood </td>
+    <td> After 5 Days </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 142 </td>
+    <td> 4250 </td>
+    <td> Autoimmune Liver disease Profile </td>
+    <td> S </td>
+    <td> 5000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 143 </td>
+    <td> 3116 </td>
+    <td> Bacterial Count </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Contact Lab </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 144 </td>
+    <td> 4367 </td>
+    <td> Basic Health Profile </td>
+    <td> R </td>
+    <td> 6000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 145 </td>
+    <td> 4300 </td>
+    <td> Basic Metabolic Panel Profile (BMP) Fasting </td>
+    <td> R </td>
+    <td> 2000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 146 </td>
+    <td> 4301 </td>
+    <td> Basic Metabolic Panel Profile (BMP) Random </td>
+    <td> R </td>
+    <td> 2000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td>same day</td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 147 </td>
+    <td> 2636 </td>
+    <td> Bence Jones Protein </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr> <td><input type="checkbox" class="checkthis" /></td>
+    <td> 148 </td>
+    <td> 2424 </td>
+    <td> B-HCG </td>
+    <td> R </td>
+    <td> 1300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 149 </td>
+    <td> 2562 </td>
+    <td> Bicarbonate (HCO3) </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 150 </td>
+    <td> 2576 </td>
+    <td> Bilirubin Direct </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 151 </td>
+    <td> 2577 </td>
+    <td> Bilirubin Indirect </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 152 </td>
+    <td> 2575 </td>
+    <td> Bilirubin Total </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 153 </td>
+    <td> 2650 </td>
+    <td> Bilirubin Urine </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+    <td> 154 </td>
+    <td> 2889 </td>
+    <td> Biopsy-(Medium-2 Block) </td>
+    <td> S </td>
+    <td> 2800 </td>
+    <td> Any Specimen </td>
+    <td> 4-5 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 155 </td>
+    <td> 2893 </td>
+    <td> Biopsy-Block Review </td>
+    <td> S </td>
+    <td> 1500 </td>
+    <td> Contact Lab </td>
+    <td> 4-5 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 156 </td>
+    <td> 2628 </td>
+    <td> Biopsy-Bone Marrow </td>
+    <td> S </td>
+    <td> 3000 </td>
+    <td> Contact Lab </td>
+    <td> 4-5 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 157 </td>
+    <td> 3794 </td>
+    <td> Biopsy-Large (Three to Five) </td>
+    <td> S </td>
+    <td> 4000 </td>
+    <td> Any Specimen </td>
+    <td> 4-5 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 158 </td>
+    <td> 2892 </td>
+    <td> Biopsy-Slide Review </td>
+    <td> S </td>
+    <td> 1500 </td>
+    <td> Contact Lab </td>
+    <td> 4-5 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 159 </td>
+    <td> 2888 </td>
+    <td> Biopsy-Small </td>
+    <td> S </td>
+    <td> 1800 </td>
+    <td> Any Specimen </td>
+    <td> 4-5 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 160 </td>
+    <td> 2657 </td>
+    <td> Blast Cells </td>
+    <td> R </td>
+    <td> 250 </td>
+    <td> 3-5 ml clotted blood/2 ml serum </td>
+    <td> Same Day </td>
+  </tr>
+   <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+      <td> 251 </td>
+    <td> 4365 </td>
+    <td> Culture & Sensitivity (Ascitic/Peritoneal Fluid) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Fluid </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 252 </td>
+    <td> 4377 </td>
+    <td> Culture & Sensitivity (Blood Culture Bottle Only) </td>
+    <td> R </td>
+    <td> 500 </td>
+    <td> Blood Culture Vail </td>
+    <td> Vail </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 253 </td>
+    <td> 5443 </td>
+    <td> Culture & Sensitivity (Blood) - Left Arm </td>
+    <td> R </td>
+    <td> 1600 </td>
+    <td> Blood </td>
+    <td> 3-4 Days </td>
+  </tr>
+
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 254 </td>
+    <td> 5442 </td>
+    <td> Culture & Sensitivity (Blood) - Right Arm </td>
+    <td> R </td>
+    <td> 1600 </td>
+    <td> Blood </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 255 </td>
+    <td> 2911 </td>
+    <td> Culture & Sensitivity (Blood) each sample </td>
+    <td> R </td>
+    <td> 1600 </td>
+    <td> Blood Culture Vail </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 256 </td>
+    <td> 5433 </td>
+    <td> Culture & Sensitivity (Catheter Tip) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Catheter Tip </td>
+    <td> 2-3 Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 257 </td>
+    <td> 2913 </td>
+    <td> Culture & Sensitivity (CSF) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> CSF </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 258 </td>
+    <td> 5449 </td>
+    <td> Culture & Sensitivity (CVP) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> CVP </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 259 </td>
+    <td> 5435 </td>
+    <td> Culture & Sensitivity (Drain) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Drain </td>
+    <td> 2-3 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 260 </td>
+    <td> 4172 </td>
+    <td> Culture & Sensitivity (Ear Swab Left Side) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Ear Secretion </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 261 </td>
+    <td> 2910 </td>
+    <td> Culture & Sensitivity (Ear Swab Right Side) </td>
+    <td> R </td>
+   <td> 1400 </td>
+    <td> Ear Swab </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 262 </td>
+    <td> 4164 </td>
+    <td> Culture & Sensitivity (Eye/Conjectival/Corneal Swab) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Eye Swab </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 263 </td>
+    <td> 2916 </td>
+    <td> Culture & Sensitivity (Fluid) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Fluid (All Body Fluid) </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 264 </td>
+    <td> 2917 </td>
+    <td> Culture & Sensitivity (Fungs) </td>
+    <td> R </td>
+    <td> 1800 </td>
+    <td> Any Specimen </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 265 </td>
+    <td> 4380 </td>
+    <td> Culture & Sensitivity (Milk Left Side) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Milk </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 266 </td>
+    <td> 4379 </td>
+    <td> Culture & Sensitivity (Milk Right Side) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Milk </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 267 </td>
+    <td> 4102 </td>
+    <td> Culture & Sensitivity (Nasal Left) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Nasal Swab / Secretion </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 268 </td>
+    <td> 4101 </td>
+    <td> Culture & Sensitivity (Nasal Right) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Nasal Swab </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 269 </td>
+    <td> 4534 </td>
+    <td> Culture & Sensitivity (Pericardial Effusion) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Pericardial Effusion </td>
+    <td> 2-3 Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 270 </td>
+    <td> 4382 </td>
+    <td> Culture & Sensitivity (Pleural Fluid ) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Pleural Fluid </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 271 </td>
+    <td> 3134 </td>
+    <td> Culture & Sensitivity (Prostatic /Urethral Secretion) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Prostate Secretion </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 272 </td>
+    <td> 2641 </td>
+    <td> Culture & Sensitivity (Pus) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> PUS </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 273 </td>
+    <td> 4223 </td>
+    <td> Culture & Sensitivity (Right Leg) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Right Leg </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 274 </td>
+    <td> 3385 </td>
+    <td> Culture & Sensitivity (Semen) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Semen </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 275 </td>
+    <td> 2924 </td>
+    <td> Culture & Sensitivity (Sputum) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Sputum </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 276 </td>
+    <td> 2644 </td>
+    <td> Culture & Sensitivity (Stool Salmonella/shi) </td>
+    <td> R </td>
+    <td> 1800 </td>
+    <td> Stool </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 277 </td>
+    <td> 2643 </td>
+    <td> Culture & Sensitivity (Stool) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Stool </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 278 </td>
+    <td> 2640 </td>
+    <td> Culture & Sensitivity (TB/MTB/AFB) </td>
+    <td> R </td>
+    <td> 2500 </td>
+    <td> All Body Fluid </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 279 </td>
+    <td> 3111 </td>
+    <td> Culture & Sensitivity (Throat swab) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Throat Swab </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 280 </td>
+    <td> 2902 </td>
+    <td> Culture & Sensitivity (Urethral Discharge) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Urethral Secretion </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 281 </td>
+    <td> 3115 </td>
+    <td> Culture & Sensitivity (Urine/Segmented Urine each sample) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Urine </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 282 </td>
+    <td> 4162 </td>
+    <td> Culture & Sensitivity (Vaginal / HVS Swab) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> HVS Swab </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 283 </td>
+    <td> 4165 </td>
+    <td> Culture & Sensitivity (Wound Swab) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Wound Swab </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 284 </td>
+    <td> 2865 </td>
+    <td> Culture & Sensitivity (Z. N. Staining) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> All Type Specimen </td>
+    <td> 3-4 days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 285 </td>
+    <td> 4166 </td>
+    <td> Culture & Sensitivity Air Sample from ICU (Pre-Treatment) </td>
+    <td> R </td>
+    <td> 1000 </td>
+    <td> Air </td>
+    <td> After 3 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 286 </td>
+    <td> 4381 </td>
+    <td> Culture & Sensitivity Nasal Swab (Right Nasal) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Nasal Swab </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 287 </td>
+    <td> 4094 </td>
+    <td> Culture & Sensitivity with Bacterial Count Sample # 1 </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Contact Lab </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 288 </td>
+    <td> 4095 </td>
+    <td> Culture & Sensitivity with Bacterial Count Sample # 2 </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Contact Lab </td>
+    <td> 3-4 Days </td>
+  </tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 289 </td>
+    <td> 4093 </td>
+    <td> Culture & Sensitivity with Bacterial Count Sample # 3 after prostate massage </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Contact Lab </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 290 </td>
+    <td> 5434 </td>
+    <td> Culture (Water) </td>
+    <td> R </td>
+    <td> 2000 </td>
+    <td> Water </td>
+    <td> 2-3 Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 291 </td>
+    <td> 4163 </td>
+    <td> Culture of water Before R/O </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Water </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 292 </td>
+    <td> 3682 </td>
+    <td> Cyclosporin level (C2) 2 Hours After Dose </td>
+    <td> T </td>
+    <td> 5000 </td>
+    <td> 3-5 ml EDTA blood / CBC Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 293 </td>
+    <td> 4125 </td>
+    <td> Cyclosporine level (CO) Trough </td>
+    <td> T </td>
+    <td> 5000 </td>
+    <td> 3-5 ml EDTA blood / CBC Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 294 </td>
+    <td> 5476 </td>
+    <td> Cystic Fluid C/E </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td>  3-5</td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    
+    <td> 295 </td>
+    <td> 4042 </td>
+    <td> Cytology (Gram & H/E) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/2 ml serum </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 296 </td>
+    <td> 2969 </td>
+    <td> Cytology / Malignant cell </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> Any Specimen </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 297 </td>
+    <td> 3629 </td>
+    <td> D-Dimers Level </td>
+    <td> S </td>
+    <td> 1500 </td>
+    <td> 2 ml sodium citrate pt vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 298 </td>
+    <td> 4383 </td>
+    <td> Dengue Virus -2 (IgG & IgM) Elisa </td>
+    <td> R </td>
+    <td> 2200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 299 </td>
+    <td> 3870 </td>
+    <td> Dengue Virus -2 IgG (Elisa) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 300 </td>
+    <td> 3497 </td>
+    <td> Dengue Virus -2 IgM (Elisa) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 301 </td>
+    <td> 2435 </td>
+    <td> DHEA SO4 </td>
+    <td> S </td>
+    <td> 1800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 302 </td>
+    <td> 4384 </td>
+    <td> Diabetes Profile (Glucose,HbA1c,Microalbuminuria) </td>
+    <td> R </td>
+    <td> 2000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial,EDTA Blood </td>
+    <td> Same Day </td>
+    </tr>
+    <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+      <td> 303 </td>
+    <td> 3169 </td>
+    <td> Digoxin </td>
+    <td> S </td>
+    <td> 1400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 304 </td>
+    <td> 3930 </td>
+    <td> DLC (WBC) </td>
+    <td> R </td>
+    <td> 250 </td>
+    <td> 3-5 ml EDTA blood / CBC Tube </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 305 </td>
+    <td> 3401 </td>
+    <td> DNA Extraction </td>
+    <td> S </td>
+    <td> 1500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 306 </td>
+    <td> 3129 </td>
+    <td> DNA Tissue Typing </td>
+    <td> T </td>
+    <td> 30000 </td>
+    <td> Contact Lab </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 307 </td>
+    <td> 3475 </td>
+    <td> Donor Screening for (Tissue Typing) </td>
+    <td> S </td>
+    <td> 12000 </td>
+    <td> Contact Lab </td>
+    <td> 2-3 Day </td>
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 308 </td>
+    <td> 3484 </td>
+    <td> Drug-Phenytoin (Dilantin Epanutin) </td>
+    <td> S </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 309 </td>
+    <td> 3166 </td>
+    <td> Drug-Valproic Acid (Depakene,Epilim) </td>
+    <td> S </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 310 </td>
+    <td> 3604 </td>
+    <td> E3 (Estriol Free) </td>
+    <td> S </td>
+    <td> 1100 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 311 </td>
+    <td> 3474 </td>
+    <td> ECG </td>
+    <td> R </td>
+    <td> 600 </td>
+    <td> ECG </td>
+    <td> Same Day </td>
+</tr>
+<tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 312 </td>
+    <td> 2508 </td>
+    <td> Echinococcus HAT. </td>
+    <td> S </td>
+    <td> 2600 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 2-3 Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 313 </td>
+    <td> 4063 </td>
+    <td> Electrolytes </td>
+    <td> R </td>
+    <td> 1000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 314 </td>
+    <td> 3980 </td>
+    <td> Electrophoresis (CSF) </td>
+    <td> S </td>
+    <td> 2000 </td>
+    <td> CSF </td>
+    <td> 6-8 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 315 </td>
+    <td> 3970 </td>
+    <td> Electrophoresis (Hb) </td>
+    <td> S </td>
+    <td> 1700 </td>
+    <td> 3-5 ml EDTA blood / CBC Tube </td>
+    <td> 6-8 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 316 </td>
+    <td> 3626 </td>
+    <td> Electrophoresis (Urine) </td>
+    <td> S </td>
+    <td> 1700 </td>
+    <td> Urine </td>
+    <td> 6-8 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 317 </td>
+    <td> 4038 </td>
+    <td> Electrophoresis(S.Protein) </td>
+    <td> S </td>
+    <td> 1700 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 6-8 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 318 </td>
+    <td> 4435 </td>
+    <td> ENA Profile </td>
+    <td> S </td>
+    <td> 5000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> After 2 days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 319 </td>
+    <td> 3492 </td>
+    <td> Endomysial Antibodies (EMA) </td>
+    <td> S </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 320 </td>
+    <td> 3905 </td>
+    <td> Entamoeba Histolytica Ab. </td>
+    <td> S </td>
+    <td> 2600 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 321 </td>
+    <td> 3776 </td>
+    <td> Epival Level Serum </td>
+    <td> S </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 322 </td>
+    <td> 4404 </td>
+    <td> Erthroprotein Level Serum (EPO) </td>
+    <td> S </td>
+    <td> 5500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 323 </td>
+    <td> 2603 </td>
+    <td> ESR </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> 3-5 ml EDTA blood / CBC Tube </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 324 </td>
+    <td> 2428 </td>
+    <td> Estradiol 17 - B </td>
+    <td> R </td>
+    <td> 1300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 325 </td>
+    <td> 5444 </td>
+    <td> Estrogen Level </td>
+    <td> R </td>
+    <td> 1300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Daily </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 326 </td>
+    <td> 5460 </td>
+    <td> Estrogen/Progesteron Receptors Hr2 Receptor </td>
+    <td> R </td>
+    <td> 12000 </td>
+    <td> Any Specimen </td>
+    <td> 4-5 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 327 </td>
+    <td> 4385 </td>
+    <td> Executive Profile </td>
+    <td> R </td>
+    <td> 12000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 328 </td>
+    <td> 5181 </td>
+    <td> Factor V Leiden mutation (DNA analysis) </td>
+    <td> S </td>
+    <td> 2000 </td>
+    <td> Blood </td>
+    <td> After 4-5 day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 329 </td>
+    <td> 3940 </td>
+    <td> Fasting Lipid Profile (Cho,Trig,HDL,LDL,VLDL) </td>
+    <td> R </td>
+    <td> 1600 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 330 </td>
+    <td> 2623 </td>
+    <td> FDPs </td>
+    <td> S </td>
+    <td> 1500 </td>
+    <td> 1:8 Citrated Plasma / PT Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 331 </td>
+    <td> 4386 </td>
+    <td> Female Infertility Profile </td>
+    <td> R </td>
+    <td> 13000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 332 </td>
+    <td> 2422 </td>
+    <td> Ferritin </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 333 </td>
+    <td> 3983 </td>
+    <td> Fetal Hb </td>
+    <td> S </td>
+    <td> 1500 </td>
+    <td> 3-5 ml EDTA blood / CBC Vail </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 334 </td>
+    <td> 2593 </td>
+    <td> Fibrinogen </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Sodium Citrate Tube (PT Vial) </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 335 </td>
+    <td> 4123 </td>
+    <td> FLUID C/E (ASCITIC) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> ASCITIC FLUID </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 336 </td>
+    <td> 3945 </td>
+    <td> Fluid C/E , R/E </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Fluid </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 337 </td>
+    <td> 4121 </td>
+    <td> FLUID C/E CSF </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> CSF FLUID </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 338 </td>
+    <td> 4118 </td>
+    <td> FLUID C/E JOINT </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> JOINT FLUID </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 339 </td>
+    <td> 4120 </td>
+    <td> FLUID C/E PERITONEAL </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> PERITONEAL FLUID </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 340 </td>
+    <td> 4106 </td>
+    <td> Fluid Creatinine </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> Fluid </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+
+    <td> 341 </td>
+    <td> 3984 </td>
+    <td> Fluid Staining (GM,ZN,HE </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+    
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 342 </td>
+    <td> 2695 </td>
+    <td> Fluid WBCs </td>
+    <td> R </td>
+    <td> 250 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 343 </td>
+    <td> 3625 </td>
+    <td> FNAC for Cytology (Procedures & Reporting) </td>
+    <td> R </td>
+    <td> 3000 </td>
+    <td> Contact Lab </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 344 </td>
+    <td> 3624 </td>
+    <td> FNAC with Blood Test & Histopathology </td>
+    <td> R </td>
+    <td> 4000 </td>
+    <td> Contact Lab </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 345 </td>
+    <td> 5480 </td>
+    <td> Folate (Red Cell). </td>
+    <td> S </td>
+    <td> 2000 </td>
+    <td> Blood </td>
+    <td> 2-3 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 346 </td>
+    <td> 2443 </td>
+    <td> Free Cortisol Urine (24-Hrs.) </td>
+    <td> R </td>
+    <td> 1800 </td>
+    <td> 24-Hrs. Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 347 </td>
+    <td> 2434 </td>
+    <td> Free Testosterone </td>
+    <td> S </td>
+    <td> 2300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 348 </td>
+    <td> 2426 </td>
+    <td> FSH </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 349 </td>
+    <td> 3176 </td>
+    <td> FT Antibodies </td>
+    <td> S </td>
+    <td> 1000 </td>
+    <td> 3-5 ml clotted blood/2 ml serum </td>
+    <td> 4-5 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 350 </td>
+    <td> 3402 </td>
+    <td> FT3 </td>
+    <td> R </td>
+    <td> 1000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 351 </td>
+    <td> 3403 </td>
+    <td> FT4 </td>
+    <td> R </td>
+    <td> 1000 </td>
+        <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+  <td> 352 </td>
+    <td> 2411 </td>
+    <td> FTI </td>
+    <td> S </td>
+    <td> 1500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 353 </td>
+    <td> 2689 </td>
+    <td> Fungus smear (KOH Preparation) </td>
+    <td> R </td>
+    <td> 600 </td>
+    <td> Smear </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 354 </td>
+    <td> 3162 </td>
+    <td> G 6PDs Level </td>
+    <td> S </td>
+    <td> 1100 </td>
+    <td> 1:8 Citrated Plasma / PT Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 355 </td>
+    <td> 2581 </td>
+    <td> Gamma-GT </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 356 </td>
+    <td> 4432 </td>
+    <td> Gastric Fluid for Toxicology </td>
+    <td> R </td>
+    <td> 1100 </td>
+    <td> Fluid </td>
+    <td>  </td>
+</tr>
+<tr>
+  <td><input type="checkbox" class="checkthis" /></td>
+    <td> 357 </td>
+    <td> 3490 </td>
+    <td> Gastrin Level </td>
+    <td> S </td>
+    <td> 4000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 358 </td>
+    <td> 4140 </td>
+    <td> Geimsa Staining </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> Fluid </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 359 </td>
+    <td> 5475 </td>
+    <td> Genexpert TB Test </td>
+    <td> S </td>
+    <td> 6000 </td>
+    <td> Sputum </td>
+    <td> After 5 days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 360 </td>
+    <td> 2591 </td>
+    <td> Globulin </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 361 </td>
+    <td> 4073 </td>
+    <td> Glucose Challenge Test (GCT) </td>
+    <td> R </td>
+    <td> 900 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 362 </td>
+    <td> 3793 </td>
+    <td> Gonadotrophin (FSH,LH,B-HCG) </td>
+    <td> R </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 363 </td>
+    <td> 2754 </td>
+    <td> Gram Staining </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> Sputum </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 364 </td>
+    <td> 5491 </td>
+    <td> GTT: (3-Point Blood Sugar) </td>
+    <td> R </td>
+    <td> 900 </td>
+    <td> Blood </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 365 </td>
+    <td> 3979 </td>
+    <td> GTT: (6-Point Blood Sugar) </td>
+    <td> R </td>
+    <td> 900 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 366 </td>
+    <td> 2487 </td>
+    <td> H. Pylori Ab. (IgG) </td>
+    <td> R </td>
+    <td> 1600 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 367 </td>
+    <td> 2488 </td>
+    <td> H. Pylori Ab. (IgM) </td>
+    <td> R </td>
+    <td> 1600 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 368 </td>
+    <td> 3686 </td>
+    <td> H. Pylori Antigen (Stool) </td>
+    <td> S </td>
+    <td> 4000 </td>
+    <td> Stool </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 369 </td>
+    <td> 5474 </td>
+    <td> H/E Staining </td>
+    <td> R </td>
+    <td> 600 </td>
+    <td> Sputum </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 370 </td>
+    <td> 2704 </td>
+    <td> H/E Staining </td>
+    <td> R </td>
+    <td> 600 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 371 </td>
+    <td> 3174 </td>
+    <td> H/E Staining (Malignant Cell) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> Sputum </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 372 </td>
+    <td> 2663 </td>
+    <td> Haemoglobin </td>
+    <td> R </td>
+    <td> 250 </td>
+    <td> 3-5 ml EDTA blood / CBC Tube </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 373 </td>
+    <td> 3908 </td>
+    <td> Haptoglobin Serum Level </td>
+    <td> S </td>
+    <td> 900 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 374 </td>
+    <td> 2465 </td>
+    <td> HAV Ab. IgG (Elisa) </td>
+    <td> S </td>
+    <td> 1500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 375 </td>
+    <td> 2466 </td>
+    <td> HAV Ab. IgM(Elisa) </td>
+    <td> R </td>
+    <td> 1500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 376 </td>
+    <td> 3987 </td>
+    <td> HB% </td>
+    <td> R </td>
+    <td> 250 </td>
+    <td> 3-5 ml EDTA blood / CBC Tube </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 377 </td>
+    <td> 2538 </td>
+    <td> HBA 1C </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml EDTA blood / CBC Tube </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 378 </td>
+    <td> 2469 </td>
+    <td> HBc Ab IgG (Elisa) </td>
+    <td> S </td>
+    <td> 1400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 379 </td>
+    <td> 2470 </td>
+    <td> HBc Ab. IgM (Elisa) </td>
+    <td> R </td>
+    <td> 1600 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 380 </td>
+    <td> 3805 </td>
+    <td> HBc Ab.Total (Elisa) </td>
+    <td> R </td>
+    <td> 1500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 381 </td>
+    <td> 2471 </td>
+    <td> HBe Ab. (Elisa) </td>
+    <td> R </td>
+    <td> 1300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 382 </td>
+    <td> 2472 </td>
+    <td> HBe Ag. (Elisa) </td>
+    <td> R </td>
+    <td> 1300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 383 </td>
+    <td> 2467 </td>
+    <td> HBs Ag. </td>
+    <td> R </td>
+    <td> 1000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 384 </td>
+    <td> 3199 </td>
+    <td> HBs Antigen (Elisa) </td>
+    <td> R </td>
+    <td> 1000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 385 </td>
+    <td> 3195 </td>
+    <td> HBs Antigen (Screening ) </td>
+    <td> R </td>
+    <td> 1000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 386 </td>
+    <td> 3909 </td>
+    <td> HBs Antigenia (Quantitative) </td>
+    <td> R </td>
+    <td> 1000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 387 </td>
+    <td> 2468 </td>
+    <td> HBs. Ab (Elisa) </td>
+    <td> R </td>
+    <td> 1300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 388 </td>
+    <td> 2473 </td>
+    <td> HCV Ab. </td>
+    <td> R </td>
+    <td> 1300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 389 </td>
+    <td> 3488 </td>
+    <td> HCV Ab. (Screening) </td>
+    <td> R </td>
+    <td> 1300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 390 </td>
+    <td> 3200 </td>
+    <td> HCV Antibody </td>
+    <td> R </td>
+    <td> 1300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 391 </td>
+    <td> 2542 </td>
+    <td> HDL Cholesterol </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 392 </td>
+    <td> 2474 </td>
+    <td> HDV Antibody (Elisa) </td>
+    <td> R </td>
+    <td> 1500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 393 </td>
+    <td> 3985 </td>
+    <td> Hepatitis B Profile </td>
+    <td> R </td>
+    <td> 5500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 394 </td>
+    <td> 3986 </td>
+    <td> Hepatitis Viral Profile </td>
+    <td> R </td>
+    <td> 7500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 395 </td>
+    <td> 2484 </td>
+    <td> Herpes Ab. IgG (Elisa) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 396 </td>
+    <td> 2485 </td>
+    <td> Herpes Ab. IgM (Elisa) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 397 </td>
+    <td> 2475 </td>
+    <td> HEV Ab. IgG (Elisa) </td>
+    <td> R </td>
+    <td> 1800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 398 </td>
+    <td> 2476 </td>
+    <td> HEV Ab. IgM (Elisa) </td>
+    <td> R </td>
+    <td> 2000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 399 </td>
+    <td> 4010 </td>
+    <td> HGH (after exercis 3-spl) </td>
+    <td> R </td>
+    <td> 3600 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 400 </td>
+    <td> 4013 </td>
+    <td> HGH (after glucose 3-spl) </td>
+    <td> R </td>
+    <td> 3600 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 401 </td>
+    <td> 4014 </td>
+    <td> HGH (after glucose 6-spl) </td>
+    <td> R </td>
+    <td> 6000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 402 </td>
+    <td> 4011 </td>
+    <td> HGH (after insulin 3-spl) </td>
+    <td> R </td>
+    <td> 4000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 403 </td>
+    <td> 4012 </td>
+    <td> HGH (after insulin 6-spl) </td>
+    <td> R </td>
+    <td> 7000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 404 </td>
+    <td> 4296 </td>
+    <td> Histones </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 405 </td>
+    <td> 2301 </td>
+    <td> Histopathology Report </td>
+    <td> R </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 406 </td>
+    <td> 3390 </td>
+    <td> HIV Ab. 1/2 ( Sacreening) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 407 </td>
+    <td> 2486 </td>
+    <td> HIV Ab. 1/2 (Elisa) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 408 </td>
+    <td> 3778 </td>
+    <td> HLA - B27 </td>
+    <td> S </td>
+    <td> 11000 </td>
+    <td> 3-5 ml EDTA blood / CBC Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 409 </td>
+    <td> 4065 </td>
+    <td> hla b27 </td>
+    <td> R </td>
+    <td> 600 </td>
+    <td> 3-5 ml EDTA blood / CBC Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 410 </td>
+    <td> 3130 </td>
+    <td> HLA Tissue Cross-Match (CDC) </td>
+    <td> T </td>
+    <td> 15000 </td>
+    <td> Contact Lab </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 411 </td>
+    <td> 3929 </td>
+    <td> Homocystine Level </td>
+    <td> S </td>
+    <td> 1100 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 412 </td>
+    <td> 5450 </td>
+    <td> HRP (High  Reactive Protein) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 413 </td>
+    <td> 3491 </td>
+    <td> Human Growth Hormone (HGH) </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 414 </td>
+    <td> 3913 </td>
+    <td> Hydroxy Indoleacetic Acid-5(5-HIAA) Urine (24-Hrs.) </td>
+    <td> S </td>
+    <td> 1500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 415 </td>
+    <td> 2438 </td>
+    <td> Hydroxysteroids 17 Urine (24-Hrs.) </td>
+    <td> S </td>
+    <td> 1300 </td>
+    <td> 24-Hrs. Urine </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 416 </td>
+    <td> 2457 </td>
+    <td> IgA (Immunoglobulin-A) </td>
+    <td> S </td>
+    <td> 1100 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 417 </td>
+    <td> 2457 </td>
+    <td> IgA (Immunoglobulin-A) </td>
+    <td> S </td>
+    <td> 1100 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 418 </td>
+    <td> 2460 </td>
+    <td> IgE (Immunoglobulin - E ) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 419 </td>
+    <td> 2458 </td>
+    <td> IgG (Immunoglobulin-G) </td>
+    <td> S </td>
+    <td> 1100 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    \<td><input type="checkbox" class="checkthis" /></td>
+    <td> 420 </td>
+    <td> 2458 </td>
+    <td> IgG (Immunoglobulin-G) </td>
+    <td> S </td>
+    <td> 1100 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 421 </td>
+    <td> 2459 </td>
+    <td> IgM (Immunoglobulin-M) </td>
+    <td> S </td>
+    <td> 1100 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 422 </td>
+    <td> 2459 </td>
+    <td> IgM (Immunoglobulin-M) </td>
+    <td> S </td>
+    <td> 1100 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 423 </td>
+    <td> 4387 </td>
+    <td> Immunohis Histchemical Stains </td>
+    <td> S </td>
+    <td> 7000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 424 </td>
+    <td> 3783 </td>
+    <td> Immunohis Tchemical Stains </td>
+    <td> S </td>
+    <td> 7000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 425 </td>
+    <td> 2706 </td>
+    <td> India Ink St. for Cryptococcus </td>
+    <td> R </td>
+    <td> 500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 426 </td>
+    <td> 2447 </td>
+    <td> Insulin </td>
+    <td> S </td>
+    <td> 2000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 427 </td>
+    <td> 5436 </td>
+    <td> Insulin (After 2 Hrs.) </td>
+    <td> S </td>
+    <td> 2000 </td>
+    <td> Blood </td>
+    <td> 2-3 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 428 </td>
+    <td> 5456 </td>
+    <td> Insulin (Rat) </td>
+    <td> S </td>
+    <td> 2000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 429 </td>
+    <td> 3788 </td>
+    <td> Insulin Growth Fector 1 </td>
+    <td> S </td>
+    <td> 7000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 430 </td>
+    <td> 3493 </td>
+    <td> Iron Serum </td>
+    <td> R </td>
+    <td> 700 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 431 </td>
+    <td> 4388 </td>
+    <td> Iron Status Profile </td>
+    <td> R </td>
+    <td> 1800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 432 </td>
+    <td> 5482 </td>
+    <td> Iron Transferin Saturation Profile </td>
+    <td> R </td>
+    <td> 3000 </td>
+    <td> Blood </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 433 </td>
+    <td> 4291 </td>
+    <td> Jo-1 </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 434 </td>
+    <td> 2436 </td>
+    <td> Ketosteroids 17 Urine (24-Hrs.) </td>
+    <td> S </td>
+    <td> 1200 </td>
+    <td> 24-Hrs. Urine </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 435 </td>
+    <td> 4283 </td>
+    <td> ku </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 436 </td>
+    <td> 4278 </td>
+    <td> Lactate Level </td>
+    <td> S </td>
+    <td> 1000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 2 - 3 days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 437 </td>
+    <td> 4180 </td>
+    <td> LAP Scoring </td>
+    <td> S </td>
+    <td> 2000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Daily </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 438 </td>
+    <td> 2586 </td>
+    <td> LDH </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 439 </td>
+    <td> 2543 </td>
+    <td> LDL Cholesterol </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 440 </td>
+    <td> 2515 </td>
+    <td> LE Cell </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 441 </td>
+    <td> 3610 </td>
+    <td> Lead Level </td>
+    <td> S </td>
+    <td> 7500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 442 </td>
+    <td> 3933 </td>
+    <td> LFT  (Bili total,OT,PT,Alk.Ph)- 4 Tests </td>
+    <td> R </td>
+    <td> 900 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 443 </td>
+    <td> 3949 </td>
+    <td> LFT Profile (Bili Tlt,Dir,Ind,Alk.ph.Ot,Pt,Alb,Prot,AG Ratio) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 444 </td>
+    <td> 2427 </td>
+    <td> LH. </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 445 </td>
+    <td> 2596 </td>
+    <td> Lipase </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 446 </td>
+    <td> 2692 </td>
+    <td> Lipase (Fluid) </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> 3-5 ml clotted blood/2 ml serum </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 447 </td>
+    <td> 4096 </td>
+    <td> Lipo Protein (A) </td>
+    <td> S </td>
+    <td> 1500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 448 </td>
+    <td> 2962 </td>
+    <td> Lithium </td>
+    <td> R </td>
+    <td> 1000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 449 </td>
+    <td> 3775 </td>
+    <td> Long Active Thyriod Ab </td>
+    <td> S </td>
+    <td> 11000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 4-5 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 450 </td>
+    <td> 4239 </td>
+    <td> Luminex DNA Tissue Typing </td>
+    <td> T </td>
+    <td> 35000 </td>
+    <td> Contact Lab </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 451 </td>
+    <td> 5454 </td>
+    <td> Luminex DNA Tissue Typing-Class I </td>
+    <td> T </td>
+    <td> 20000 </td>
+    <td> Contect Lab </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 452 </td>
+    <td> 5453 </td>
+    <td> Luminex DNA Tissue Typing-Class II </td>
+    <td> T </td>
+    <td> 20000 </td>
+    <td> Contect Lab </td>
+    <td> 3-4 Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 453 </td>
+    <td> 4257 </td>
+    <td> Luminex DSA (Donor Specific Antibody) </td>
+    <td> T </td>
+    <td> 30000 </td>
+    <td> Contact Lab </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 454 </td>
+    <td> 5468 </td>
+    <td> Luminex DSA + HLA CDC Cross-Match </td>
+    <td> T </td>
+    <td> 40000 </td>
+    <td> Blood </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 455 </td>
+    <td> 5465 </td>
+    <td> Luminex DSA Cross Match </td>
+    <td> T </td>
+    <td> 25000 </td>
+    <td> Blood </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 456 </td>
+    <td> 5494 </td>
+    <td> Luminex LSA Class I </td>
+    <td> T </td>
+    <td> 25000 </td>
+    <td> Blood </td>
+    <td> After 1-Week </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 457 </td>
+    <td> 5495 </td>
+    <td> Luminex LSA Class II </td>
+    <td> R </td>
+    <td> 25000 </td>
+    <td> Blood </td>
+    <td> After 1 Week </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 458 </td>
+    <td> 5445 </td>
+    <td> Luminex PRA Class I ID </td>
+    <td> T </td>
+    <td> 15000 </td>
+    <td> Contact Lab </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 459 </td>
+    <td> 5446 </td>
+    <td> Luminex PRA Class II ID </td>
+    <td> T </td>
+    <td> 15000 </td>
+    <td> Contact Lab </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 460 </td>
+    <td> 4244 </td>
+    <td> Luminex PRA Screen </td>
+    <td> T </td>
+    <td> 15000 </td>
+    <td> Contact Lab </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 461 </td>
+    <td> 4242 </td>
+    <td> Luminex PRA Screen + Class I & II ID </td>
+    <td> T </td>
+    <td> 30000 </td>
+    <td> Contact Lab </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 462 </td>
+    <td> 5493 </td>
+    <td> Luminex PRA Screen + LSA Class I & II </td>
+    <td> T </td>
+    <td> 55000 </td>
+    <td> Blood </td>
+    <td> After 1 Week </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 463 </td>
+    <td> 3708 </td>
+    <td> Lupus Antibody </td>
+    <td> S </td>
+    <td> 4000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 464 </td>
+    <td> 3886 </td>
+    <td> Magnesim  Urine (24-Hrs.) </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 24-Hrs. Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 465 </td>
+    <td> 2570 </td>
+    <td> Magnesium </td>
+    <td> R </td>
+    <td> 500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 466 </td>
+    <td> 4389 </td>
+    <td> Magnesium Urine Spot </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 467 </td>
+    <td> 5472 </td>
+    <td> Mal. Parasite (M.P.) </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> Blood </td>
+    <td> Next Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 468 </td>
+    <td> 2625 </td>
+    <td> Mal. Parasite (MP) </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 469 </td>
+    <td> 4275 </td>
+    <td> Mal. Parasite MP (ICT) </td>
+    <td> R </td>
+    <td> 500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 470 </td>
+    <td> 4390 </td>
+    <td> Male Infertility Profile </td>
+    <td> R </td>
+    <td> 8000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 471 </td>
+    <td> 2521 </td>
+    <td> Mantoux Test </td>
+    <td> R </td>
+    <td> 500 </td>
+    <td> Injection </td>
+    <td> After 3 Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 472 </td>
+    <td> 2633 </td>
+    <td> Marijuana (THC) </td>
+    <td> S </td>
+    <td> 1300 </td>
+    <td> Urine </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 473 </td>
+    <td> 4391 </td>
+    <td> Menopause Profile </td>
+    <td> R </td>
+    <td> 9000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 474 </td>
+    <td> 4036 </td>
+    <td> Microalbumin  Urine (24-Hrs.) </td>
+    <td> R </td>
+    <td> 900 </td>
+    <td> 24-Hrs. Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 475 </td>
+    <td> 3119 </td>
+    <td> Microalbumin Urine </td>
+    <td> R </td>
+    <td> 900 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 476 </td>
+    <td> 3966 </td>
+    <td> Milk Analysis (Both) </td>
+    <td> R </td>
+    <td> 1500 </td>
+    <td> Milk </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 477 </td>
+    <td> 3965 </td>
+    <td> Milk Analysis Left Breast </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> Milk </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 478 </td>
+    <td> 3964 </td>
+    <td> Milk Analysis RightBreast </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> Milk </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 479 </td>
+    <td> 2509 </td>
+    <td> Monospot (I.M.Nucleosis) </td>
+    <td> R </td>
+    <td> 1000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 480 </td>
+    <td> 2492 </td>
+    <td> Mpdot </td>
+    <td> R </td>
+    <td> 1000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 481 </td>
+    <td> 4393 </td>
+    <td> Muscle Enzymes Profile (CPK,LDH,AlT/SGPT,AST/SGOT,Alsolase) </td>
+    <td> R </td>
+    <td> 2300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 482 </td>
+    <td> 4245 </td>
+    <td> Myco_******* </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> Blood </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 483 </td>
+    <td> 4246 </td>
+    <td> Myco_+++++ </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> Blood </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 484 </td>
+    <td> 2491 </td>
+    <td> Mycodot (IgG) </td>
+    <td> R </td>
+    <td> 1300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 485 </td>
+    <td> 4394 </td>
+    <td> Mycodot (IgM) </td>
+    <td> R </td>
+    <td> 1300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 486 </td>
+    <td> 4247 </td>
+    <td> Mycoplasma (IgG) </td>
+    <td> S </td>
+    <td> 2000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 487 </td>
+    <td> 4248 </td>
+    <td> Mycoplasma (IgM) </td>
+    <td> S </td>
+    <td> 2000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 488 </td>
+    <td> 4322 </td>
+    <td> Neuronal Antigen Profile+RST (gG) Profile </td>
+    <td> R </td>
+    <td> 5000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 489 </td>
+    <td> 3164 </td>
+    <td> Occult Blood </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> Stool </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 490 </td>
+    <td> 3709 </td>
+    <td> Osmality (Blood) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 491 </td>
+    <td> 5481 </td>
+    <td> Osmality (Urine) </td>
+   <td> S </td>
+    <td> 2500 </td>
+    <td> Urine </td>
+    <td> 2-3 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 492 </td>
+    <td> 3688 </td>
+    <td> Osmolality (Urine) </td>
+    <td> S </td>
+    <td> 800 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 493 </td>
+    <td> 4072 </td>
+    <td> Osmotic Fragility Test </td>
+    <td> S </td>
+    <td> 800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 494 </td>
+    <td> 4396 </td>
+    <td> Osteoporosis Profile (Alkaline Phosphatase,Calcium,Phosphate,Albumin,25 Hydroxy Vitamin D) </td>
+    <td> S </td>
+    <td> 3000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 495 </td>
+    <td> 2809 </td>
+    <td> Oxalate </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 496 </td>
+    <td> 3684 </td>
+    <td> Oxalate  Urine (24-Hrs.) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 24-Hrs. Urine </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 497 </td>
+    <td> 4110 </td>
+    <td> Pap Smear </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> Contact Lab, Slide </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 498 </td>
+    <td> 4293 </td>
+    <td> PCNA </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 499 </td>
+    <td> 3084 </td>
+    <td> Phosphate Urine (24-Hrs.) </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 24-Hrs. Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 500 </td>
+    <td> 4397 </td>
+    <td> Phosphate Urine Spot </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 501 </td>
+    <td> 2568 </td>
+    <td> Phosphorous / Phosphate </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 502 </td>
+    <td> 2569 </td>
+    <td> Phosphorous Urine 24 Hrs. </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 503 </td>
+    <td> 4398 </td>
+    <td> Pituitary Function Profile  (LH,FSH,Prolactin,Growth Hormone,TSH,Cortisol) </td>
+    <td> R </td>
+    <td> 6000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 504 </td>
+    <td> 5440 </td>
+    <td> Plasma Renin Level* </td>
+    <td> S </td>
+    <td> 3500 </td>
+    <td> Plasma </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 505 </td>
+    <td> 4122 </td>
+    <td> Pleural Fluid C/E , R/E </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> PLEURAL FLUID </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 506 </td>
+    <td> 3202 </td>
+    <td> PLT Count </td>
+    <td> R </td>
+    <td> 250 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 507 </td>
+    <td> 4311 </td>
+    <td> PML </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 508 </td>
+    <td> 4290 </td>
+    <td> PM-Scl </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 509 </td>
+    <td> 4399 </td>
+    <td> Polycystic Ovary Syndrome Profile </td>
+    <td> R </td>
+    <td> 12000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 510 </td>
+    <td> 2560 </td>
+    <td> Potassium </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 511 </td>
+    <td> 3072 </td>
+    <td> Potassium  Urine (24-Hrs.) </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 24-Hrs. Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 512 </td>
+    <td> 4178 </td>
+    <td> Potassium / Sodium Serum. </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 513 </td>
+    <td> 3066 </td>
+    <td> Potassium Urine Spot </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 514 </td>
+    <td> 3092 </td>
+    <td> Pregnancy Urine </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 515 </td>
+    <td> 4400 </td>
+    <td> Prenatal Profile </td>
+    <td> R </td>
+    <td> 9500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 516 </td>
+    <td> 4277 </td>
+    <td> Pro-BNP (Brain Natriuretic Peptide) </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 517 </td>
+    <td> 4401 </td>
+    <td> Procalcitonin Level (PCT) </td>
+    <td> S </td>
+    <td> 5000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 518 </td>
+    <td> 2429 </td>
+    <td> Progesterone </td>
+    <td> R </td>
+    <td> 1300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 519 </td>
+    <td> 2430 </td>
+    <td> Progesterone Hyd. 17 Urine (24-Hrs.) </td>
+    <td> S </td>
+    <td> 3000 </td>
+    <td> 24-Hrs. Urine </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 520 </td>
+    <td> 4531 </td>
+    <td> Progesterone Hyd-17 </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> Blood </td>
+    <td> 2-3 Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 521 </td>
+    <td> 5497 </td>
+    <td> Progesterone Level </td>
+    <td> R </td>
+    <td> 1300 </td>
+    <td> Blood </td>
+    <td> 2-3 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 522 </td>
+    <td> 2425 </td>
+    <td> Prolactin </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 523 </td>
+    <td> 2884 </td>
+    <td> Prolactin (1/2 hr. After maxolone) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 524 </td>
+    <td> 2883 </td>
+    <td> Prolactin (Before maxolone) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 525 </td>
+    <td> 2956 </td>
+    <td> Prolactin (Maxolon) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 526 </td>
+    <td> 4116 </td>
+    <td> Protein C </td>
+    <td> S </td>
+    <td> 3800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 527 </td>
+    <td> 4532 </td>
+    <td> Protein Creatinine Ratio Spot Urine </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> Urine </td>
+    <td> same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 528 </td>
+    <td> 4117 </td>
+    <td> Protein S </td>
+    <td> S </td>
+    <td> 3800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 529 </td>
+    <td> 2589 </td>
+    <td> Protein Serum </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 530 </td>
+    <td> 4035 </td>
+    <td> Protein Urine (24-Hrs.) </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 24-Hrs. Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 531 </td>
+    <td> 3056 </td>
+    <td> Protein Urine Spot </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+ <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 532 </td>
+    <td> 2900 </td>
+    <td> Protien  Urine (24-Hrs.) </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 24-Hrs. Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 533 </td>
+    <td> 2347 </td>
+    <td> Protien/Albuim </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 534 </td>
+    <td> 2421 </td>
+    <td> PSA </td>
+    <td> R </td>
+    <td> 1600 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 535 </td>
+    <td> 2415 </td>
+    <td> PTH Intact </td>
+    <td> S </td>
+    <td> 1600 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 536 </td>
+    <td> 4016 </td>
+    <td> PTT </td>
+    <td> R </td>
+    <td> 500 </td>
+    <td> Sodium Citrate Tube (PT Vial) </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 537 </td>
+    <td> 3197 </td>
+    <td> R H Antibody  Titre </td>
+    <td> R </td>
+   <td> 600 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 538 </td>
+    <td> 3616 </td>
+    <td> R. A. Factor Quntitative </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 539 </td>
+    <td> 5486 </td>
+    <td> R. A. Factor Quntitative (Fluid) </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> Fluid </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 540 </td>
+    <td> 4308 </td>
+    <td> Ramzan Package (Fasting) </td>
+    <td> R </td>
+    <td> 1800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 541 </td>
+    <td> 4309 </td>
+    <td> Ramzan Package (Random) </td>
+    <td> R </td>
+    <td> 1800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 542 </td>
+    <td> 4237 </td>
+    <td> Random Lipid Profile </td>
+    <td> R </td>
+    <td> 1600 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> same day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 543 </td>
+    <td> 2675 </td>
+    <td> RBC Count </td>
+    <td> R </td>
+    <td> 250 </td>
+    <td> 3-5 ml EDTA blood / CBC Tube </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 544 </td>
+    <td> 4071 </td>
+    <td> RBC Fragility Test </td>
+    <td> R </td>
+    <td> 600 </td>
+    <td> 3-5 ml EDTA blood / CBC Tube </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 545 </td>
+    <td> 2613 </td>
+    <td> RBC Frgility </td>
+    <td> R </td>
+    <td> 600 </td>
+    <td> 3-5 ml EDTA blood / CBC Tube </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 546 </td>
+    <td> 2608 </td>
+    <td> RBC Indices </td>
+    <td> R </td>
+    <td> 250 </td>
+    <td> 3-5 ml EDTA blood / CBC Tube </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 547 </td>
+    <td> 3958 </td>
+    <td> RBC Morphology </td>
+    <td> R </td>
+    <td> 250 </td>
+    <td> 3-5 ml EDTA blood / CBC Tube </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 548 </td>
+    <td> 5202 </td>
+    <td> Real Time CMV PCR QN </td>
+    <td> S </td>
+    <td> 8000 </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 549 </td>
+    <td> 2997 </td>
+    <td> Real Time PCR ( HBV QL) </td>
+    <td> R </td>
+    <td> 5000 </td>
+    <td> Blood </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+      <td> 550 </td>
+    <td> 2998 </td>
+    <td> Real Time PCR ( HBV QN) </td>
+    <td> R </td>
+    <td> 8000 </td>
+    <td> Blood </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 551 </td>
+    <td> 3050 </td>
+    <td> Real Time PCR (Gen) </td>
+    <td> R </td>
+    <td> 10000 </td>
+    <td> Blood </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 552 </td>
+    <td> 4161 </td>
+    <td> Real Time PCR (HDV QL) </td>
+    <td> R </td>
+    <td> 5000 </td>
+    <td> Blood </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 553 </td>
+    <td> 5477 </td>
+    <td> Real Time PCR (HDV QN) </td>
+    <td> R </td>
+    <td> 8000 </td>
+    <td> Blood </td>
+    <td> After 4-5 day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 554 </td>
+    <td> 2980 </td>
+    <td> Real Time PCR HCV (QL) </td>
+    <td> R </td>
+    <td> 5000 </td>
+    <td> Blood </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 555 </td>
+    <td> 2976 </td>
+    <td> Real Time PCR HCV (QN) </td>
+    <td> R </td>
+    <td> 8000 </td>
+    <td> Blood </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 556 </td>
+    <td> 5484 </td>
+    <td> Real Time PCR HEV (QL) </td>
+    <td> R </td>
+    <td> 6000 </td>
+    <td> Blood </td>
+    <td> 4-5 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 557 </td>
+    <td> 3926 </td>
+    <td> Real Time PCR MDR-TB SSCP (QL) </td>
+    <td> R </td>
+    <td> 5000 </td>
+    <td> Blood </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 558 </td>
+    <td> 3049 </td>
+    <td> Real Time PCR MTB (QL) </td>
+    <td> R </td>
+    <td> 5000 </td>
+    <td> Blood </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 559 </td>
+    <td> 2996 </td>
+    <td> Real Time PCR Serotyping </td>
+    <td> R </td>
+    <td> 10000 </td>
+    <td> Blood </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 560 </td>
+    <td> 3476 </td>
+    <td> Recipient Profile (Donor+Recipient Group,Hb,M/P,VDRL,HBsAg,HCV,HIV Elisa) </td>
+    <td> R </td>
+    <td> 7000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 561 </td>
+    <td> 4533 </td>
+    <td> Renal Profile Fasting (Urea,Creatinine,sug.) </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> Blood </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 562 </td>
+    <td> 4126 </td>
+    <td> Renal Profile Fasting (Urea,Creatinine,U Acid,Elect.ca,po4,sug) </td>
+    <td> R </td>
+    <td> 2600 </td>
+    <td> 3-5 ml clotted blood/2 ml serum </td>
+    <td>  </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 563 </td>
+    <td> 4149 </td>
+    <td> Renal Profile Fasting (Urea,Crt-eGFR,sug.) </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 564 </td>
+    <td> 5490 </td>
+    <td> Renal Profile Fasting (Urea,Crt-egfr,U Acid,Elect.ca,po4,sug) </td>
+    <td> R </td>
+    <td> 2600 </td>
+    <td>  </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 565 </td>
+    <td> 4148 </td>
+    <td> Renal Profile Random (Urea,Creatinine,sug) </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 566 </td>
+    <td> 3954 </td>
+    <td> Renal Profile Random (Urea,Creatinine,U Acid,Elect.ca,po4,sug) </td>
+    <td> R </td>
+    <td> 2600 </td>
+    <td> 3-5 ml clotted blood/2 ml serum </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 567 </td>
+    <td> 5498 </td>
+    <td> Renal Profile Random (Urea,Crt-eFGR,sug) </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> Blood </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 568 </td>
+    <td> 5499 </td>
+    <td> Renal Profile Random (Urea,Crt-eGFR,U Acid,Elect.ca,po4,sug) </td>
+    <td> R </td>
+    <td> 2600 </td>
+    <td> Blood </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 569 </td>
+    <td> 2615 </td>
+    <td> Retics </td>
+    <td> R </td>
+    <td> 250 </td>
+    <td> 3-5 ml EDTA blood / CBC Tube </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 570 </td>
+    <td> 4402 </td>
+   <td> RH (Anti D) Antibodies </td>
+    <td> S </td>
+    <td> 600 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 571 </td>
+    <td> 4403 </td>
+    <td> Rheumatology Profile </td>
+    <td> R </td>
+    <td> 6000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 572 </td>
+    <td> 4297 </td>
+    <td> Rib. P-protein </td>
+    <td> S </td>
+    <td> 2500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 573 </td>
+    <td> 2480 </td>
+    <td> Rubella Ab. IgG (Elisa) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 574 </td>
+    <td> 2481 </td>
+    <td> Rubella Ab. IgM (Elisa) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 575 </td>
+    <td> 3944 </td>
+    <td> Semen Analysis C/E, R/E </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> Semen </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 576 </td>
+    <td> 5437 </td>
+    <td> Semen For Fructose Level </td>
+    <td> S </td>
+    <td> 1600 </td>
+    <td> Semen </td>
+    <td> 1-2 days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 577 </td>
+    <td> 4235 </td>
+    <td> Senior Citizen </td>
+    <td> R </td>
+    <td> 5800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial,Urine </td>
+    <td> 1-2 days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 578 </td>
+    <td> 3875 </td>
+    <td> Serum Erthroprotein Level </td>
+    <td> S </td>
+    <td> 5500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 579 </td>
+    <td> 3819 </td>
+    <td> Serum Homocystine Level </td>
+    <td> S </td>
+    <td> 1100 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 580 </td>
+    <td> 5496 </td>
+    <td> Serum Protein Creatinine Ratio </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> Blood </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 581 </td>
+    <td> 2579 </td>
+    <td> SGOT (AST) </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 582 </td>
+    <td> 2580 </td>
+    <td> SGPT (ALT) </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 583 </td>
+    <td> 2431 </td>
+    <td> SHBG </td>
+    <td> S </td>
+    <td> 1500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 584 </td>
+    <td> 4406 </td>
+    <td> SLE Profile </td>
+    <td> S </td>
+    <td> 17000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 585 </td>
+    <td> 2559 </td>
+    <td> Sodium </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 586 </td>
+    <td> 4026 </td>
+    <td> Sodium Urine (24-Hrs.) </td>
+    <td> R </td>
+    <td> 500 </td>
+    <td> 24-Hrs. Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 587 </td>
+    <td> 3064 </td>
+    <td> Sodium Urine Spot </td>
+    <td> R </td>
+    <td> 500 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 588 </td>
+    <td> 3198 </td>
+    <td> Sputum for AFB (Z.N. Stain)1 </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> Sputum </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 589 </td>
+    <td> 5447 </td>
+    <td> Sputum for AFB (Z.N. Stain)2 </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> Sputum </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 590 </td>
+    <td> 5448 </td>
+    <td> Sputum for AFB (Z.N. Stain)3 </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> Sputum </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 591 </td>
+    <td> 3175 </td>
+    <td> Sputum R/E (DS,GS,ZN,HE) </td>
+    <td> R </td>
+    <td> 1000 </td>
+    <td> Sputum </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 592 </td>
+    <td> 2745 </td>
+    <td> Stain Complete (GM,Gram,ZN,HE) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> Smear </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 593 </td>
+    <td> 3205 </td>
+    <td> Staining </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> Smear </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 594 </td>
+    <td> 4407 </td>
+    <td> STD Female Profile </td>
+    <td> R </td>
+    <td> 16000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 595 </td>
+    <td> 4408 </td>
+    <td> STD Male Profile </td>
+    <td> R </td>
+    <td> 11000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 596 </td>
+    <td> 3969 </td>
+    <td> Stone Analysis </td>
+    <td> S </td>
+    <td> 2200 </td>
+    <td> Stone </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 597 </td>
+    <td> 4409 </td>
+    <td> Stone Gallbladder Analysis </td>
+    <td> S </td>
+    <td> 2200 </td>
+    <td> Stone </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 598 </td>
+    <td> 4410 </td>
+    <td> Stone Renal Analysis </td>
+    <td> S </td>
+    <td> 2200 </td>
+    <td> Stone </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 599 </td>
+    <td> 4411 </td>
+    <td> Stone Ureteric Analysis </td>
+    <td> S </td>
+    <td> 2200 </td>
+    <td> Stone </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 600 </td>
+    <td> 4412 </td>
+    <td> Stone Vesical Analysis </td>
+    <td> S </td>
+    <td> 2200 </td>
+    <td> Stone </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 601 </td>
+    <td> 3934 </td>
+    <td> Stool Examination with Occult Blood </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> Stool </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 602 </td>
+    <td> 2645 </td>
+    <td> Stool PH </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Stool </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 603 </td>
+    <td> 2646 </td>
+    <td> Stool Red. Substances </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> Stool </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 604 </td>
+    <td> 2649 </td>
+    <td> Stool Suden Stain </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> Stool </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 605 </td>
+    <td> 2647 </td>
+    <td> Stool Trypsin </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> Stool </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 606 </td>
+    <td> 2348 </td>
+    <td> Sugar / Glucose </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> 3-5 ml clotted blood Sodium Fluoride  Vail </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 607 </td>
+    <td> 4029 </td>
+    <td> Sugar / Glucose  Urine (24-Hrs.) </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> 24-Hrs. Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 608 </td>
+    <td> 2533 </td>
+    <td> Sugar / Glucose (1 & 1/2 hr.) Urine </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 609 </td>
+    <td> 2531 </td>
+    <td> Sugar / Glucose (1 hr. PP) Urine </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 610 </td>
+    <td> 2529 </td>
+    <td> Sugar / Glucose (1/2 hr. PP) Urine </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 611 </td>
+    <td> 2535 </td>
+    <td> Sugar / Glucose (2 hr. PP) Urine </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 612 </td>
+    <td> 2537 </td>
+    <td> Sugar / Glucose (2&1/2 hr. PP) Urine </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 613 </td>
+    <td> 2879 </td>
+    <td> Sugar / Glucose (3 hr.pp) Urine </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 614 </td>
+    <td> 2526 </td>
+    <td> Sugar / Glucose (F) Urine </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+    </tr>
+    <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 615 </td>
+    <td> 2527 </td>
+    <td> Sugar / Glucose (R) Urine </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 616 </td>
+    <td> 2532 </td>
+    <td> Sugar / Glucose Blood (1 & 1/2 hr. PP) </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> 3-5 ml clotted blood Sodium Fluoride  Vail </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 617 </td>
+    <td> 2530 </td>
+    <td> Sugar / Glucose Blood (1 hr. PP) </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> 3-5 ml clotted blood Sodium Fluoride  Vail </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 618 </td>
+    <td> 2528 </td>
+    <td> Sugar / Glucose Blood (1/2 hr. PP) </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> 3-5 ml clotted blood Sodium Fluoride  Vail </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 619 </td>
+    <td> 2534 </td>
+    <td> Sugar / Glucose Blood (2 hr. PP) </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> 3-5 ml clotted blood Sodium Fluoride  Vail </td>
+    <td> Same Day </td>
+  </tr>
+  
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 620 </td>
+    <td> 2536 </td>
+    <td> Sugar / Glucose Blood (2&1/2 hr. PP) </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> 3-5 ml clotted blood Sodium Fluoride  Vail </td>
+    <td> Same Day </td>
+  </tr>
+  
+<tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 621 </td>
+    <td> 2878 </td>
+    <td> Sugar / Glucose Blood (3 hr. PP) </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> 3-5 ml clotted blood Sodium Fluoride  Vail </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 622 </td>
+    <td> 2205 </td>
+    <td> Sugar / Glucose Blood (F) </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> 3-5 ml clotted blood Sodium Fluoride  Vail </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 623 </td>
+    <td> 5458 </td>
+    <td> Sugar / Glucose Blood (Mouse) </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> 3-5 ml clotted blood Sodium Fluoride  Vail </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 624 </td>
+    <td> 2206 </td>
+    <td> Sugar / Glucose Blood (R) </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> 3-5 ml clotted blood Sodium Fluoride  Vail </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 625 </td>
+    <td> 3876 </td>
+    <td> Sugar / Glucose Blood 1 hr. after Glucose </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> 3-5 ml clotted blood Sodium Fluoride  Vail </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 626 </td>
+    <td> 3877 </td>
+    <td> Sugar / Glucose Blood 1&1/2 hr. after Glucose </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> 3-5 ml clotted blood Sodium Fluoride  Vail </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 627 </td>
+    <td> 4112 </td>
+    <td> Sugar / Glucose Blood After 2 hrs. 75g Glucose </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> 3-5 ml clotted blood Sodium Fluoride  Vail </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 628 </td>
+    <td> 4138 </td>
+    <td> Sugar / Glucose Blood After Dinner </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> 3-5 ml clotted blood Sodium Fluoride  Vail </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 629 </td>
+    <td> 4137 </td>
+    <td> Sugar / Glucose Blood After Lunch </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> 3-5 ml clotted blood Sodium Fluoride  Vail </td>
+    <td> Same Day </td>
+  </tr>
+<tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 630 </td>
+    <td> 4413 </td>
+    <td> Sugar / Glucose Urine </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 631 </td>
+    <td> 4414 </td>
+    <td> Sugar / Glucose Urine 24-Hrs. </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine 24-Hrs. </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 632 </td>
+    <td> 5492 </td>
+    <td> Sugar / Glucose Urine1 hr. after Glucose </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 633 </td>
+    <td> 4273 </td>
+    <td> Swab for Anesthesia Machine C/S </td>
+    <td> R </td>
+    <td> 1000 </td>
+    <td> Any Specimen </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 634 </td>
+    <td> 4269 </td>
+    <td> Swab from Anesthesia Machine CS </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Any Specimen </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 635 </td>
+    <td> 4271 </td>
+    <td> Swab from Microscope C/S </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Any Specimen </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 636 </td>
+    <td> 5441 </td>
+    <td> Swab from OT AC C/S </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Swab from OT AC </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 637 </td>
+    <td> 4264 </td>
+    <td> Swab from OT Baby Warmer C/S </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Any Specimen </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 638 </td>
+    <td> 4167 </td>
+    <td> Swab from OT Door C/S </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Any Specimen </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 639 </td>
+    <td> 4274 </td>
+    <td> Swab from OT -Eye Microscope  C/S </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Any Specimen </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 640 </td>
+    <td> 4262 </td>
+    <td> Swab from OT Floor - Eye C/S </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Any Specimen </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 641 </td>
+    <td> 4168 </td>
+    <td> Swab from OT Floor C/S </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Any Specimen </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 642 </td>
+    <td> 4263 </td>
+    <td> Swab from OT Instrument - Eye C/S </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Any Specimen </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 643 </td>
+    <td> 4261 </td>
+    <td> Swab from OT Instrument C/S </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Any Specimen </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 644 </td>
+    <td> 4265 </td>
+    <td> Swab from OT Labour Room Table C/S </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Any Specimen </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 645 </td>
+    <td> 4272 </td>
+    <td> Swab from OT Light C/S </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Any Specimen </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 646 </td>
+    <td> 4210 </td>
+    <td> Swab from OT Light C/S </td>
+   <td> R </td>
+    <td> 1400 </td>
+    <td> Any Specimen </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 647 </td>
+    <td> 2975 </td>
+    <td> Swab from OT Suction Machine C/S </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Any Specimen </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 648 </td>
+    <td> 4266 </td>
+    <td> Swab from OT Table - Eye C/S </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Any Specimen </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 649 </td>
+    <td> 4170 </td>
+    <td> Swab from OT Table C/S </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Any Specimen </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 650 </td>
+    <td> 4176 </td>
+    <td> Swab from OT Wall C/S </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Any Specimen </td>
+    <td> 3-4 Days </td>
+    
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 651 </td>
+    <td> 4169 </td>
+    <td> Swab from OT Window C/S </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Any Specimen </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 652 </td>
+    <td> 4119 </td>
+    <td> SYNOVIAL FLUID C/E </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> FLUID C/E SYNOVIAL </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 653 </td>
+    <td> 2616 </td>
+    <td> T. Eosinophils Count </td>
+    <td> R </td>
+    <td> 250 </td>
+    <td> 3-5 ml EDTA blood / CBC Tube </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 654 </td>
+    <td> 2407 </td>
+    <td> T3 </td>
+    <td> R </td>
+    <td> 1000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 655 </td>
+    <td> 2408 </td>
+    <td> T4 </td>
+    <td> R </td>
+    <td> 1000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 656 </td>
+    <td> 4220 </td>
+    <td> Tacrolimus (FK-506) </td>
+    <td> T </td>
+    <td> 5000 </td>
+    <td> 3-5 ml EDTA blood / CBC Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 657 </td>
+    <td> 5463 </td>
+    <td> TB / AFB Culture for Blood </td>
+    <td> R </td>
+    <td> 2000 </td>
+    <td> Blood </td>
+    <td> After 4 days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 658 </td>
+    <td> 5462 </td>
+    <td> TB / AFB Culture for Fluid </td>
+    <td> R </td>
+    <td> 2000 </td>
+    <td> Fluid </td>
+    <td> 4 days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 659 </td>
+    <td> 5461 </td>
+    <td> TB / AFB Culture for Pus </td>
+    <td> R </td>
+    <td> 2000 </td>
+    <td> Pus </td>
+    <td>  </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 660 </td>
+    <td> 3663 </td>
+    <td> TB / AFB Culture for Sputum </td>
+    <td> R </td>
+    <td> 2000 </td>
+    <td> Sputum </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 661 </td>
+    <td> 5464 </td>
+    <td> TB / AFB Culture for Tissue </td>
+    <td> R </td>
+    <td> 2000 </td>
+    <td> Tissue </td>
+    <td> After 4 days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 662 </td>
+    <td> 4415 </td>
+    <td> TB-IgG (Elisa) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 663 </td>
+    <td> 4416 </td>
+    <td> TB-IgM (Elisa) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 664 </td>
+    <td> 4417 </td>
+    <td> TB-MycoDot </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 665 </td>
+    <td> 3713 </td>
+    <td> Tergritol </td>
+    <td> S </td>
+    <td> 1300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 666 </td>
+    <td> 2433 </td>
+    <td> Testosterone </td>
+    <td> R </td>
+    <td> 1300 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 667 </td>
+    <td> 4222 </td>
+    <td> Thalassemia Screening </td>
+    <td> S </td>
+    <td> 5000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 668 </td>
+    <td> 4419 </td>
+    <td> Thrombophilia Profile </td>
+    <td> S </td>
+    <td> 20000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 669 </td>
+    <td> 3943 </td>
+    <td> Thy. Profile (T3,T4,TSH) </td>
+    <td> R </td>
+    <td> 3000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 670 </td>
+    <td> 4051 </td>
+    <td> Thyroid Profile (FT3,FT4,TSH) </td>
+    <td> R </td>
+    <td> 3000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 671 </td>
+    <td> 2573 </td>
+    <td> TIBC Serum </td>
+    <td> R </td>
+    <td> 800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 672 </td>
+    <td> 2604 </td>
+    <td> TLC (WBC) </td>
+    <td> R </td>
+    <td> 250 </td>
+    <td> 3-5 ml EDTA blood / CBC Tube </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 673 </td>
+    <td> 3948 </td>
+    <td> Torch Profile (IgG,IgM) </td>
+    <td> R </td>
+    <td> 9000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 674 </td>
+    <td> 3946 </td>
+    <td> Torch Profile-IgG </td>
+    <td> R </td>
+    <td> 4500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 675 </td>
+    <td> 3947 </td>
+    <td> Torch Profile-IgM </td>
+    <td> R </td>
+    <td> 5000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 676 </td>
+    <td> 2478 </td>
+    <td> Tox. Ab. IgG (Elisa) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 677 </td>
+    <td> 2479 </td>
+    <td> Tox. Ab. IgM (Elisa) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 678 </td>
+    <td> 2520 </td>
+    <td> TPHA </td>
+    <td> S </td>
+    <td> 2100 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-5 Days </td>
+  </tr>
+<tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 679 </td>
+    <td> 3872 </td>
+    <td> Transferrin Saturation Serum </td>
+    <td> R </td>
+    <td> 1500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 680 </td>
+    <td> 2541 </td>
+    <td> Triglyceride </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 681 </td>
+    <td> 3997 </td>
+    <td> Troch Profile (IgG) </td>
+    <td> R </td>
+    <td> 4500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 682 </td>
+    <td> 4236 </td>
+    <td> Tropoin I </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 683 </td>
+    <td> 3750 </td>
+    <td> Troponin - T </td>
+    <td> S </td>
+    <td> 1400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-5 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 684 </td>
+    <td> 3404 </td>
+    <td> TSH </td>
+    <td> R </td>
+    <td> 1000 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 685 </td>
+    <td> 4203 </td>
+    <td> T-Spot TB Test </td>
+    <td> T </td>
+    <td> 7000 </td>
+    <td> Lithium Heparin (Green Vail) </td>
+    <td> 3-5 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 686 </td>
+    <td> 3791 </td>
+    <td> T-Spot TB Test </td>
+    <td> T </td>
+    <td> 2500 </td>
+    <td> Lithium Heparin (Green Vail) </td>
+    <td> 3-5 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 687 </td>
+    <td> 2489 </td>
+    <td> Typhidot (IgG) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 688 </td>
+    <td> 3999 </td>
+    <td> Typhidot (IgG-IgM) </td>
+    <td> R </td>
+    <td> 2200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 689 </td>
+    <td> 2490 </td>
+    <td> Typhidot (IgM) </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 690 </td>
+    <td> 3078 </td>
+    <td> Urate Urine 24-Hrs. </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 24-Hrs. Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 691 </td>
+    <td> 4105 </td>
+    <td> Urea Fluid </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> Fluid </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 692 </td>
+    <td> 3052 </td>
+    <td> Urea Urine </td>
+   <td> R </td>
+    <td> 400 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 693 </td>
+    <td> 3911 </td>
+    <td> Urea Urine 24-Hrs. </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 24-Hrs. Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 694 </td>
+    <td> 4067 </td>
+    <td> Urea Urine Spot </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 695 </td>
+    <td> 5439 </td>
+    <td> Urethral Smear for Gram Stain </td>
+    <td> R </td>
+    <td> 500 </td>
+    <td> Urethral Smear </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 696 </td>
+    <td> 2555 </td>
+    <td> Uric Acid </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 697 </td>
+    <td> 3060 </td>
+    <td> Uric Acid Urine </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 698 </td>
+    <td> 3080 </td>
+    <td> Uric Acid Urine 24-Hrs. </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 24-Hrs. Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 699 </td>
+    <td> 3477 </td>
+    <td> Uric Acid Urine Spot </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 700 </td>
+    <td> 4113 </td>
+    <td> Urine C/E sample#1 </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 701 </td>
+    <td> 4114 </td>
+    <td> Urine C/E sample#2 </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 702 </td>
+    <td> 4115 </td>
+    <td> Urine C/E sample#3 after prostate massage </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+    </tr>
+    <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 703 </td>
+    <td> 3942 </td>
+    <td> Urine C/E, R/E </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 704 </td>
+    <td> 2638 </td>
+    <td> Urine C/S </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Urine </td>
+    <td> 3-5 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 705 </td>
+    <td> 3054 </td>
+    <td> Urine Creatinine </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 706 </td>
+    <td> 4527 </td>
+    <td> Urine Cytology for Decoay Cells </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> Urine </td>
+    <td> 3 - 4 days </td>
+    </tr>
+    <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 707 </td>
+    <td> 4066 </td>
+    <td> Urine Examination </td>
+    <td> R </td>
+    <td> 300 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+    </tr>
+    <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 708 </td>
+    <td> 3867 </td>
+    <td> Urine For Albumin </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 709 </td>
+    <td> 3927 </td>
+    <td> Urine for Haemoglobin </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 710 </td>
+    <td> 3140 </td>
+    <td> Urine For Protein </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 711 </td>
+    <td> 3789 </td>
+    <td> Urine For Reducing Substance </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 3-5 ml clotted blood/2 ml serum </td>
+    <td> Same Day </td>
+  </tr>
+    <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 712 </td>
+    <td> 4517 </td>
+    <td> Urine For TLC (Norcotic Drugs) </td>
+    <td> S </td>
+    <td> 4000 </td>
+    <td> Urine </td>
+    <td> 2 - 3 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 713 </td>
+    <td> 3405 </td>
+    <td> Urine Suger </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 714 </td>
+    <td> 4422 </td>
+    <td> Urine-Bile Salt </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Daily </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 715 </td>
+    <td> 3748 </td>
+    <td> Urine-Bilirubin </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 716 </td>
+    <td> 4423 </td>
+    <td> Urine-Blood </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Daily </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 717 </td>
+    <td> 3076 </td>
+    <td> Urine-Glucose </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 718 </td>
+    <td> 4424 </td>
+    <td> Urine-Haemoglobinuria </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Daily </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 719 </td>
+    <td> 2349 </td>
+    <td> Urine-Ketones </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 720 </td>
+    <td> 2635 </td>
+    <td> Urine-Microscopy </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 721 </td>
+    <td> 3126 </td>
+    <td> Urine-Osmolality </td>
+    <td> S </td>
+    <td> 1000 </td>
+    <td> 3-5 ml clotted blood/2 ml serum </td>
+    <td> 3-5 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 722 </td>
+    <td> 2344 </td>
+    <td> Urine-PH </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 723 </td>
+    <td> 2343 </td>
+    <td> Urine-Sp. gravity </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 724 </td>
+    <td> 2350 </td>
+    <td> Urine-Urobilinogen </td>
+    <td> R </td>
+    <td> 200 </td>
+    <td> Urine </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 725 </td>
+    <td> 2519 </td>
+    <td> VDRL/RPR/Kahn's Test </td>
+    <td> R </td>
+    <td> 1200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+    </tr>
+    <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 726 </td>
+    <td> 2449 </td>
+    <td> Vitamin B-12 </td>
+    <td> R </td>
+    <td> 1500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-5 Days </td>
+  </tr>
+  <tr>
+  	<td><input type="checkbox" class="checkthis" /></td>
+    <td> 727 </td>
+    <td> 4428 </td>
+    <td> Vitamin B9-Folic Acid </td>
+    <td> S </td>
+    <td> 1500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 3-4 Days </td>
+    </tr>
+    <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 728 </td>
+    <td> 3627 </td>
+    <td> Vitamin D- 3 Level </td>
+    <td> R </td>
+    <td> 2200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+  	<td><input type="checkbox" class="checkthis" /></td>
+    <td> 729 </td>
+    <td> 5455 </td>
+    <td> Vitamin D3 (25-Hydroxy) </td>
+    <td> R </td>
+    <td> 2200 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> 1-2 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 730 </td>
+    <td> 4429 </td>
+    <td> Vitamin Folic Acid </td>
+    <td> S </td>
+    <td> 1500 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+    </tr>
+    <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 731 </td>
+    <td> 4141 </td>
+    <td> Viterous Aspirate </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> Viterous Fluid </td>
+    <td>Same Day   </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 732 </td>
+    <td> 2544 </td>
+    <td> VLDL Cholesterol </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 733 </td>
+    <td> 3040 </td>
+    <td> VMA (HMMA)  Urine (24-Hrs.) </td>
+    <td> S </td>
+    <td> 1800 </td>
+    <td> 24-Hrs. Urine </td>
+    <td> 4-5 Days </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 734 </td>
+    <td> 4050 </td>
+    <td> WBC's Morphology </td>
+    <td> R </td>
+    <td> 250 </td>
+    <td> 3-5 ml EDTA blood / CBC Tube </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 735 </td>
+    <td> 3399 </td>
+    <td> WBC's Morphology </td>
+    <td> R </td>
+    <td> 250 </td>
+    <td> 3-5 ml EDTA blood / CBC Tube </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 736 </td>
+    <td> 2299 </td>
+    <td> Widal Test </td>
+    <td> R </td>
+    <td> 1100 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 737 </td>
+    <td> 4209 </td>
+    <td> Youth Package Fasting </td>
+    <td> R </td>
+    <td> 3800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel  </td>
+    <td> Same Day </td>
+  </tr>
+  <tr><td><input type="checkbox" class="checkthis" /></td>
+    <td> 738 </td>
+    <td> 4212 </td>
+    <td> Youth Package Random </td>
+    <td> R </td>
+    <td> 3800 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Vial,Urine </td>
+    <td> Next Day </td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" class="checkthis" /></td>
+    <td> 739 </td>
+    <td> 3173 </td>
+    <td> Z. N. Staining </td>
+    <td> R </td>
+    <td> 400 </td>
+    <td> Smear </td>
+    <td> Same Day </td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td> 740 </td>
+    <td> 4153 </td>
+    <td> Zinc Serum </td>
+    <td> R </td>
+    <td> 1400 </td>
+    <td> 3-5 ml clotted blood/ 2 ml serum / Gel Via</td>
+    <td> Same Day </td>
+  </tr> 
+
+
+
+</table>
+
+
+
+
+
+
+
+
+
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready( function () {
+    $('#mydatatable').DataTable();
+} );
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!--  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/js.cookie.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/main.js"></script> -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+  <!-- <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script> -->
+
+
+<!-- 
+  <script type="text/javascript">
+    $(document).ready(function() 
+      {
+            // PAGE IS FULLY LOADED  
+            // FADE OUT YOUR OVERLAYING DIV
+            $('.loader').fadeOut();
+      }); 
+  </script> -->
+
+
+  <!-- <script 
+var full=false;
+
+function fill(){
+  full=!full;
+  document.getElementById("logocontainer").style.backgroundColor=full?"#3ebffa":"transparent";
+}
+</script> -->
+
+
+
+</body>
+
+</html>
